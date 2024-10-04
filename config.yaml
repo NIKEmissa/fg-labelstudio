@@ -1,0 +1,16 @@
+label_config: |
+  <View>
+    <Header value="请高亮文本进行标注" />
+    <Text name="text" value="$text" />
+    <Labels name="label" toName="text">
+      <Label value="Highlight" background="yellow" />
+    </Labels>
+  </View>
+
+# 数据目录
+input_path: /tmp/label_studio/input
+output_dir: /tmp/label_studio/output
+
+# 启动任务配置
+sampling: sequential
+task_order: random

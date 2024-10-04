@@ -1,0 +1,10 @@
+# Python
+__pycache__
+
+# IDE and Editor specific
+.vscode
+
+# Cache and temporary files
+.cache
+.DS_Store
+

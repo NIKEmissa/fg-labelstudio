@@ -1,0 +1,81 @@
+image_caption:
+  url: "http://8.219.81.65"
+  port_range: [30066, 30067]
+merge:
+  url: "http://8.219.81.65:30066/proxy-openai"
+openai:
+  url: "http://8.219.81.65"
+  port_range: [30066, 30067]
+niutrans:
+  api_key: "f185e293d09db7295ecfa027578d9833"
+labelstudio:
+  url: "http://localhost:20024"
+  api_key: "9228983fcb7d2d5aa2179ca73616585b1a20713a"
+  external_ip: "218.28.238.77"
+  external_port: "20024"
+label_config: |
+    <View>
+        <Header value="单张图片示例"/>
+        <Style>
+            .container {
+                display: flex;
+                justify-content: space-between;
+            }
+            .image-block {
+                width: 50%;
+            }
+            .text-block {
+                border: 1px solid #ccc;
+                padding: 10px;
+            }
+            .text-block-left, .text-block-right {
+                width: 40%;
+            }
+            .text-block-center {
+                width: 20%;
+            }
+            .original-text {
+                font-style: italic;
+                color: gray;
+                margin-top: 5px;
+            }
+        </Style>
+        <View className="container">
+            <View className="image-block">
+                <Image name="url" value="$OriginalImage" maxWidth="100%"/>
+            </View>
+        </View>
+        <View className="container">
+            <View className="text-block text-block-left">
+                <Text name="overall_all_prompts" value="$Baseline"/>
+                <Text name="overall_all_prompts_token_cnt" value="$Baseline_token_cnt"/>
+                <Text name="baseline_en" value="$Baseline_EN" className="original-text"/>
+                <Text name="baseline_en_token_cnt" value="$Baseline_EN_token_cnt" className="original-text"/>
+                <Labels name="label1" toName="overall_all_prompts">
+
+                <Label value="款式缺失(b)" background="#cc373c"/><Label value="工艺缺失(b)" background="#cc373c"/><Label value="拼接缺失(b)" background="#cc373c"/><Label value="面料缺失(b)" background="#cc373c"/><Label value="辅料缺失(b)" background="#cc373c"/><Label value="材质缺失(b)" background="#cc373c"/><Label value="纹理缺失(b)" background="#cc373c"/><Label value="图案缺失(b)" background="#cc373c"/><Label value="配饰缺失(b)" background="#cc373c"/><Label value="装饰缺失(b)" background="#cc373c"/><Label value="款式冲突(b)" background="#f5f531"/><Label value="工艺冲突(b)" background="#f5f531"/><Label value="拼接冲突(b)" background="#f5f531"/><Label value="面料冲突(b)" background="#f5f531"/><Label value="辅料冲突(b)" background="#f5f531"/><Label value="材质冲突(b)" background="#f5f531"/><Label value="纹理冲突(b)" background="#f5f531"/><Label value="图案冲突(b)" background="#f5f531"/><Label value="配饰冲突(b)" background="#f5f531"/><Label value="装饰冲突(b)" background="#f5f531"/></Labels>
+            </View>
+            <View className="text-block text-block-center">
+                <Text name="All_gt" value="$All_Others"/>
+                <Text name="All_gt_token_cnt" value="$All_Others_token_cnt"/>
+                <Text name="all_others_en" value="$All_Others_EN" className="original-text"/>
+                <Text name="all_others_en_token_cnt" value="$All_Others_EN_token_cnt" className="original-text"/>
+                <Labels name="label2" toName="All_gt">
+
+                <Label value="款式缺失(g)" background="#cc373c"/><Label value="工艺缺失(g)" background="#cc373c"/><Label value="拼接缺失(g)" background="#cc373c"/><Label value="面料缺失(g)" background="#cc373c"/><Label value="辅料缺失(g)" background="#cc373c"/><Label value="材质缺失(g)" background="#cc373c"/><Label value="纹理缺失(g)" background="#cc373c"/><Label value="图案缺失(g)" background="#cc373c"/><Label value="配饰缺失(g)" background="#cc373c"/><Label value="装饰缺失(g)" background="#cc373c"/></Labels>
+            </View>
+            <View className="text-block text-block-right">
+                <Text name="After_merged" value="$Merged_Description"/>
+                <Text name="After_merged_token_cnt" value="$Merged_Description_token_cnt"/>
+                <Text name="merged_description_en" value="$Merged_Description_EN" className="original-text"/>
+                <Text name="merged_description_en_token_cnt" value="$Merged_Description_EN_token_cnt" className="original-text"/>
+                <Labels name="label3" toName="After_merged">
+
+                <Label value="款式新增(m)" background="#5bf531"/><Label value="工艺新增(m)" background="#5bf531"/><Label value="拼接新增(m)" background="#5bf531"/><Label value="面料新增(m)" background="#5bf531"/><Label value="辅料新增(m)" background="#5bf531"/><Label value="材质新增(m)" background="#5bf531"/><Label value="纹理新增(m)" background="#5bf531"/><Label value="图案新增(m)" background="#5bf531"/><Label value="配饰新增(m)" background="#5bf531"/><Label value="装饰新增(m)" background="#5bf531"/></Labels>
+          </View>      
+        </View>
+    </View>
+flux_models_config: |
+
+inference:
+  max_retry: 10

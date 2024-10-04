@@ -1,0 +1,1094 @@
+Unnamed: 0,url,goods_id,category,overall_all_prompts,All_gt,image_caption_en,image_caption_cn,all_others_en,all_others_cn,merged_caption_en,merged_caption_cn,base_prompt,merge_prompt
+0,https://oss-datawork-cdn.tiangong.tech/ai_images/spider/media/1701277415385_b1cb45036d2e4e9ca287a0b5398b5d99.jpg,735148422469,小衫,"{""fabric_all_prompts"": ""{'fabric_info': {'Top': {'Material': 'Cotton', 'Thickness': 'Thin', 'Transparency': 'Semi-transparent', 'Drapability': 'Light drapability', 'Softness': 'Soft', 'Elasticity': 'No elasticity', 'Puffiness': 'No puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'Slightly wrinkled', 'Fabric Splicing': 'No fabric splicing', 'Fabric Pattern': 'Solid with lace details', 'Fabric Craftsmanship': 'Embroidery, Lace insert', 'Fabric Color': 'White'}, 'Pants': {'Material': 'Denim (Cotton)', 'Thickness': 'Medium thickness', 'Transparency': 'Opaque', 'Drapability': 'No drapability', 'Softness': 'Slightly stiff', 'Elasticity': 'No elasticity', 'Puffiness': 'No puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'No wrinkles', 'Fabric Splicing': 'No fabric splicing', 'Fabric Pattern': 'Solid', 'Fabric Craftsmanship': 'None', 'Fabric Color': 'Blue'}}}"", ""cloth tag"": ""{'Tops': 'Shirts', 'Silhouettes': 'Regular fit', 'Cut Details': 'Symmetrical design', 'Techniques': 'Sewing techniques', 'Shoulder Types': 'Standard shoulder', 'Neckline': 'Mandarin collar', 'Sleeve Types': 'Straight sleeves', 'Cuffs': 'Fitted cuffs', 'Hemlines': 'Waist-length hem', 'Closure Types': 'Button placket'}"", ""cloth description"": ""The garment is a white shirt with a regular fit silhouette, designed for a casual yet refined appearance. The mandarin collar adds a touch of elegance, while the button placket features decorative buttons, enhancing the overall aesthetic. The shirt has straight sleeves that taper slightly at the fitted cuffs, providing a structured look. The hemline is waist-length, allowing it to be easily tucked into high-waisted jeans or left untucked for a more relaxed style. The fabric appears lightweight and breathable, suitable for various occasions. Decorative detailing along the front adds visual interest, creating a subtle texture that complements the overall simplicity of the design."", ""Overall description"": ""Model wearing a white blouse with intricate detailing and high-waisted denim jeans, posing naturally."", ""Skin color"": ""fair skin with a natural glow"", ""Hair color"": ""dark brown, straight hair"", ""Eyes color"": ""brown"", ""Face feature"": ""soft facial contours, almond-shaped eyes"", ""Height"": ""approximately 165-170cm"", ""Body type"": ""slim"", ""Appearance"": ""oval face, delicate features"", ""Makeup"": ""natural makeup, subtle tones"", ""Hairstyle"": ""long straight hair"", ""Expression"": ""smiling gently, approachable"", ""Posture"": ""standing with a slight tilt to the side"", ""Actions"": ""left hand resting on hip, right hand holding a chain"", ""Eye contact"": ""looking slightly to the side"", ""Overall temperament"": ""casual yet elegant"", ""Model attire"": ""stylish, modern outfit with a focus on comfort"", ""Scene and environment"": ""indoor photography studio, bright and clean setting"", ""Background color and tone"": ""white background, soft and neutral"", ""Lighting and illumination"": ""natural light, soft and even illumination from the left side"", ""Props and accessories"": ""none"", ""Background details and decorations"": ""simple wall paneling, minimalistic design"", ""Relationship between model and background"": ""model is centered and clearly defined against the plain background, emphasizing the outfit"", ""Color and Pattern"": ""Top is white with intricate lace detailing along the front placket and sleeves. The fabric has a slight sheen, giving it a delicate appearance. The jeans are a medium blue denim with a classic wash, featuring a faded effect around the pockets."", ""Accessories"": ""Gold chain necklace with small, round links, positioned close to the neck. A gold ring on the right hand, simple and elegant. The model is holding a small brown handbag with a structured shape, featuring a gold chain strap.""}","{""garment pattern"": ""Loose"", ""Silhouettes"": ""H"", ""Collar Types"": ""Other"", ""Neckline"": ""Notched"", ""Sleeve Types"": ""Lantern"", ""Cuffs"": ""Placket"", ""sleeve length"": ""Wrist-length Sleeve"", ""Shoulder Types"": ""Set-in shoulder"", ""Closure Types"": ""Single-breasted"", ""Pockets"": ""Pocketless"", ""Hemlines"": ""Indeterminate"", ""garment length"": ""Indeterminate"", ""front closure style"": ""Half Open Front"", ""family_name"": ""Woven - Cotton Type - Pure Spun - 9088""}","The image showcases an **indoor studio setting** with a **minimalist background**. The walls are painted **soft white**, enhancing the clean and modern aesthetic, with no additional props to distract from the model and the outfit.
+
+The model is wearing a **casual yet stylish white blouse** that features a **relaxed fit** with a **high neckline**. The blouse has **long sleeves** with **cuffed hems** and includes a **placket** with **three decorative buttons** down the front, offering both functionality and a touch of design flair. The fabric has **subtle vertical stripes** and delicate **cut-out detailing** along the sides, adding a sophisticated element to the overall look.
+
+The blouse is crafted from **lightweight cotton**, providing a **soft and breathable texture** suitable for various seasons. The fabric appears **smooth** with a slight sheen under the studio lights, emphasizing its quality. The primary color is a clean **crisp white**, which contrasts beautifully with the model's denim.
+
+The model pairs the blouse with **high-waisted blue denim jeans**, which feature a fitted silhouette that accentuates the waist. The jeans have a classic cut with a slight taper, enhancing the casual vibe of the outfit.
+
+The model is a **South Asian woman**, approximately **165 cm tall** with a **slim body type**. She has **medium skin tone** and **long black hair** styled in soft waves. Her expression is **natural and relaxed**, with a slight smile that complements the casual nature of the outfit. Her pose is **confident**, with one hand resting on her hip, showcasing the fit of the blouse and jeans.
+
+Her makeup is kept **minimal**, featuring a **light foundation** and a subtle **nude lip**, enhancing her natural beauty without overpowering the outfit. 
+
+The lighting is **soft and diffused**, creating a gentle glow that highlights the fabric's texture and the model's features. The composition centers the model in the frame, ensuring that the blouse and jeans remain the focal point, effectively showcasing the style and detailing. The overall presentation is casual yet chic, suitable for everyday wear or relaxed outings.",该图像展示了一个**室内工作室设置**，背景**极简主义**。墙壁被漆成**柔和的白色**，增强了干净和现代的美感，没有额外的道具来分散模特和服装的注意力。<br><br>模特穿着一件**休闲而时尚的白色上衣**，具有**宽松的剪裁**和**高领**。这款衬衫有**长袖**，带**翻边下摆**，正面有**三个装饰纽扣**，兼具功能性和设计风格。面料两侧有**微妙的垂直条纹**和精致的**镂空细节**，为整体造型增添了精致元素。<br><br>这款衬衫由**轻质棉**制成，提供**柔软透气的质地**，适合各种季节。这种面料在工作室的灯光下看起来**光滑**，略带光泽，强调了它的品质。原色是干净的**清爽的白色**，与模特的牛仔布形成了美丽的对比。<br><br>模特将衬衫与**高腰蓝色粗斜纹棉布牛仔裤**搭配，合身的廓形突出腰部。这款牛仔裤采用经典剪裁，略带锥形，增强了服装的休闲氛围。<br><br>模特是一名**南亚女性**，身高约**165厘米**，体型**苗条。她有**中等肤色**和**黑色长发**柔软的波浪发型。她的表情**自然而放松**，微微一笑，与服装的休闲性质相得益彰。她的姿势是**自信**，一只手放在臀部，展示了衬衫和牛仔裤的合身。<br><br>她的妆容保持了**极简**，以**浅色粉底**和微妙的**裸色嘴唇**为特色，增强了她的自然美，但又不会压倒服装。<br><br>灯光**柔和且漫射**，营造出柔和的光芒，突出面料的纹理和模特的特征。构图将模特置于框架的中心，确保衬衫和牛仔裤仍然是焦点，有效地展示风格和细节。整体呈现休闲而时尚，适合日常穿着或休闲外出。,"{""category"": ""blouse"", ""Garment pattern"": ""Fitted"", ""Silhouette"": ""H"", ""Collar types"": ""Fungus edge collar"", ""neckline"": ""Round"", ""Sleeve types"": ""Shirt sleeve"", ""Cuffs"": ""Placket"", ""Shoulder types"": ""Regular shoulder"", ""Garment closure"": ""Single-breasted"", ""Pockets"": ""Pocketless"", ""Front closure style"": ""Fully Open Front"", ""Fabric - Category"": ""Knitted - Jacquard - Lace""}","{""类别""：""衬衫"",""服装图案""：""合身"",""廓形""：""H"",""领型""：""木耳边领"",""领口""：""圆形"",""袖型""：""衬衫袖"",""袖口""：""门襟"",""肩型""：""常规肩"",""服装闭合方式""：""单排扣"",""口袋""：""无口袋"",""前闭合方式""：""前全开"",""面料-类别""：""针织-提花-蕾丝""}","### Background:
+The scene is set in a minimalist indoor studio environment characterized by soft white walls, enhancing a clean and modern aesthetic. The absence of props ensures that the focus remains solely on the model and her outfit.
+
+The model showcases a fitted white blouse with a relaxed fit and a high neckline, featuring long sleeves with cuffed hems. The blouse is adorned with a placket down the front that includes three decorative buttons, combining functionality with design flair. Subtle vertical stripes and delicate cut-out detailing along the sides elevate the sophistication of the look. Crafted from lightweight cotton, the fabric offers a soft, breathable texture and smooth sheen under the studio lighting, emphasizing quality. The primary color is a crisp white, which contrasts elegantly with the model's high-waisted blue denim jeans. The jeans have a fitted silhouette that accentuates the waist and feature a classic cut with a slight taper, enhancing the casual vibe.
+
+The model is a South Asian woman, approximately 165 cm tall with a slim body type. She possesses a medium skin tone and has long black hair styled in soft waves. Her expression is natural and relaxed, complemented by a slight smile, and her pose is confident, with one hand resting on her hip to showcase the fit of the blouse and jeans.
+
+Her makeup is minimal, consisting of light foundation and a subtle nude lip that enhances her natural beauty. The lighting is soft and diffused, creating a gentle glow that highlights the fabric's texture and the model's features. The composition centers around the model, effectively showcasing the style and detailing of the outfit.
+
+### Style Description:
+The blouse is categorized as a fitted garment with a round neckline, regular shoulder type, and shirt sleeves. It features a single-breasted front closure and is pocketless. The fabric is knitted, jacquard, and lace, presenting a unique look that complements the model's overall style.
+
+### Design Elements:
+1. **Background**: The indoor studio setting with soft white walls provides a clean backdrop that emphasizes the model and her outfit.
+2. **Overall Style**: The combination of a casual yet stylish blouse with high-waisted denim encapsulates a modern, chic aesthetic suitable for everyday wear.
+3. **Design Elements**: The fitted blouse has a high neckline, long sleeves with cuffed hems, and three decorative buttons. The jeans feature a fitted silhouette with a slight taper.
+4. **Fabric and Materials**: The blouse is made from lightweight cotton with subtle vertical stripes, providing a soft and breathable texture. The denim is classic in style, offering comfort and versatility.
+5. **Model**: The South Asian model, with a slim body type, medium skin tone, and long black hair styled in waves, presents an approachable and confident appearance.
+6. **Details and Accessories**: Minimal makeup enhances the model's natural beauty, while the soft lighting highlights the fabric's texture. The overall presentation remains focused on the outfit without distractions.
+
+This outfit encapsulates a harmonious blend of casual elegance and modern design, making it ideal for relaxed outings.","###背景：
+场景设置在极简主义的室内工作室环境中，以柔软的白墙为特征，增强了干净和现代的美感。道具的缺乏确保了焦点只集中在模特和她的服装上。<br><br>模特展示了一件合身的白色上衣，宽松剪裁，高领，长袖翻边。这件衬衫前面有一个门襟，包括三个装饰纽扣，将功能性与设计风格结合在一起。两侧精致的垂直条纹和精致的镂空细节提升了外观的精致度。该面料由轻质棉制成，在工作室灯光下具有柔软透气的质地和光滑的光泽，强调品质。原色是清爽的白色，与模特的高腰蓝色粗斜纹棉布牛仔裤形成优雅的对比。这款牛仔裤采用合身的廓形，突出腰部，经典剪裁略带锥形，增强休闲氛围。<br><br>模特是一名南亚女性，身高约165厘米，体型苗条。她拥有中等肤色，留着一头柔软波浪的黑色长发。她的表情自然放松，辅以微微的微笑，姿势自信，一只手放在臀部，展示上衣和牛仔裤的合身程度。<br><br>她的妆容很少，由浅色粉底和微妙的裸色嘴唇组成，增强了她的自然美。灯光柔和而漫射，营造出柔和的光芒，突出了面料的纹理和模特的特征。构图以模特为中心，有效地展示了服装的风格和细节。<br><br>###样式说明：
+这件衬衫被归类为圆领、常规肩型和衬衫袖的合身服装。它采用单排扣前开襟，无口袋。面料由针织、提花和蕾丝制成，呈现出独特的外观，与模特的整体风格相得益彰。<br><br>###设计元素：
+1.**背景**：室内工作室设置与柔和的白墙提供了一个干净的背景，强调了模特和她的服装。
+2.**整体风格**：休闲而时尚的上衣与高腰牛仔布的结合体现了适合日常穿着的现代、别致的美学。
+3.**设计元素**：合身的上衣领口高，长袖翻边下摆，三颗装饰纽扣。这款牛仔裤采用略微锥形的合身版型。
+4.**面料和材料**：衬衫由轻质棉制成，带有微妙的竖条纹，提供柔软透气的质地。牛仔布款式经典，舒适百搭。
+5、**模特**：南亚模特，身材苗条，肤色中等，黑色长发波浪造型，呈现出平易近人、自信满满的模样。
+6.**细节和配饰**：极简的妆容增强了模特的自然美，而柔和的灯光则凸显了面料的质感。整体展示仍然集中在服装上，没有干扰。<br><br>这套服装融合了休闲优雅和现代设计的和谐融合，是放松郊游的理想选择。","
+## Background:
+You are a master of fashion design, craftsmanship, fabric expertise, and photographic composition. You excel at providing comprehensive design details by examining images to help users recreate the clothing design through a text-to-image model.
+
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状、袖型（如灯笼袖、泡泡袖）、下摆形态（如流苏边、荷叶边）、扣子的设计风格等。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉麻混纺）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案的详细描述（如粗细相间的条纹、复古风格的格纹、抽象印花的具体形状和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和化妆**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. **按层次描述：** 从整体到局部，依次描述背景、整体风格、设计元素、面料和材质、以及细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），最后是细节和配件（如“金属扣，刺绣”）。
+2. **使用客观明确的语言：** 确保描述具体且客观，避免使用主观词汇和情感表达。代替模糊或主观的词语（如“优雅的”），提供具体特征（如“高领设计，简洁大方”）。如需使用感性词汇，需提供明确的解释（如“柔软的丝绸”需注明“丝绸质地光滑，有天然光泽”）。
+3. **描述面料和材质：** 明确指出面料类型及其特点，如“这件连衣裙采用纯棉面料，柔软透气，适合夏季穿着”。避免主观评价面料的感受。
+4. **标准术语和句式：** 使用标准化的行业术语（如“长袖衬衫”，“蕾丝边领口”），每个句子或段落集中描述一个特征，避免混杂信息。例句：“袖型为长袖，袖口有蕾丝边。”
+5. **提供完整的服装描述：** 即使图像只显示局部，仍应给出完整的服装搭配或全身效果描述（如“白色丝绸衬衫搭配黑色及膝裙，红色高跟鞋”）。
+6. **包含时间和场合信息：** 在描述中包括适用的时间和场合（如“适合夏季晚宴的红色礼服”），但仅限于服装的实用性和用途，不涉及主观评价。
+7. **避免情感和文化背景描述：** 排除情感词汇和文化背景的表达，专注于客观物理特征和具体用途。
+8. **简洁和信息量控制：** 确保每个句子都有新的信息，避免重复和冗长。例如：“这件现代风格的**V领连衣裙**采用红色丝绸，面料光滑，长袖设计，配有金属扣装饰。”
+9. **使用定量描述：** 尽可能使用定量描述（如尺寸、数量、位置）以增强描述的具体性和精确性。例句：“裙长至膝下，袖子为腕长。”
+10. **模特属性：**模特的描述必须包含国家、种族、身高、体重、具体肤色、发色、发型和妆容搭配。
+11. **字数限制：**不要输出小标题，将字数限制在350 个 English words.
+
+## Example:
+The image shows an **indoor studio setting** with a **minimalist background**. The **walls and floor** are **solid white**, providing a clean, modern look with no additional props or accessories, keeping the focus on the model and the outfit.
+The model is wearing a **fitted midi A-line dress** with an **X silhouette**. The dress features **regular shoulders**, a **collarless design**, and a **square neckline**. The **sleeves** are **wrist-length** with **plain cuffs**. It includes a **single-breasted placket**, a **high waist**, and **two front patch pockets** on the chest, each adorned with a **button** and a **dark navy blue contrasting trim**, matching the trim on the neckline.
+The dress is made from a **soft knit fabric** that is **slightly stretchy**, offering comfort and flexibility. The fabric has a **smooth texture** with **subtle vertical lines**. The primary color is **off-white**, with **dark navy blue trims** along the neckline, pocket edges, and hemline, creating a distinct contrast. **Four light-colored buttons** are positioned along the chest, providing both functional and decorative elements.
+The model is a **Japanese woman** around **25 years old** with **medium-length straight hair**, styled with **bangs**. Her skin tone is **fair**, and she has a **medium height** and a **slim body type**. She stands in a **straight pose** with her hands resting on either side of her waist, emphasizing the dress's fit-and-flare silhouette. Her makeup is **natural**, featuring a **light foundation**, **subtle eye makeup**, and a **nude lip color**.
+The lighting is **soft and even**, highlighting the model and the dress without creating harsh shadows. The composition centers the model in the frame, ensuring the dress remains the focal point. The overall presentation clearly showcases the dress's key features: the **fit-and-flare silhouette**, **contrasting trims**, and **decorative buttons**.
+
+## Initialisation：
+基于[Background]，聚焦于我的[Goals]，并参考[Definition]，严格遵循[Constrains]，用叙述性英文，如[Examples]中的形式回应我的输入。
+","
+## Background:
+我会在下面的[Context]中提供[服装描述A],[款式真值B]，根据我的要求，需要从[服装描述A]、[款式真值B]中有机的提取相应的设计要素最终组合成一段简洁明了、具备逻辑性的服装文生图提示词。
+## Context:
+### 服装描述A:ZJ_BASE_CAP
+### 款式真值B:ZJ_ALL_OTH
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状（如高领、吊带领）、袖型（如灯笼袖、泡泡袖）、袖口（如介英袖口、螺纹袖口）、开襟方式（如拉链开襟、单排扣开襟）、衣门襟（如拉链开襟、套头开襟）、肩型（如正肩、落肩、插肩）、下摆形态（如流苏边、荷叶边）、扣子、有无口袋及口袋的款式等的设计风格（如休闲时尚、性感、甜美淑女）。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉、麻、混纺、雪纺、合成纤维、再生纤维、皮革等）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案元素的内容、细节形状、位置及排布关系、风格进行详细描述（如粗细相间的黑白条纹、复古风格的蓝色格纹、黑底白色小花、带有绿色叶子的蓝色大花、抽象印花的具体形状及颜色和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链）和艺术风格（如废土风、小香风、小清新），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和妆容**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. 请将我提供的[款式真值B]整理为一句话[款式描述C]，注意不要丢失任何信息；
+2. 请将上一步的[款式描述C]全部合并到[服装描述A]中，不能有任何遗漏，合并规则如下：
+2.1. 在[服装描述A]和[款式描述C]都出现的内容，保留[服装描述A]的描述；
+2.2. 请将[款式描述C]中剩余的内容合并入上一步的结果中，如概念上有冲突，使用[款式描述C]中内容替换；
+2.3. 再次对比[服装描述A]和上一步的合并结果，如“buttoned, lace”等特殊描述词没有了，重新合并到结果中
+3. 遵循我的[Goals],对合并的内容提取关键设计要素；
+4. 按层次描述,从整体到局部，依次描述背景、整体风格（服装设计理念、艺术风格等）、设计元素(包括上装、下装、内搭、外穿)、面料和材质、模特、以及细节和配件。从背景到细节，确保先描述背景，再描述服装整体风格，详细说明设计元素，然后是面料和材质，之后描述一下模特，最后描述细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），之后说明模特（如“模特是一位南亚女性，年龄，身高，妆容等”）最后是细节和配件（如“金属扣，刺绣”）；
+5. 避免主观解释或情绪化语言，保持描述的客观性和专业性，避免""adding a touch of..."" 或 ""creating a sense of..."" 或""suggests a sense of calm""等；
+6. 字数要求在400 english words，当超出字数的时候要删减感觉性描述，保留客观性内容。
+"
+1,https://oss-proxy.textile-story.com/images_en/v1/meida_1/2c28fcd3584bcabaab6183b4c65e0acb_1709180485972_40976d53a50942a48d1199405bbb36a9.jpg,744140358245,风衣,"{""fabric_all_prompts"": ""{'fabric_info': {'Coat': {'Material': 'Wool Blend', 'Thickness': 'Thick', 'Transparency': 'Opaque', 'Drapability': 'Significant Drape', 'Softness': 'Moderately Soft', 'Elasticity': 'No Elasticity', 'Puffiness': 'No Puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'No Wrinkles', 'Fabric Splicing': 'No Fabric Splicing', 'Fabric Pattern': 'Solid', 'Fabric Craftsmanship': 'None', 'Fabric Color': 'Black'}, 'Pants': {'Material': 'Denim', 'Thickness': 'Medium Thickness', 'Transparency': 'Opaque', 'Drapability': 'Mild Drape', 'Softness': 'Moderately Soft', 'Elasticity': 'No Elasticity', 'Puffiness': 'No Puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'No Wrinkles', 'Fabric Splicing': 'No Fabric Splicing', 'Fabric Pattern': 'Solid', 'Fabric Craftsmanship': 'None', 'Fabric Color': 'Black'}}}"", ""cloth tag"": ""{'Outerwear': 'Coats', 'Silhouettes': 'Loose fit', 'Cut Details': 'Asymmetrical design', 'Functional Design': 'Multi-purpose pockets', 'Techniques': 'Sewing techniques', 'Shoulder Types': 'Standard shoulder', 'Neckline': 'Collarless', 'Sleeve Types': 'Straight sleeves', 'Hemlines': 'Long hem', 'Closure Types': 'Double-breasted'}"", ""cloth description"": ""The garment is a stylish long coat, characterized by a loose fit that allows for comfortable layering over other clothing. The coat features an asymmetrical design, with the hemline falling below the knees, providing a modern and chic appearance. It has a collarless neckline, offering a sleek silhouette. The sleeves are straight and designed to fit comfortably around the arms. The coat is double-breasted, featuring a row of buttons down the front that add detail and structure. Additionally, it includes multi-purpose pockets, enhancing functionality while maintaining a clean aesthetic. The fabric appears to be a soft, textured material in a solid black color, contributing to a timeless and versatile look that can be styled in various ways."", ""Scene and environment"": ""Indoor photography studio with a minimalistic backdrop"", ""Background color and tone"": ""Soft gray background with a smooth texture"", ""Lighting and illumination"": ""Soft, diffused light from the front, creating gentle shadows"", ""Props and accessories"": ""Simple white draped fabric on a chair positioned to the right"", ""Background details and decorations"": ""Foldable screen with a grid pattern in light gray, adding depth to the background"", ""Relationship between model and background"": ""Model stands prominently in the foreground, creating a strong visual focus against the muted background"", ""Color and Pattern"": ""The main color of the coat is solid black with a smooth texture. The coat features a long silhouette and button details. The pants are also black, creating a monochromatic look. The shoes are white with a chunky design, providing a contrast to the black outfit."", ""Accessories"": ""A small black structured crossbody bag with a flap closure and a subtle matte finish is worn on the shoulder. The bag features a gold-tone clasp. The model is wearing a simple silver ring on the right hand.""}","{""garment pattern"": ""Loose"", ""Silhouettes"": ""H"", ""Collar Types"": ""Indeterminate"", ""Neckline"": ""Other"", ""Sleeve Types"": ""Regular cuffs"", ""Cuffs"": ""Strapped"", ""sleeve length"": ""Wrist-length Sleeve"", ""Shoulder Types"": ""Indeterminate"", ""Closure Types"": ""Double-breastec"", ""Pockets"": ""Indeterminate"", ""Hemlines"": ""Straight"", ""garment length"": ""Long length"", ""wind flap"": ""No wind flap"", ""family_name"": ""Woven - Silk Type - Chemical Fiber Filament - Filament""}","The scene is set in an **indoor studio environment** featuring a **minimalist background** with light-colored partitions that create a soft, unobtrusive backdrop. The floor is a **neutral gray**, complementing the overall simplicity of the setting, which emphasizes the model and her outfit.
+
+The model is wearing a **long, oversized black coat** that exudes a contemporary style. The coat has an **A-line silhouette** with a **double-breasted front closure** and features **regular shoulders** for a structured look. The **sleeves** are **long** and slightly loose, adorned with **cuffs** that have a subtle **adjustable strap** detail. The coat's hem is **knee-length**, providing a chic, urban aesthetic.
+
+This piece is crafted from a **soft wool blend fabric**, which offers warmth while maintaining a smooth, luxurious texture. The fabric has a **matte finish**, enhancing the coat's understated elegance. The primary color is **jet black**, creating a versatile and timeless appeal. 
+
+The model pairs the coat with **dark denim jeans**, which are slightly cropped at the ankles, allowing a glimpse of her footwear. She wears **chunky white sneakers**, adding a casual touch that contrasts with the coat's formal silhouette. 
+
+In terms of accessories, the model carries a **small black handbag** with a **flap closure** and a **single shoulder strap**, which adds functionality and completes her outfit. The bag's clean lines and minimalist design harmonize with the overall aesthetic.
+
+The model is of **East Asian descent**, approximately **165 cm tall**, with a **medium build**. She has **long, wavy black hair** that frames her face, styled in a relaxed manner. Her skin tone is **fair**, and her makeup is kept **natural**, featuring a light foundation, soft eye makeup, and a nude lip color, enhancing her fresh appearance.
+
+The lighting in this setup is **soft and diffused**, which helps to reduce harsh shadows and highlights the textures of the coat and jeans. The composition centers the model in the frame, drawing attention to her outfit while ensuring the background remains unobtrusive. 
+
+Overall, the presentation effectively showcases the coat's design features, the casual yet stylish overall look, and the model's effortless vibe.",场景设置在**室内工作室环境**中，具有**极简主义背景**，浅色隔板营造出柔和、不显眼的背景。地板是中性灰色，与整体简约的环境相得益彰，强调了模特和她的服装。<br><br>模特穿着一件散发着现代风格的超大黑色长外套。这款大衣采用**a字廓形**，带**双排扣前襟**，配有**常规肩部**，打造结构感。**袖子**长**，略宽松，饰有**袖口**，带有微妙的**可调节肩带**细节。外套的下摆**及膝**，提供了一种别致的都市美感。<br><br>这款单品采用**柔软羊毛混纺面料**制成，保暖的同时保持光滑奢华的质感。这种面料具有哑光表面，增强了外套的低调优雅。主色调为**深黑色**，打造百搭永恒的魅力。<br><br>模特将外套与**深色粗斜纹棉布牛仔裤**搭配，脚踝处略微裁剪，可以一瞥她的鞋子。她穿着**厚实的白色运动鞋**，与外套的正式轮廓形成鲜明对比，增添了一丝休闲感。<br><br>在配饰方面，模特携带一个**黑色小手提包**，配有**翻盖**和**单肩带**，增加了功能性，使她的服装更加完整。这款包简洁的线条和极简的设计与整体美感相协调。<br><br>模特是**东亚血统**，大约**165厘米高**，**中等身材**。她有一头长长的卷曲的黑发，勾勒出她的脸庞，风格轻松。她的肤色是**白皙**，妆容保持**自然**，以轻薄的粉底、柔和的眼妆和裸色的唇色为特色，提升了她清新的外表。<br><br>这种设置中的照明是**柔和和漫射**，这有助于减少刺眼的阴影，突出外套和牛仔裤的纹理。构图将模特置于画面的中心，将注意力吸引到她的服装上，同时确保背景保持不显眼。<br><br>总的来说，演示有效地展示了外套的设计特点，休闲而时尚的整体外观，以及模特轻松的氛围。,"{""category"": ""blouse"", ""Garment pattern"": ""Fitted"", ""Silhouette"": ""H"", ""Collar types"": ""Fungus edge collar"", ""neckline"": ""Round"", ""Sleeve types"": ""Shirt sleeve"", ""Cuffs"": ""Placket"", ""Shoulder types"": ""Regular shoulder"", ""Garment closure"": ""Single-breasted"", ""Pockets"": ""Pocketless"", ""Front closure style"": ""Fully Open Front"", ""Fabric - Category"": ""Knitted - Jacquard - Lace""}","{""类别""：""衬衫"",""服装图案""：""合身"",""廓形""：""H"",""领型""：""木耳边领"",""领口""：""圆形"",""袖型""：""衬衫袖"",""袖口""：""门襟"",""肩型""：""常规肩"",""服装闭合方式""：""单排扣"",""口袋""：""无口袋"",""前闭合方式""：""前全开"",""面料-类别""：""针织-提花-蕾丝""}","### Background:
+The scene is set in an **indoor studio environment** featuring a **minimalist background** with light-colored partitions that create a soft, unobtrusive backdrop. The floor is a **neutral gray**, complementing the overall simplicity of the setting.
+
+### Overall Style:
+The outfit is characterized by a **contemporary aesthetic**, featuring a **long, oversized black coat** with an **A-line silhouette** and a **double-breasted front closure**. The coat's **knee-length** hem offers a chic urban vibe.
+
+### Design Elements:
+- **Outerwear**: The coat has **regular shoulders**, **long sleeves** with slightly loose cuffs featuring an **adjustable strap** detail. The **round neckline** and **fully open front** closure enhance its modern appeal. 
+- **Tops**: Underneath, a **fitted blouse** with a **fungus edge collar**, **shirt sleeves**, and **placket cuffs** adds sophistication. 
+- **Bottoms**: The model wears **dark denim jeans**, slightly cropped at the ankles, providing a casual contrast to the formal coat.
+- **Footwear**: Paired with **chunky white sneakers**, the outfit balances elegance with a relaxed style.
+  
+### Fabric and Materials:
+The coat is crafted from a **soft wool blend fabric** that offers warmth while maintaining a smooth, luxurious texture with a **matte finish**. The **fitted blouse** is made from **knitted jacquard lace**, ensuring a delicate yet structured appearance.
+
+### Model Appearance:
+The model is of **East Asian descent**, approximately **165 cm tall**, with a **medium build**. She has **long, wavy black hair** styled in a relaxed manner, and her skin tone is **fair**. Her makeup is natural, featuring light foundation, soft eye makeup, and a nude lip color.
+
+### Details and Accessories:
+The model carries a **small black handbag** with a **flap closure** and a **single shoulder strap**, complementing the minimalist aesthetic of the outfit. The handbag's clean lines mirror the overall design ethos. The **soft and diffused lighting** in the studio helps to highlight the textures of both the coat and the jeans, while the composition centers the model in the frame, ensuring she remains the focal point of the presentation.
+
+In summary, this outfit exemplifies a modern approach to fashion, combining structured outerwear with casual elements, while the choice of fabrics and colors ensures versatility and timeless appeal.","###背景：
+场景设置在**室内工作室环境**中，具有**极简主义背景**，浅色隔板营造出柔和、不显眼的背景。地板是中性灰色，与整体简约的环境相得益彰。<br><br>###整体风格：
+该服装的特点是**当代美学**，配有**长款超大黑色外套**，带有**a字廓形**和**双排扣前襟**。这件外套的**及膝**下摆营造出别致的都市氛围。<br><br>###设计元素：
+-**外套**：外套有**常规肩部**、**长袖**，袖口略宽松，配有**可调节肩带**细节。**圆领**和**全开襟**开襟增强了其现代魅力。
+-**上衣**：下面是一件**合身的上衣**，配有**木耳边衣领**、**衬衫袖子**和**门襟袖口**，增添了精致感。
+-**下装**：模特穿着**深色粗斜纹棉布牛仔裤**，脚踝处略微裁剪，与正式外套形成休闲对比。
+-**鞋类**：搭配**厚实的白色运动鞋**，服装平衡了优雅与轻松的风格。<br><br>###面料和材料：
+这款大衣采用**柔软的羊毛混纺面料**制成，保暖的同时保持光滑奢华的质感，并带有**哑光表面**。**合身的上衣**由**针织提花蕾丝**制成，确保精致而有质感的外观。<br><br>###车型外观：
+模特是**东亚血统**，大约**165厘米高**，**中等身材**。她留着**长长的卷发**，风格轻松，肤色**白皙**。她的妆容很自然，以浅色粉底、柔和眼妆和裸色唇色为特色。<br><br>###细节和附件：
+模特携带一个**黑色小手提包**，配有**翻盖**和**单肩带**，与服装的极简美感相得益彰。这款手袋简洁的线条反映了整体设计精神。工作室中**柔和的漫射照明**有助于突出外套和牛仔裤的纹理，而构图将模特置于画面的中心，确保她仍然是展示的焦点。<br><br>总之，这套服装体现了现代时尚方法，将结构化外套与休闲元素相结合，而面料和颜色的选择确保了多功能性和永恒的吸引力。","
+## Background:
+You are a master of fashion design, craftsmanship, fabric expertise, and photographic composition. You excel at providing comprehensive design details by examining images to help users recreate the clothing design through a text-to-image model.
+
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状、袖型（如灯笼袖、泡泡袖）、下摆形态（如流苏边、荷叶边）、扣子的设计风格等。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉麻混纺）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案的详细描述（如粗细相间的条纹、复古风格的格纹、抽象印花的具体形状和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和化妆**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. **按层次描述：** 从整体到局部，依次描述背景、整体风格、设计元素、面料和材质、以及细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），最后是细节和配件（如“金属扣，刺绣”）。
+2. **使用客观明确的语言：** 确保描述具体且客观，避免使用主观词汇和情感表达。代替模糊或主观的词语（如“优雅的”），提供具体特征（如“高领设计，简洁大方”）。如需使用感性词汇，需提供明确的解释（如“柔软的丝绸”需注明“丝绸质地光滑，有天然光泽”）。
+3. **描述面料和材质：** 明确指出面料类型及其特点，如“这件连衣裙采用纯棉面料，柔软透气，适合夏季穿着”。避免主观评价面料的感受。
+4. **标准术语和句式：** 使用标准化的行业术语（如“长袖衬衫”，“蕾丝边领口”），每个句子或段落集中描述一个特征，避免混杂信息。例句：“袖型为长袖，袖口有蕾丝边。”
+5. **提供完整的服装描述：** 即使图像只显示局部，仍应给出完整的服装搭配或全身效果描述（如“白色丝绸衬衫搭配黑色及膝裙，红色高跟鞋”）。
+6. **包含时间和场合信息：** 在描述中包括适用的时间和场合（如“适合夏季晚宴的红色礼服”），但仅限于服装的实用性和用途，不涉及主观评价。
+7. **避免情感和文化背景描述：** 排除情感词汇和文化背景的表达，专注于客观物理特征和具体用途。
+8. **简洁和信息量控制：** 确保每个句子都有新的信息，避免重复和冗长。例如：“这件现代风格的**V领连衣裙**采用红色丝绸，面料光滑，长袖设计，配有金属扣装饰。”
+9. **使用定量描述：** 尽可能使用定量描述（如尺寸、数量、位置）以增强描述的具体性和精确性。例句：“裙长至膝下，袖子为腕长。”
+10. **模特属性：**模特的描述必须包含国家、种族、身高、体重、具体肤色、发色、发型和妆容搭配。
+11. **字数限制：**不要输出小标题，将字数限制在350 个 English words.
+
+## Example:
+The image shows an **indoor studio setting** with a **minimalist background**. The **walls and floor** are **solid white**, providing a clean, modern look with no additional props or accessories, keeping the focus on the model and the outfit.
+The model is wearing a **fitted midi A-line dress** with an **X silhouette**. The dress features **regular shoulders**, a **collarless design**, and a **square neckline**. The **sleeves** are **wrist-length** with **plain cuffs**. It includes a **single-breasted placket**, a **high waist**, and **two front patch pockets** on the chest, each adorned with a **button** and a **dark navy blue contrasting trim**, matching the trim on the neckline.
+The dress is made from a **soft knit fabric** that is **slightly stretchy**, offering comfort and flexibility. The fabric has a **smooth texture** with **subtle vertical lines**. The primary color is **off-white**, with **dark navy blue trims** along the neckline, pocket edges, and hemline, creating a distinct contrast. **Four light-colored buttons** are positioned along the chest, providing both functional and decorative elements.
+The model is a **Japanese woman** around **25 years old** with **medium-length straight hair**, styled with **bangs**. Her skin tone is **fair**, and she has a **medium height** and a **slim body type**. She stands in a **straight pose** with her hands resting on either side of her waist, emphasizing the dress's fit-and-flare silhouette. Her makeup is **natural**, featuring a **light foundation**, **subtle eye makeup**, and a **nude lip color**.
+The lighting is **soft and even**, highlighting the model and the dress without creating harsh shadows. The composition centers the model in the frame, ensuring the dress remains the focal point. The overall presentation clearly showcases the dress's key features: the **fit-and-flare silhouette**, **contrasting trims**, and **decorative buttons**.
+
+## Initialisation：
+基于[Background]，聚焦于我的[Goals]，并参考[Definition]，严格遵循[Constrains]，用叙述性英文，如[Examples]中的形式回应我的输入。
+","
+## Background:
+我会在下面的[Context]中提供[服装描述A],[款式真值B]，根据我的要求，需要从[服装描述A]、[款式真值B]中有机的提取相应的设计要素最终组合成一段简洁明了、具备逻辑性的服装文生图提示词。
+## Context:
+### 服装描述A:ZJ_BASE_CAP
+### 款式真值B:ZJ_ALL_OTH
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状（如高领、吊带领）、袖型（如灯笼袖、泡泡袖）、袖口（如介英袖口、螺纹袖口）、开襟方式（如拉链开襟、单排扣开襟）、衣门襟（如拉链开襟、套头开襟）、肩型（如正肩、落肩、插肩）、下摆形态（如流苏边、荷叶边）、扣子、有无口袋及口袋的款式等的设计风格（如休闲时尚、性感、甜美淑女）。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉、麻、混纺、雪纺、合成纤维、再生纤维、皮革等）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案元素的内容、细节形状、位置及排布关系、风格进行详细描述（如粗细相间的黑白条纹、复古风格的蓝色格纹、黑底白色小花、带有绿色叶子的蓝色大花、抽象印花的具体形状及颜色和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链）和艺术风格（如废土风、小香风、小清新），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和妆容**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. 请将我提供的[款式真值B]整理为一句话[款式描述C]，注意不要丢失任何信息；
+2. 请将上一步的[款式描述C]全部合并到[服装描述A]中，不能有任何遗漏，合并规则如下：
+2.1. 在[服装描述A]和[款式描述C]都出现的内容，保留[服装描述A]的描述；
+2.2. 请将[款式描述C]中剩余的内容合并入上一步的结果中，如概念上有冲突，使用[款式描述C]中内容替换；
+2.3. 再次对比[服装描述A]和上一步的合并结果，如“buttoned, lace”等特殊描述词没有了，重新合并到结果中
+3. 遵循我的[Goals],对合并的内容提取关键设计要素；
+4. 按层次描述,从整体到局部，依次描述背景、整体风格（服装设计理念、艺术风格等）、设计元素(包括上装、下装、内搭、外穿)、面料和材质、模特、以及细节和配件。从背景到细节，确保先描述背景，再描述服装整体风格，详细说明设计元素，然后是面料和材质，之后描述一下模特，最后描述细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），之后说明模特（如“模特是一位南亚女性，年龄，身高，妆容等”）最后是细节和配件（如“金属扣，刺绣”）；
+5. 避免主观解释或情绪化语言，保持描述的客观性和专业性，避免""adding a touch of..."" 或 ""creating a sense of..."" 或""suggests a sense of calm""等；
+6. 字数要求在400 english words，当超出字数的时候要删减感觉性描述，保留客观性内容。
+"
+2,https://oss-proxy.textile-story.com/images_en/v1/meida_1/028094c79da7f3ce73f2f3ec5a18471f_1703915261553_1b06046311d642bfb24456fc3d9a648f.jpg,22263263,裤子,"{""fabric_all_prompts"": ""{'fabric_info': {'Coat': {'Material': 'Nylon', 'Thickness': 'Thin', 'Transparency': 'Opaque', 'Drapability': 'Light drapability', 'Softness': 'Slightly stiff', 'Elasticity': 'No elasticity', 'Puffiness': 'No puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'Slight wrinkling', 'Fabric Splicing': 'No fabric splicing', 'Fabric Pattern': 'None', 'Fabric Craftsmanship': 'None', 'Fabric Color': 'Black'}, 'Top': {'Material': 'Cotton', 'Thickness': 'Thin', 'Transparency': 'Opaque', 'Drapability': 'Slight drapability', 'Softness': 'Soft', 'Elasticity': 'Elastic', 'Puffiness': 'No puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'No wrinkles', 'Fabric Splicing': 'No fabric splicing', 'Fabric Pattern': 'None', 'Fabric Craftsmanship': 'None', 'Fabric Color': 'White'}, 'Pants': {'Material': 'Polyester', 'Thickness': 'Medium thickness', 'Transparency': 'Opaque', 'Drapability': 'Light drapability', 'Softness': 'Moderately soft', 'Elasticity': 'Elastic', 'Puffiness': 'No puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'No wrinkles', 'Fabric Splicing': 'No fabric splicing', 'Fabric Pattern': 'Letter print on one side', 'Fabric Craftsmanship': 'Printing', 'Fabric Color': 'Black with blue and pink print'}}}"", ""cloth tag"": ""{'Bottoms': 'Pants', 'Silhouettes': 'Loose fit', 'Cut Details': 'Symmetrical design', 'Functional Design': 'Drawstring waist', 'Techniques': 'Sewing techniques', 'Hemlines': 'Cuffed hem', 'Closure Types': 'Drawstrings'}"", ""cloth description"": ""The garment is a pair of loose-fit pants made from a soft, cozy fabric, ideal for casual wear. The silhouette is relaxed, allowing for comfort and ease of movement. The pants feature a drawstring waist, providing an adjustable fit for the wearer. The hem is cuffed, which adds structure and a stylish finish to the ankle area. A bold graphic emblazoned on the left leg reads 'CHICAGO' in a vibrant blue and red color scheme, creating a striking visual element. The fabric appears to have a slight texture, enhancing its casual aesthetic. The overall design is perfect for laid-back outings or loungewear, emphasizing both comfort and a trendy look."", ""Overall description"": ""A confident model showcasing a casual yet stylish outfit in a chic indoor setting."", ""Skin color"": ""dark skin"", ""Hair color"": ""black"", ""Eyes color"": ""dark brown"", ""Face feature"": ""soft facial features, full lips, and a subtle jawline"", ""Height"": ""approximately 170cm"", ""Body type"": ""slim with curves"", ""Appearance"": ""defined features with a smooth complexion"", ""Makeup"": ""natural makeup with a focus on glowing skin"", ""Hairstyle"": ""long, straight hair"", ""Expression"": ""confident smile"", ""Posture"": ""standing with a relaxed stance"", ""Actions"": ""left hand resting on hip, right hand relaxed by side"", ""Eye contact"": ""direct gaze towards the camera"", ""Overall temperament"": ""stylish and approachable"", ""Model attire"": ""black joggers with colorful graphic print, cropped white top, and high-heeled sandals"", ""Scene and environment"": ""Indoor photography studio, featuring a glamorous and modern setting with a hint of luxury."", ""Background color and tone"": ""Warm brown tones with a glossy finish, creating a rich and sophisticated ambiance."", ""Lighting and illumination"": ""Soft, diffused lighting from multiple sources, enhancing the model's features and creating gentle shadows."", ""Props and accessories"": ""Mirrored disco balls in the background, adding a playful and festive element to the scene."", ""Background details and decorations"": ""Subtle geometric patterns on the walls, with a large decorative mirror reflecting light and depth."", ""Relationship between model and background"": ""Model stands confidently in the foreground, creating a strong focal point against the elegant and reflective background."", ""Color and Pattern"": ""{'Main Color': 'black', 'Secondary Color': 'blue and pink', 'Pattern Type': 'text', 'Pattern Details': \""The word 'CHICAGO' is printed in a bold style on the left pant leg, with a gradient effect transitioning from blue to pink.\""}"", ""Accessories"": ""{'Shoes': 'transparent high-heeled sandals with a thin strap', 'Other Accessories': 'silver ankle bracelet'}"", ""Text description"": ""{'Text Content': 'CHICAGO', 'Font Type': 'bold, modern', 'Text Color': 'blue with a pink gradient', 'Text Size': 'large, prominent', 'Text Position': 'left pant leg', 'Text Style': 'bold and playful', 'Text Material': 'screen printed'}""}","{""garment pattern"": ""Fitted"", ""Pockets"": ""Vertical"", ""Waist Design"": ""Drawstring waistband,Elastic waistband"", ""Pants"": ""Cuffed pants"", ""pants length"": ""Cropped Pants"", ""Pant Hems"": ""Elastic Hem""}","The image features an **indoor setting** with a **modern aesthetic**. The background consists of **glossy metallic panels** that reflect light, creating a dynamic visual effect. Soft lighting highlights the model while casting gentle shadows, enhancing the overall ambiance.
+
+The model is wearing **black jogger pants** with a **relaxed fit** and a **tapered silhouette** at the ankles. The pants feature an **elastic waistband** with a **drawstring closure** for adjustable comfort. On the left leg, there is a bold **graphic print** in **vibrant blue and red**, reading ""CHICAGO,"" which adds a streetwear element to the outfit.
+
+These jogger pants are made from a **soft fleece material** that offers warmth and comfort. The fabric has a **smooth texture** and a slight stretch, allowing for ease of movement. The primary color is a deep **jet black**, contrasting with the colorful graphic. 
+
+The model is styled with a **fitted white crop top**, creating a balanced look that showcases the high-waisted design of the joggers. The **crop top** has a **round neckline** and **short sleeves**, emphasizing a casual vibe.
+
+The model is a **Black woman** of **medium height**, with **dark skin tone** and **curly shoulder-length hair** styled in loose waves. Her body type is **fit**, and she stands in a **slight pose** with her right hand on her hip, showcasing confidence. Her expression is **playful**, and she wears **minimal makeup**, allowing her natural beauty to shine through.
+
+The footwear consists of **clear strappy stilettos** that elevate the outfit, adding a chic touch. The overall styling effectively blends sporty and fashionable elements, making it suitable for casual outings or urban settings. 
+
+The composition places the model centrally, ensuring the outfit's details, including the **graphic print** and **fabric texture**, are clearly visible. The lighting and background create a stylish atmosphere, highlighting the modern streetwear appeal of the ensemble.",该图像以**室内环境**为特色，具有**现代美学**。背景由反射光线的**光滑金属板**组成，营造出动态的视觉效果。柔和的灯光突出了模型，同时投射柔和的阴影，增强了整体氛围。<br><br>模特穿着**黑色慢跑裤**，宽松剪裁**，脚踝处采用**锥形轮廓**。这款裤子配有**弹性腰带**和**拉绳闭合**，可调节舒适度。左腿上有一个醒目的**图案印花**，采用**鲜艳的蓝色和红色**，上面写着“芝加哥”，为服装增添了街头元素。<br><br>这些慢跑裤由**柔软的羊毛材料**制成，保暖舒适。这种面料具有**光滑的纹理**和轻微的弹性，便于移动。原色是深**深黑色**，与彩色图形形成对比。<br><br>该款采用**合身的白色露脐上衣**，营造出平衡的外观，展示了慢跑者的高腰设计。**露脐上衣**有**圆领**和**短袖**，强调休闲氛围。<br><br>模特是一名**中等身高**的**黑人女性**，拥有**深色肤色**和**齐肩卷发**，呈松散的波浪发型。她的体型是**合身**，右手叉腰站成**轻微的姿势**，展现自信。她的表情是**俏皮**，她化着**极简的妆**，让她的自然美熠熠生辉。<br><br>这款鞋由**透明系带高跟鞋**组成，提升了服装的档次，增添了时尚气息。整体造型将运动与时尚元素有效融合，适合休闲郊游或城市环境。<br><br>构图将模特置于中央，确保服装的细节清晰可见，包括**图形印花**和**面料纹理**。灯光和背景营造出时尚的氛围，突出了该套装的现代街头服饰魅力。,"{""category"": ""blouse"", ""Garment pattern"": ""Fitted"", ""Silhouette"": ""H"", ""Collar types"": ""Fungus edge collar"", ""neckline"": ""Round"", ""Sleeve types"": ""Shirt sleeve"", ""Cuffs"": ""Placket"", ""Shoulder types"": ""Regular shoulder"", ""Garment closure"": ""Single-breasted"", ""Pockets"": ""Pocketless"", ""Front closure style"": ""Fully Open Front"", ""Fabric - Category"": ""Knitted - Jacquard - Lace""}","{""类别""：""衬衫"",""服装图案""：""合身"",""廓形""：""H"",""领型""：""木耳边领"",""领口""：""圆形"",""袖型""：""衬衫袖"",""袖口""：""门襟"",""肩型""：""常规肩"",""服装闭合方式""：""单排扣"",""口袋""：""无口袋"",""前闭合方式""：""前全开"",""面料-类别""：""针织-提花-蕾丝""}","The scene is set in an indoor environment characterized by a modern aesthetic, featuring glossy metallic panels that reflect light dynamically. Soft lighting enhances the model's features while creating gentle shadows that contribute to the ambiance.
+
+The model is dressed in black jogger pants designed with a relaxed fit and tapered silhouette at the ankles. These pants are equipped with an elastic waistband and drawstring closure for adjustable comfort. A bold graphic print in vibrant blue and red, reading ""CHICAGO,"" is prominently displayed on the left leg, adding a streetwear element to the outfit. The joggers are made from soft fleece material, offering warmth and comfort with a smooth texture and slight stretch, primarily in a deep jet black color that contrasts with the graphic.
+
+Complementing the joggers, the model wears a fitted white crop top featuring a round neckline and short sleeves, presenting a casual yet balanced look that highlights the high-waisted design of the joggers. The overall styling merges sporty and fashionable elements, making it ideal for casual outings or urban settings.
+
+The model is a Black woman of medium height, with a dark skin tone and curly shoulder-length hair styled in loose waves. Her fit body type is showcased in a slight pose with her right hand on her hip, exuding confidence. Her playful expression is complemented by minimal makeup, enhancing her natural beauty.
+
+Footwear consists of clear strappy stilettos that elevate the outfit, adding a chic touch to the ensemble. The composition places the model centrally, ensuring the outfit's details, including the graphic print and fabric texture, are clearly visible. The lighting and background create a stylish atmosphere, highlighting the modern streetwear appeal of the ensemble.
+
+The outfit's design also includes elements from a fitted blouse with a fungus edge collar, fully open front closure, and shirt sleeves with placket cuffs, although these details are less pronounced in this particular styling. The incorporation of a fitted structure in the top emphasizes a tailored look that contrasts with the relaxed joggers. 
+
+The fabric of the crop top is a knitted jacquard lace, providing a soft feel that complements the joggers. The combination of these textiles, with the joggers' fleece and the top's knitted lace, creates a unique interplay of textures. 
+
+In summary, the model's overall appearance, combined with the outfit's design elements and the meticulously chosen background, culminates in a contemporary and stylish portrayal that resonates with urban streetwear culture. The outfit's details, such as the graphic print on the joggers and the fitted design of the crop top, reinforce the modern aesthetic while ensuring comfort and versatility.",场景设置在一个以现代美学为特征的室内环境中，以动态反射光线的光滑金属板为特色。柔和的灯光增强了模型的特点，同时创造了柔和的阴影，有助于营造气氛。<br><br>模特穿着黑色慢跑裤，设计宽松，脚踝处呈锥形轮廓。这些裤子配有弹性腰带和拉绳，可调节舒适度。左腿上醒目地显示着一个醒目的蓝色和红色图案，上面写着“芝加哥”，为服装增添了街头服饰元素。慢跑者由柔软的羊毛材料制成，温暖舒适，质地光滑，略带弹性，主要是深黑色，与图案形成鲜明对比。<br><br>与慢跑者相得益彰的是，模特穿着合身的白色露脐上衣，配有圆领和短袖，呈现出休闲而平衡的外观，突出了慢跑者的高腰设计。整体造型融合了运动和时尚元素，非常适合休闲郊游或城市环境。<br><br>模特是一名中等身高的黑人女性，肤色较黑，齐肩卷发呈松散的波浪。她健美的体型以右手放在臀部的轻微姿势展示，散发着自信。她俏皮的表情辅以极简的妆容，增强了她的自然美。<br><br>鞋类由透明系带高跟鞋组成，提升了服装的档次，为整体增添了别致的气息。构图将模特放在中央，确保服装的细节，包括图形印花和面料纹理，清晰可见。灯光和背景营造出时尚的氛围，突出了该套装的现代街头服饰魅力。<br><br>这套服装的设计还包括一件合身的衬衫，带有木耳边衣领，完全开放的前开襟，以及带门襟袖口的衬衫袖子，尽管这些细节在这种特殊的风格中不太明显。上衣采用合身结构，强调剪裁的外观，与轻松的慢跑者形成鲜明对比。<br><br>裁剪上衣的面料是针织提花蕾丝，提供柔软的感觉，与慢跑者相得益彰。这些纺织品与慢跑者的羊毛和上衣的针织蕾丝相结合，创造了独特的纹理相互作用。<br><br>总之，模特的整体外观，结合服装的设计元素和精心选择的背景，最终形成了与城市街头服饰文化产生共鸣的现代时尚写照。该服装的细节，如慢跑者上的图形印花和裁剪上衣的合身设计，在确保舒适性和多功能性的同时，强化了现代美感。,"
+## Background:
+You are a master of fashion design, craftsmanship, fabric expertise, and photographic composition. You excel at providing comprehensive design details by examining images to help users recreate the clothing design through a text-to-image model.
+
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状、袖型（如灯笼袖、泡泡袖）、下摆形态（如流苏边、荷叶边）、扣子的设计风格等。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉麻混纺）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案的详细描述（如粗细相间的条纹、复古风格的格纹、抽象印花的具体形状和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和化妆**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. **按层次描述：** 从整体到局部，依次描述背景、整体风格、设计元素、面料和材质、以及细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），最后是细节和配件（如“金属扣，刺绣”）。
+2. **使用客观明确的语言：** 确保描述具体且客观，避免使用主观词汇和情感表达。代替模糊或主观的词语（如“优雅的”），提供具体特征（如“高领设计，简洁大方”）。如需使用感性词汇，需提供明确的解释（如“柔软的丝绸”需注明“丝绸质地光滑，有天然光泽”）。
+3. **描述面料和材质：** 明确指出面料类型及其特点，如“这件连衣裙采用纯棉面料，柔软透气，适合夏季穿着”。避免主观评价面料的感受。
+4. **标准术语和句式：** 使用标准化的行业术语（如“长袖衬衫”，“蕾丝边领口”），每个句子或段落集中描述一个特征，避免混杂信息。例句：“袖型为长袖，袖口有蕾丝边。”
+5. **提供完整的服装描述：** 即使图像只显示局部，仍应给出完整的服装搭配或全身效果描述（如“白色丝绸衬衫搭配黑色及膝裙，红色高跟鞋”）。
+6. **包含时间和场合信息：** 在描述中包括适用的时间和场合（如“适合夏季晚宴的红色礼服”），但仅限于服装的实用性和用途，不涉及主观评价。
+7. **避免情感和文化背景描述：** 排除情感词汇和文化背景的表达，专注于客观物理特征和具体用途。
+8. **简洁和信息量控制：** 确保每个句子都有新的信息，避免重复和冗长。例如：“这件现代风格的**V领连衣裙**采用红色丝绸，面料光滑，长袖设计，配有金属扣装饰。”
+9. **使用定量描述：** 尽可能使用定量描述（如尺寸、数量、位置）以增强描述的具体性和精确性。例句：“裙长至膝下，袖子为腕长。”
+10. **模特属性：**模特的描述必须包含国家、种族、身高、体重、具体肤色、发色、发型和妆容搭配。
+11. **字数限制：**不要输出小标题，将字数限制在350 个 English words.
+
+## Example:
+The image shows an **indoor studio setting** with a **minimalist background**. The **walls and floor** are **solid white**, providing a clean, modern look with no additional props or accessories, keeping the focus on the model and the outfit.
+The model is wearing a **fitted midi A-line dress** with an **X silhouette**. The dress features **regular shoulders**, a **collarless design**, and a **square neckline**. The **sleeves** are **wrist-length** with **plain cuffs**. It includes a **single-breasted placket**, a **high waist**, and **two front patch pockets** on the chest, each adorned with a **button** and a **dark navy blue contrasting trim**, matching the trim on the neckline.
+The dress is made from a **soft knit fabric** that is **slightly stretchy**, offering comfort and flexibility. The fabric has a **smooth texture** with **subtle vertical lines**. The primary color is **off-white**, with **dark navy blue trims** along the neckline, pocket edges, and hemline, creating a distinct contrast. **Four light-colored buttons** are positioned along the chest, providing both functional and decorative elements.
+The model is a **Japanese woman** around **25 years old** with **medium-length straight hair**, styled with **bangs**. Her skin tone is **fair**, and she has a **medium height** and a **slim body type**. She stands in a **straight pose** with her hands resting on either side of her waist, emphasizing the dress's fit-and-flare silhouette. Her makeup is **natural**, featuring a **light foundation**, **subtle eye makeup**, and a **nude lip color**.
+The lighting is **soft and even**, highlighting the model and the dress without creating harsh shadows. The composition centers the model in the frame, ensuring the dress remains the focal point. The overall presentation clearly showcases the dress's key features: the **fit-and-flare silhouette**, **contrasting trims**, and **decorative buttons**.
+
+## Initialisation：
+基于[Background]，聚焦于我的[Goals]，并参考[Definition]，严格遵循[Constrains]，用叙述性英文，如[Examples]中的形式回应我的输入。
+","
+## Background:
+我会在下面的[Context]中提供[服装描述A],[款式真值B]，根据我的要求，需要从[服装描述A]、[款式真值B]中有机的提取相应的设计要素最终组合成一段简洁明了、具备逻辑性的服装文生图提示词。
+## Context:
+### 服装描述A:ZJ_BASE_CAP
+### 款式真值B:ZJ_ALL_OTH
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状（如高领、吊带领）、袖型（如灯笼袖、泡泡袖）、袖口（如介英袖口、螺纹袖口）、开襟方式（如拉链开襟、单排扣开襟）、衣门襟（如拉链开襟、套头开襟）、肩型（如正肩、落肩、插肩）、下摆形态（如流苏边、荷叶边）、扣子、有无口袋及口袋的款式等的设计风格（如休闲时尚、性感、甜美淑女）。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉、麻、混纺、雪纺、合成纤维、再生纤维、皮革等）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案元素的内容、细节形状、位置及排布关系、风格进行详细描述（如粗细相间的黑白条纹、复古风格的蓝色格纹、黑底白色小花、带有绿色叶子的蓝色大花、抽象印花的具体形状及颜色和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链）和艺术风格（如废土风、小香风、小清新），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和妆容**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. 请将我提供的[款式真值B]整理为一句话[款式描述C]，注意不要丢失任何信息；
+2. 请将上一步的[款式描述C]全部合并到[服装描述A]中，不能有任何遗漏，合并规则如下：
+2.1. 在[服装描述A]和[款式描述C]都出现的内容，保留[服装描述A]的描述；
+2.2. 请将[款式描述C]中剩余的内容合并入上一步的结果中，如概念上有冲突，使用[款式描述C]中内容替换；
+2.3. 再次对比[服装描述A]和上一步的合并结果，如“buttoned, lace”等特殊描述词没有了，重新合并到结果中
+3. 遵循我的[Goals],对合并的内容提取关键设计要素；
+4. 按层次描述,从整体到局部，依次描述背景、整体风格（服装设计理念、艺术风格等）、设计元素(包括上装、下装、内搭、外穿)、面料和材质、模特、以及细节和配件。从背景到细节，确保先描述背景，再描述服装整体风格，详细说明设计元素，然后是面料和材质，之后描述一下模特，最后描述细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），之后说明模特（如“模特是一位南亚女性，年龄，身高，妆容等”）最后是细节和配件（如“金属扣，刺绣”）；
+5. 避免主观解释或情绪化语言，保持描述的客观性和专业性，避免""adding a touch of..."" 或 ""creating a sense of..."" 或""suggests a sense of calm""等；
+6. 字数要求在400 english words，当超出字数的时候要删减感觉性描述，保留客观性内容。
+"
+3,https://oss-proxy.textile-story.com/images_en/v1/meida_1/0498c05c0f24cd04cdb5a0484bb51f1f_1703904244909_230aa136036f43d3b99f521261679d24.jpg,6920513287730742091,卫衣,"{""fabric_all_prompts"": ""{'fabric_info': {'Top': {'Material': 'Polyester', 'Thickness': 'Medium thickness', 'Transparency': 'Opaque', 'Drapability': 'Slight drapability', 'Softness': 'Moderately soft', 'Elasticity': 'Elastic', 'Puffiness': 'No puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'No wrinkles', 'Fabric Splicing': 'No fabric splicing', 'Fabric Pattern': 'Cartoon graphic (White Bunny) with text', 'Fabric Craftsmanship': 'Printing', 'Fabric Color': 'Dark gray with cartoon graphic in black and text in black'}, 'Pants': {'Material': 'Denim', 'Thickness': 'Medium thickness', 'Transparency': 'Opaque', 'Drapability': 'No drapability', 'Softness': 'Slightly hard', 'Elasticity': 'No elasticity', 'Puffiness': 'No puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'No wrinkles', 'Fabric Splicing': 'No fabric splicing', 'Fabric Pattern': 'Solid color', 'Fabric Craftsmanship': 'No special craftsmanship', 'Fabric Color': 'Light blue'}}}"", ""cloth tag"": ""{'Tops': 'Sweatshirt', 'Silhouettes': 'Loose fit', 'Cut Details': 'Symmetrical design', 'Techniques': 'Sewing techniques', 'Sleeve Types': 'Straight sleeves', 'Neckline': 'Round neck', 'Hemlines': 'Waist-length hem', 'Closure Types': 'No closure'}"", ""cloth description"": ""The garment is a casual sweatshirt characterized by a loose fit that allows for comfortable wear. It features a round neckline, which provides a relaxed and easy-going aesthetic. The sleeves are straight and extend to the wrist, giving a cozy appearance. The sweatshirt has a waist-length hem, making it suitable for pairing with high-waisted bottoms. The fabric appears to be a soft, breathable blend, ideal for casual outings. The primary color is a muted gray, with a playful graphic print of a bunny and the text 'WHITE BUNNY' positioned centrally on the front. This graphic adds a whimsical touch to the garment. The shoulder seams are adorned with contrasting strips that add visual interest, while the cuffs have a slight ribbed detail. The overall design is symmetrical, contributing to a balanced look. There are no closures, allowing for easy wear and a streamlined silhouette."", ""Overall description"": ""A young woman wearing a casual outfit, exuding a playful and relaxed vibe."", ""Skin color"": ""fair"", ""Hair color"": ""brown"", ""Eyes color"": ""brown"", ""Face feature"": ""soft features, high cheekbones"", ""Height"": ""approximately 165cm"", ""Body type"": ""slim"", ""Appearance"": ""oval face, delicate features"", ""Makeup"": ""natural makeup, soft tones"", ""Hairstyle"": ""long straight hair, slightly wavy"", ""Expression"": ""smiling, friendly"", ""Posture"": ""standing, slightly turned to the side"", ""Actions"": ""left hand raised, playful gesture"", ""Eye contact"": ""looking slightly away, playful"", ""Overall temperament"": ""youthful, cheerful"", ""Model attire"": ""casual sweatshirt with cartoon design and denim shorts"", ""Scene and environment"": ""indoor photography studio, minimalistic setup"", ""Background color and tone"": ""soft beige, uniform without gradients"", ""Lighting and illumination"": ""natural light, soft and even, coming from the left side"", ""Props and accessories"": ""vintage green rotary phone on the left, basket of bread in the foreground"", ""Background details and decorations"": ""none"", ""Relationship between model and background"": ""model is centered, clear focus, contrasting with the minimal background"", ""Color and Pattern"": ""Main color of the sweatshirt is dark gray with a soft texture. The sweatshirt features light beige stripes on the shoulders, adding contrast. The pattern includes a playful cartoon of a bunny in black, centered on the front, with the text 'WHITE BUNNY' above it in bold, playful font."", ""Accessories"": ""Wearing a delicate gold pendant necklace with a small square charm. Gold hoop earrings complement the look. The model has clear glasses with a thin frame. The outfit is paired with casual blue denim shorts that have a frayed hem."", ""Text description"": ""The sweatshirt has the text 'WHITE BUNNY' printed in bold, black letters. The font is playful and rounded, with a size that is approximately 10 cm in height. The text is positioned centrally above the cartoon bunny illustration, giving it a balanced appearance. The printing technique appears smooth and slightly glossy.""}","{""garment pattern"": ""Loose"", ""Silhouettes"": ""H"", ""Collar Types"": ""Collarless"", ""Neckline"": ""Round"", ""Sleeve Types"": ""Regular cuffs"", ""Cuffs"": ""Ribbed cuffs"", ""sleeve length"": ""Wrist-length Sleeve"", ""Shoulder Types"": ""Dropped- shoulder"", ""Closure Types"": ""No Garment closure"", ""Pockets"": ""Pocketless"", ""Hemlines"": ""Ribbed hem"", ""garment length"": ""Regular length"", ""front closure style"": ""No Front Opening"", ""faux_two_piece_design"": ""No"", ""family_name"": ""Knitted - Single-sided Type - Hoodie - Hoodie""}","The image features an **indoor studio setting** with a **minimalist background**, characterized by a **soft, neutral color palette** that emphasizes the model and her outfit. The background includes a few props like a vintage telephone and a basket of bread, adding subtle interest without distracting from the main focus.
+
+The model is wearing a **casual oversized sweatshirt** that exhibits a **relaxed silhouette**. The sweatshirt has **long sleeves** with dropped shoulders and a **crew neckline**. It features a **graphic print** depicting a cartoon bunny and the text ""WHITE BUNNY"" prominently on the front. The sleeves are adorned with a **bold decorative trim** in contrasting colors, enhancing the playful aesthetic of the garment.
+
+Constructed from a **soft cotton blend**, the fabric is **comfortable and slightly stretchy**, ideal for casual wear. The texture appears smooth, with a matte finish that complements the understated design. The primary color of the sweatshirt is **charcoal gray**, while the trim includes hues of **beige and vibrant colors**, providing a lively contrast.
+
+The model is a **South Asian woman** approximately **20 years old**, with **medium-length brown hair** that is styled in loose waves, complemented by a few braids. Her skin is **medium tone**, and she has a **slender body type**. She stands in a **slight side pose**, with her left hand gracefully extending towards the side, creating a dynamic silhouette. Her expression is **playful and cheerful**, enhancing the casual vibe of the outfit.
+
+Her makeup is **light and fresh**, featuring a **natural foundation**, subtle **eyeshadow**, and a light **pink lip color**. Accessories include small **gold hoop earrings** and a delicate **necklace**, adding a touch of elegance to her casual look.
+
+The lighting setup is **soft and even**, ensuring that the model and the sweatshirt are well illuminated without harsh shadows. The composition utilizes a **centered framing technique**, allowing the viewer to focus on the details of the outfit and the model's expression. Overall, the presentation highlights the **playful design** of the sweatshirt, the **relaxed fit**, and the **cohesive styling** of the ensemble.",该图像以**室内工作室设置**和**极简背景**为特色，以**柔和、中性的调色板**为特色，强调模特和她的服装。背景包括一些道具，如老式电话和一篮子面包，在不分散主要焦点的情况下增加了微妙的兴趣。<br><br>模特穿着一件**休闲超大运动衫**，展现出**轻松的轮廓**。这款运动衫有**长袖**，落肩和**圆领**。它的特点是描绘一只卡通兔子的**图形印花**和正面醒目的文字“白色兔子”。袖子饰有对比色的醒目装饰饰边，增强了服装的俏皮美感。<br><br>该面料由**柔软的棉混纺**制成，**舒适且略有弹性**，非常适合休闲穿着。纹理看起来很光滑，哑光表面与低调的设计相得益彰。运动衫的主色是**炭灰色**，而饰边包括**米色和鲜艳的颜色**，形成鲜明的对比。<br><br>模特是一名**南亚女性**，大约**20岁**，留着**中等长度的棕色头发**，梳成松散的波浪，并配有几条辫子。她的皮肤是**中等肤色**，她有**苗条的体型**。她以**轻微的侧面姿势**站立，左手优雅地向侧面伸展，创造出一个动态的轮廓。她的表情是**俏皮和愉快的**，增强了服装的休闲氛围。<br><br>她的妆容是**轻盈清新**，特色是**自然粉底**，微妙**眼影**，浅**粉色唇色**。配饰包括小巧的**金箍耳环**和精致的**项链**，为她的休闲装扮增添了一丝优雅。<br><br>照明设置**柔和均匀**，确保模特和运动衫照明良好，没有刺眼的阴影。构图采用了中心取景技术，让观众专注于服装的细节和模特的表情。总体而言，该演示突出了运动衫的**俏皮设计**、**宽松剪裁**以及套装的**内聚风格**。,"{""category"": ""blouse"", ""Garment pattern"": ""Fitted"", ""Silhouette"": ""H"", ""Collar types"": ""Fungus edge collar"", ""neckline"": ""Round"", ""Sleeve types"": ""Shirt sleeve"", ""Cuffs"": ""Placket"", ""Shoulder types"": ""Regular shoulder"", ""Garment closure"": ""Single-breasted"", ""Pockets"": ""Pocketless"", ""Front closure style"": ""Fully Open Front"", ""Fabric - Category"": ""Knitted - Jacquard - Lace""}","{""类别""：""衬衫"",""服装图案""：""合身"",""廓形""：""H"",""领型""：""木耳边领"",""领口""：""圆形"",""袖型""：""衬衫袖"",""袖口""：""门襟"",""肩型""：""常规肩"",""服装闭合方式""：""单排扣"",""口袋""：""无口袋"",""前闭合方式""：""前全开"",""面料-类别""：""针织-提花-蕾丝""}","### Fashion Design Description
+
+**Background**: The setting is an indoor studio characterized by a minimalist background featuring a soft, neutral color palette that enhances the overall aesthetic. Props such as a vintage telephone and a basket of bread add subtle interest without detracting from the model and her outfit.
+
+**Overall Style**: The outfit is a casual oversized sweatshirt designed with a relaxed silhouette, reflecting a modern, playful style. The sweatshirt embodies a blend of comfort and contemporary fashion, suitable for casual wear.
+
+**Design Elements**: The sweatshirt features long sleeves with dropped shoulders, a crew neckline, and a prominent graphic print of a cartoon bunny with the text ""WHITE BUNNY"" on the front. The sleeves are embellished with a bold decorative trim in contrasting colors, enhancing the playful vibe of the garment. The silhouette is relaxed, and the structure is complemented by a fitted design along the body.
+
+**Fabric and Materials**: Constructed from a soft cotton blend, the fabric is comfortable, slightly stretchy, and exhibits a smooth matte finish. The primary color of the sweatshirt is charcoal gray, while the decorative trim incorporates hues of beige alongside vibrant colors, creating a lively contrast.
+
+**Model**: The model is a South Asian woman, approximately 20 years old, with medium-length brown hair styled in loose waves and a few braids. Her medium-toned skin complements the overall outfit, and her slender body type is highlighted as she stands in a slight side pose with her left hand gracefully extending towards the side. Her expression is playful and cheerful, enhancing the casual vibe of the ensemble. 
+
+**Details and Accessories**: Her makeup is light and fresh, featuring a natural foundation, subtle eyeshadow, and a light pink lip color. Accessories include small gold hoop earrings and a delicate necklace, adding elegance to the casual look. 
+
+**Lighting and Composition**: The lighting is soft and even, illuminating both the model and the sweatshirt without harsh shadows. The composition employs a centered framing technique, focusing attention on the outfit's details and the model's expression.
+
+**Style Description**: The garment falls under the category of a blouse with a fitted design and an ""H"" silhouette. It features a round neckline, regular shoulder types, and is pocketless with a fully open front closure style. The details include a decorative collar and cuffs with plackets, emphasizing a modern yet playful style.
+
+This comprehensive description presents a clear and professional overview of the outfit while adhering to the specified guidelines.",###时装设计说明<br><br>**背景**：设置是一个室内工作室，以极简主义的背景为特色，采用柔和、中性的调色板，增强了整体美感。像老式电话和一篮子面包这样的道具增加了微妙的兴趣，而不会减损模特和她的服装。<br><br>**整体风格**：这套服装是一款休闲的超大运动衫，采用宽松的廓形设计，体现出现代、俏皮的风格。这款运动衫融合了舒适和现代时尚，适合休闲穿着。<br><br>**设计元素**：这款运动衫采用落肩长袖、圆领和醒目的卡通兔子图案印花，正面印有文字“WHITE BUNNY”。袖子饰有大胆的对比色装饰，增强了服装的俏皮感。轮廓轻松，结构与身体合身的设计相得益彰。<br><br>**面料和材料**：面料由柔软的棉混纺面料制成，舒适，略有弹性，并呈现光滑的哑光表面。运动衫的主色是炭灰色，而装饰饰边融合了米色和鲜艳的颜色，形成鲜明的对比。<br><br>**模特**：模特是一名南亚女性，大约20岁，棕色中长头发，梳成松散的波浪和几条辫子。她中等色调的皮肤与整体服装相得益彰，当她以轻微的侧面姿势站立，左手优雅地向侧面伸展时，她苗条的体型得到了突出。她的表情俏皮而欢快，增强了整体的休闲氛围。<br><br>**细节和配饰**：她的妆容轻盈清新，以自然的粉底、精致的眼影和浅粉色的唇色为特色。配饰包括小金环耳环和精致项链，为休闲造型增添优雅。<br><br>**灯光和构图**：灯光柔和均匀，照亮模特和运动衫，没有刺眼的阴影。构图采用了居中取景技术，将注意力集中在服装的细节和模特的表情上。<br><br>**款式描述**：该服装属于合身设计和“H”型廓形的上衣类别。它的特点是圆领，常规肩型，无口袋，正面完全开放。细节包括装饰性衣领和带门襟的袖口，强调现代而俏皮的风格。<br><br>这种全面的描述提供了一个清晰和专业的装备概述，同时坚持指定的指导方针。,"
+## Background:
+You are a master of fashion design, craftsmanship, fabric expertise, and photographic composition. You excel at providing comprehensive design details by examining images to help users recreate the clothing design through a text-to-image model.
+
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状、袖型（如灯笼袖、泡泡袖）、下摆形态（如流苏边、荷叶边）、扣子的设计风格等。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉麻混纺）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案的详细描述（如粗细相间的条纹、复古风格的格纹、抽象印花的具体形状和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和化妆**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. **按层次描述：** 从整体到局部，依次描述背景、整体风格、设计元素、面料和材质、以及细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），最后是细节和配件（如“金属扣，刺绣”）。
+2. **使用客观明确的语言：** 确保描述具体且客观，避免使用主观词汇和情感表达。代替模糊或主观的词语（如“优雅的”），提供具体特征（如“高领设计，简洁大方”）。如需使用感性词汇，需提供明确的解释（如“柔软的丝绸”需注明“丝绸质地光滑，有天然光泽”）。
+3. **描述面料和材质：** 明确指出面料类型及其特点，如“这件连衣裙采用纯棉面料，柔软透气，适合夏季穿着”。避免主观评价面料的感受。
+4. **标准术语和句式：** 使用标准化的行业术语（如“长袖衬衫”，“蕾丝边领口”），每个句子或段落集中描述一个特征，避免混杂信息。例句：“袖型为长袖，袖口有蕾丝边。”
+5. **提供完整的服装描述：** 即使图像只显示局部，仍应给出完整的服装搭配或全身效果描述（如“白色丝绸衬衫搭配黑色及膝裙，红色高跟鞋”）。
+6. **包含时间和场合信息：** 在描述中包括适用的时间和场合（如“适合夏季晚宴的红色礼服”），但仅限于服装的实用性和用途，不涉及主观评价。
+7. **避免情感和文化背景描述：** 排除情感词汇和文化背景的表达，专注于客观物理特征和具体用途。
+8. **简洁和信息量控制：** 确保每个句子都有新的信息，避免重复和冗长。例如：“这件现代风格的**V领连衣裙**采用红色丝绸，面料光滑，长袖设计，配有金属扣装饰。”
+9. **使用定量描述：** 尽可能使用定量描述（如尺寸、数量、位置）以增强描述的具体性和精确性。例句：“裙长至膝下，袖子为腕长。”
+10. **模特属性：**模特的描述必须包含国家、种族、身高、体重、具体肤色、发色、发型和妆容搭配。
+11. **字数限制：**不要输出小标题，将字数限制在350 个 English words.
+
+## Example:
+The image shows an **indoor studio setting** with a **minimalist background**. The **walls and floor** are **solid white**, providing a clean, modern look with no additional props or accessories, keeping the focus on the model and the outfit.
+The model is wearing a **fitted midi A-line dress** with an **X silhouette**. The dress features **regular shoulders**, a **collarless design**, and a **square neckline**. The **sleeves** are **wrist-length** with **plain cuffs**. It includes a **single-breasted placket**, a **high waist**, and **two front patch pockets** on the chest, each adorned with a **button** and a **dark navy blue contrasting trim**, matching the trim on the neckline.
+The dress is made from a **soft knit fabric** that is **slightly stretchy**, offering comfort and flexibility. The fabric has a **smooth texture** with **subtle vertical lines**. The primary color is **off-white**, with **dark navy blue trims** along the neckline, pocket edges, and hemline, creating a distinct contrast. **Four light-colored buttons** are positioned along the chest, providing both functional and decorative elements.
+The model is a **Japanese woman** around **25 years old** with **medium-length straight hair**, styled with **bangs**. Her skin tone is **fair**, and she has a **medium height** and a **slim body type**. She stands in a **straight pose** with her hands resting on either side of her waist, emphasizing the dress's fit-and-flare silhouette. Her makeup is **natural**, featuring a **light foundation**, **subtle eye makeup**, and a **nude lip color**.
+The lighting is **soft and even**, highlighting the model and the dress without creating harsh shadows. The composition centers the model in the frame, ensuring the dress remains the focal point. The overall presentation clearly showcases the dress's key features: the **fit-and-flare silhouette**, **contrasting trims**, and **decorative buttons**.
+
+## Initialisation：
+基于[Background]，聚焦于我的[Goals]，并参考[Definition]，严格遵循[Constrains]，用叙述性英文，如[Examples]中的形式回应我的输入。
+","
+## Background:
+我会在下面的[Context]中提供[服装描述A],[款式真值B]，根据我的要求，需要从[服装描述A]、[款式真值B]中有机的提取相应的设计要素最终组合成一段简洁明了、具备逻辑性的服装文生图提示词。
+## Context:
+### 服装描述A:ZJ_BASE_CAP
+### 款式真值B:ZJ_ALL_OTH
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状（如高领、吊带领）、袖型（如灯笼袖、泡泡袖）、袖口（如介英袖口、螺纹袖口）、开襟方式（如拉链开襟、单排扣开襟）、衣门襟（如拉链开襟、套头开襟）、肩型（如正肩、落肩、插肩）、下摆形态（如流苏边、荷叶边）、扣子、有无口袋及口袋的款式等的设计风格（如休闲时尚、性感、甜美淑女）。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉、麻、混纺、雪纺、合成纤维、再生纤维、皮革等）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案元素的内容、细节形状、位置及排布关系、风格进行详细描述（如粗细相间的黑白条纹、复古风格的蓝色格纹、黑底白色小花、带有绿色叶子的蓝色大花、抽象印花的具体形状及颜色和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链）和艺术风格（如废土风、小香风、小清新），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和妆容**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. 请将我提供的[款式真值B]整理为一句话[款式描述C]，注意不要丢失任何信息；
+2. 请将上一步的[款式描述C]全部合并到[服装描述A]中，不能有任何遗漏，合并规则如下：
+2.1. 在[服装描述A]和[款式描述C]都出现的内容，保留[服装描述A]的描述；
+2.2. 请将[款式描述C]中剩余的内容合并入上一步的结果中，如概念上有冲突，使用[款式描述C]中内容替换；
+2.3. 再次对比[服装描述A]和上一步的合并结果，如“buttoned, lace”等特殊描述词没有了，重新合并到结果中
+3. 遵循我的[Goals],对合并的内容提取关键设计要素；
+4. 按层次描述,从整体到局部，依次描述背景、整体风格（服装设计理念、艺术风格等）、设计元素(包括上装、下装、内搭、外穿)、面料和材质、模特、以及细节和配件。从背景到细节，确保先描述背景，再描述服装整体风格，详细说明设计元素，然后是面料和材质，之后描述一下模特，最后描述细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），之后说明模特（如“模特是一位南亚女性，年龄，身高，妆容等”）最后是细节和配件（如“金属扣，刺绣”）；
+5. 避免主观解释或情绪化语言，保持描述的客观性和专业性，避免""adding a touch of..."" 或 ""creating a sense of..."" 或""suggests a sense of calm""等；
+6. 字数要求在400 english words，当超出字数的时候要删减感觉性描述，保留客观性内容。
+"
+4,https://oss-proxy.textile-story.com/images_en/v1/meida_1/101f81fe3ffffcd23c772ab05d4635cd_1703917919741_78996062641b458aab6e3ca0ed66ef07.jpg,24559982,卫衣,"{""fabric_all_prompts"": ""{'fabric_info': {'Material': 'Polyester', 'Thickness': 'Medium', 'Transparency': 'Opaque', 'Drapability': 'Obvious drapability', 'Softness': 'Soft', 'Elasticity': 'Elastic', 'Puffiness': 'No puffiness', 'Glossiness': 'Matte', 'Wrinkle': 'No wrinkle', 'Fabric Splicing': 'No fabric splicing', 'Fabric Pattern': 'Solid color (Red)', 'Fabric Craftsmanship': 'None', 'Fabric Color': 'Red'}}"", ""cloth tag"": ""{'Dresses': 'Dresses', 'Silhouettes': 'Loose fit', 'Cut Details': 'Symmetrical design', 'Neckline': 'V-neck', 'Sleeve Types': 'Long sleeves', 'Hemlines': 'Short hem', 'Closure Types': 'No closure'}"", ""cloth description"": ""The garment depicted is a loose-fitting dress characterized by its vibrant red color. The overall silhouette is relaxed, providing comfort and ease of movement. It features a V-neckline complemented by a choker detail that adds a stylish touch while maintaining a cohesive look. The long sleeves are fitted at the cuffs, which enhances the overall structure of the dress. The hemline is short, falling above mid-thigh, which contributes to a playful and youthful appearance. The dress does not have any closures, allowing for easy wear. The fabric appears smooth and may be a soft knit blend, ensuring comfort. The design is minimalistic yet chic, making it suitable for casual gatherings or festive occasions."", ""Overall description"": ""A cheerful model holding a snowman decoration while wearing a red dress."", ""Skin color"": ""fair, with a natural glow"", ""Hair color"": ""light brown, wavy texture"", ""Eyes color"": ""blue"", ""Face feature"": ""soft facial features, oval face shape, high cheekbones"", ""Height"": ""approximately 170cm"", ""Body type"": ""slim, with a smooth silhouette"", ""Appearance"": ""defined features, youthful look"", ""Makeup"": ""natural makeup, soft tones"", ""Hairstyle"": ""long, wavy hair, light brown"", ""Expression"": ""smiling, friendly demeanor"", ""Posture"": ""standing, relaxed stance"", ""Actions"": ""holding a snowman decoration with both hands"", ""Eye contact"": ""looking slightly to the side, engaging"", ""Overall temperament"": ""playful and joyful"", ""Model attire"": ""casual red dress with a V-neckline"", ""Scene and environment"": ""cozy indoor setting, decorated for the holidays, Christmas tree in the background"", ""Background color and tone"": ""soft white with warm tones from decorations, red and gold accents"", ""Lighting and illumination"": ""natural light from the window, soft and warm illumination"", ""Props and accessories"": ""plush snowman toy held by the model, decorative pillows on the sofa, Christmas gifts in the background"", ""Background details and decorations"": ""Christmas tree adorned with ornaments, ribbons, and lights, patterned cushions on the sofa"", ""Relationship between model and background"": ""model is centered in the foreground, creating a warm and festive atmosphere with the background"", ""Color and Pattern"": ""The dress is a vibrant red color with a smooth, slightly glossy texture. It features a deep V-neckline and long sleeves. The overall design is solid without any visible patterns."", ""Accessories"": ""The model is holding a plush snowman toy with a red and green knitted hat, decorated with a snowflake design. There are no visible jewelry or additional accessories mentioned.""}","{""garment pattern"": ""Loose"", ""Silhouettes"": ""H"", ""Collar Types"": ""Other"", ""Neckline"": ""V-neckline"", ""Sleeve Types"": ""Regular cuffs"", ""Cuffs"": ""Placket"", ""sleeve length"": ""Wrist-length Sleeve"", ""Shoulder Types"": ""Dropped- shoulder"", ""Closure Types"": ""No Garment closure"", ""Pockets"": ""Pocketless"", ""Hemlines"": ""Other"", ""garment length"": ""Mid-length"", ""front closure style"": ""No Front Opening"", ""faux_two_piece_design"": ""No""}","The scene is set in a **cozy indoor environment**, adorned with a beautifully decorated **Christmas tree** in the background, featuring gold and white ornaments. The setting includes a **soft white rug** and a **plaid cushion** on a light-colored armchair, creating a warm and festive atmosphere. 
+
+The model is wearing a **loose-fitting red mini dress** that has an **A-line silhouette**. The dress features **long sleeves** that taper slightly at the wrists, adding a relaxed feel to the overall look. The **V-neckline** is complemented by a **choker detail** that wraps around the neck, enhancing the dress's stylishness while providing a playful twist to the classic design. The hemline sits above the mid-thigh, giving the dress a youthful and energetic vibe.
+
+This dress is made from a **smooth, slightly stretchy knit fabric** that feels soft against the skin, perfect for casual winter occasions. The vibrant **red color** dominates, creating a striking appearance that is ideal for the holiday season. 
+
+In terms of detailing, the dress has a **simple cuff design** at the sleeves and a **straight hem** at the bottom. The lack of additional embellishments keeps the focus on the bold color and unique neckline.
+
+The model, a **Caucasian woman** of approximately **175 cm** in height and a **slim body type**, has **long, wavy blonde hair** styled loosely. Her skin tone is **fair**, and she has a **natural makeup look** featuring soft tones that enhance her features without overpowering them.
+
+The model is posing while holding a **decorative snowman plush toy**, adding a festive touch to her stance. She is smiling softly, which contributes to the cheerful ambiance of the scene. The lighting is **soft and warm**, filling the space with a gentle glow that highlights the model and the rich color of the dress without harsh shadows.
+
+The composition centers the model, ensuring that the dress's overall silhouette and festive context are emphasized. Overall, this presentation effectively showcases a stylish yet relaxed holiday outfit suitable for gatherings or casual celebrations.",场景设置在**舒适的室内环境**，背景是一棵装饰精美的**圣诞树**，以金色和白色装饰品为特色。布置包括**柔软的白色地毯**和**浅色扶手椅上的**格子靠垫**，营造出温馨的节日氛围。<br><br>模特穿着一件**宽松的红色迷你连衣裙**，有**a字廓形**。这款连衣裙采用**长袖**，手腕处略微逐渐变细，为整体造型增添了轻松感。**V型领口**辅以环绕颈部的**choker细节**，增强了连衣裙的时尚感，同时为经典设计增添了俏皮的元素。底边位于大腿中部以上，给裙子一种年轻而充满活力的感觉。<br><br>这款连衣裙由**光滑、略有弹性的针织面料**制成，亲肤柔软，非常适合冬季休闲场合。充满活力的**红色**占主导地位，创造出引人注目的外观，是节日的理想选择。<br><br>在细节方面，这款连衣裙在袖子处有一个**简单的袖口设计**，在底部有一个**直下摆**。没有额外的点缀，让焦点集中在大胆的颜色和独特的领口上。<br><br>模特是一名**高加索女性**，身高约**175厘米**，体型**苗条**，留着**长长的卷发**，发型松散。她的肤色是**白皙**，她有**自然的妆容**，柔和的色调增强了她的五官，但又不会压倒它们。<br><br>模特拿着一个装饰性的雪人毛绒玩具**摆姿势，为她的姿势增添了节日的气息。她笑得很温柔，这增加了现场的欢快气氛。灯光**柔和温暖**，让空间充满柔和的光芒，突出模特和礼服的丰富色彩，没有刺眼的阴影。<br><br>构图使模特居中，确保服装的整体轮廓和节日气氛得到强调。总的来说，这个演示有效地展示了一个时尚而放松的节日服装，适合聚会或休闲庆祝。,"{""category"": ""blouse"", ""Garment pattern"": ""Fitted"", ""Silhouette"": ""H"", ""Collar types"": ""Fungus edge collar"", ""neckline"": ""Round"", ""Sleeve types"": ""Shirt sleeve"", ""Cuffs"": ""Placket"", ""Shoulder types"": ""Regular shoulder"", ""Garment closure"": ""Single-breasted"", ""Pockets"": ""Pocketless"", ""Front closure style"": ""Fully Open Front"", ""Fabric - Category"": ""Knitted - Jacquard - Lace""}","{""类别""：""衬衫"",""服装图案""：""合身"",""廓形""：""H"",""领型""：""木耳边领"",""领口""：""圆形"",""袖型""：""衬衫袖"",""袖口""：""门襟"",""肩型""：""常规肩"",""服装闭合方式""：""单排扣"",""口袋""：""无口袋"",""前闭合方式""：""前全开"",""面料-类别""：""针织-提花-蕾丝""}","### Background:
+The scene is set in a cozy indoor environment, featuring a beautifully decorated Christmas tree with gold and white ornaments. The setting includes a soft white rug and a plaid cushion on a light-colored armchair, creating a warm and festive atmosphere.
+
+### Overall Style:
+The model showcases a modern loose-fitting red mini dress, designed with an A-line silhouette that emphasizes a relaxed yet stylish aesthetic suitable for casual winter occasions.
+
+### Design Elements:
+The dress features long sleeves that taper slightly at the wrists, enhancing its relaxed feel. A V-neckline is complemented by a choker detail, offering a playful twist on a classic design. The hemline sits above mid-thigh, providing a youthful and energetic vibe. 
+
+The structure of the dress includes a smooth, slightly stretchy knit fabric, which feels soft against the skin and is perfect for holiday celebrations. The vibrant red color dominates the piece, making it ideal for the festive season. The dress incorporates a simple cuff design at the sleeves and a straight hem at the bottom, focusing on the bold color and unique neckline without additional embellishments.
+
+### Fabric and Material:
+The dress is constructed from a smooth, slightly stretchy knit fabric, which adds comfort and ease of movement. This fabric choice is ideal for maintaining warmth during winter while providing a soft touch against the skin.
+
+### Model Description:
+The model is a Caucasian woman, approximately 175 cm in height, with a slim body type. She has long, wavy blonde hair styled loosely, and her fair skin tone is complemented by a natural makeup look featuring soft tones. The model is posed while holding a decorative snowman plush toy, which enhances the festive ambiance. 
+
+### Details and Accessories:
+Key details of the outfit include the absence of pockets, allowing for a clean silhouette. The collar type is a choker, which adds sophistication and fashion-forwardness to the design. The cuffs are designed with a simple placket style. The overall look is complemented by soft and warm lighting, which highlights the model and the rich color of the dress without harsh shadows.
+
+### Conclusion:
+This presentation effectively showcases a stylish yet relaxed holiday outfit suitable for gatherings or casual celebrations. The combination of a vibrant red dress with a modern silhouette, paired with a cozy indoor backdrop, creates a visually appealing and festive look that emphasizes comfort and style.","###背景：
+场景设置在一个舒适的室内环境中，以一棵装饰精美的圣诞树为特色，圣诞树上有金色和白色的装饰品。环境包括柔软的白色地毯和浅色扶手椅上的格子靠垫，营造出温暖的节日氛围。<br><br>###整体风格：
+该模特展示了一款现代宽松的红色迷你连衣裙，采用A字廓形设计，强调适合休闲冬季场合的轻松而时尚的美感。<br><br>###设计元素：
+这款连衣裙的长袖在手腕处略微变细，增强了它的放松感。V领辅以choker细节，为经典设计增添俏皮元素。底边位于大腿中部以上，营造出年轻活力的氛围。<br><br>连衣裙的结构包括光滑、略有弹性的针织面料，亲肤柔软，非常适合节日庆祝。充满活力的红色主导了这件作品，使其成为节日的理想选择。连衣裙在袖子处融入了简单的袖口设计，在底部采用了直下摆，专注于大胆的颜色和独特的领口，没有额外的点缀。<br><br>###面料和材质：
+这款连衣裙由光滑、略有弹性的针织面料制成，增加了舒适性和运动便利性。这种面料非常适合在冬季保暖，同时提供柔软的皮肤触感。<br><br>###型号说明：
+模特是一名白人女性，身高约175厘米，体型苗条。她有一头松散的金色长发，白皙的肤色与柔和色调的自然妆容相得益彰。模特拿着一个装饰性的雪人毛绒玩具摆姿势，增强了节日气氛。<br><br>###细节和附件：
+服装的关键细节包括没有口袋，允许一个干净的轮廓。衣领类型是choker，这增加了设计的复杂性和时尚前卫。袖口设计为简单的门襟款式。整体外观由柔和温暖的灯光相得益彰，突出了模特和礼服的丰富色彩，没有刺眼的阴影。<br><br>###结论：
+该演示有效地展示了适合聚会或休闲庆祝的时尚而轻松的节日服装。充满活力的红色连衣裙与现代轮廓相结合，搭配舒适的室内背景，营造出视觉上吸引人的节日外观，强调舒适和时尚。","
+## Background:
+You are a master of fashion design, craftsmanship, fabric expertise, and photographic composition. You excel at providing comprehensive design details by examining images to help users recreate the clothing design through a text-to-image model.
+
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状、袖型（如灯笼袖、泡泡袖）、下摆形态（如流苏边、荷叶边）、扣子的设计风格等。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉麻混纺）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案的详细描述（如粗细相间的条纹、复古风格的格纹、抽象印花的具体形状和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和化妆**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. **按层次描述：** 从整体到局部，依次描述背景、整体风格、设计元素、面料和材质、以及细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），最后是细节和配件（如“金属扣，刺绣”）。
+2. **使用客观明确的语言：** 确保描述具体且客观，避免使用主观词汇和情感表达。代替模糊或主观的词语（如“优雅的”），提供具体特征（如“高领设计，简洁大方”）。如需使用感性词汇，需提供明确的解释（如“柔软的丝绸”需注明“丝绸质地光滑，有天然光泽”）。
+3. **描述面料和材质：** 明确指出面料类型及其特点，如“这件连衣裙采用纯棉面料，柔软透气，适合夏季穿着”。避免主观评价面料的感受。
+4. **标准术语和句式：** 使用标准化的行业术语（如“长袖衬衫”，“蕾丝边领口”），每个句子或段落集中描述一个特征，避免混杂信息。例句：“袖型为长袖，袖口有蕾丝边。”
+5. **提供完整的服装描述：** 即使图像只显示局部，仍应给出完整的服装搭配或全身效果描述（如“白色丝绸衬衫搭配黑色及膝裙，红色高跟鞋”）。
+6. **包含时间和场合信息：** 在描述中包括适用的时间和场合（如“适合夏季晚宴的红色礼服”），但仅限于服装的实用性和用途，不涉及主观评价。
+7. **避免情感和文化背景描述：** 排除情感词汇和文化背景的表达，专注于客观物理特征和具体用途。
+8. **简洁和信息量控制：** 确保每个句子都有新的信息，避免重复和冗长。例如：“这件现代风格的**V领连衣裙**采用红色丝绸，面料光滑，长袖设计，配有金属扣装饰。”
+9. **使用定量描述：** 尽可能使用定量描述（如尺寸、数量、位置）以增强描述的具体性和精确性。例句：“裙长至膝下，袖子为腕长。”
+10. **模特属性：**模特的描述必须包含国家、种族、身高、体重、具体肤色、发色、发型和妆容搭配。
+11. **字数限制：**不要输出小标题，将字数限制在350 个 English words.
+
+## Example:
+The image shows an **indoor studio setting** with a **minimalist background**. The **walls and floor** are **solid white**, providing a clean, modern look with no additional props or accessories, keeping the focus on the model and the outfit.
+The model is wearing a **fitted midi A-line dress** with an **X silhouette**. The dress features **regular shoulders**, a **collarless design**, and a **square neckline**. The **sleeves** are **wrist-length** with **plain cuffs**. It includes a **single-breasted placket**, a **high waist**, and **two front patch pockets** on the chest, each adorned with a **button** and a **dark navy blue contrasting trim**, matching the trim on the neckline.
+The dress is made from a **soft knit fabric** that is **slightly stretchy**, offering comfort and flexibility. The fabric has a **smooth texture** with **subtle vertical lines**. The primary color is **off-white**, with **dark navy blue trims** along the neckline, pocket edges, and hemline, creating a distinct contrast. **Four light-colored buttons** are positioned along the chest, providing both functional and decorative elements.
+The model is a **Japanese woman** around **25 years old** with **medium-length straight hair**, styled with **bangs**. Her skin tone is **fair**, and she has a **medium height** and a **slim body type**. She stands in a **straight pose** with her hands resting on either side of her waist, emphasizing the dress's fit-and-flare silhouette. Her makeup is **natural**, featuring a **light foundation**, **subtle eye makeup**, and a **nude lip color**.
+The lighting is **soft and even**, highlighting the model and the dress without creating harsh shadows. The composition centers the model in the frame, ensuring the dress remains the focal point. The overall presentation clearly showcases the dress's key features: the **fit-and-flare silhouette**, **contrasting trims**, and **decorative buttons**.
+
+## Initialisation：
+基于[Background]，聚焦于我的[Goals]，并参考[Definition]，严格遵循[Constrains]，用叙述性英文，如[Examples]中的形式回应我的输入。
+","
+## Background:
+我会在下面的[Context]中提供[服装描述A],[款式真值B]，根据我的要求，需要从[服装描述A]、[款式真值B]中有机的提取相应的设计要素最终组合成一段简洁明了、具备逻辑性的服装文生图提示词。
+## Context:
+### 服装描述A:ZJ_BASE_CAP
+### 款式真值B:ZJ_ALL_OTH
+## Definition:
+### Design Elements
+1. **Garment Categories** - Tops, Bottoms, Dresses, Suits and Sets, Outerwear, Others, Accessories, etc.  
+2. **Structure and Cut** - Silhouettes, Cutting Details, Structural Design Elements, etc.  
+3. **Function and Technique** - Functional Design, Techniques, etc.  
+4. **Detail Design** - Shoulder Types, Neckline and Collar Types, Sleeve Types and Cuffs, Hemlines and Pant Hems, etc.  
+5. **Closures and Fastenings** - Closure Types, etc.  
+6. **Fabric and Materials** - Fabric Types, Material Properties, Texture and Feel, etc.  
+7. **Colors and Patterns** - Colors, Patterns, etc.  
+8. **Ornaments and Accessories** - Decorative Elements, Accessories Coordination, etc.  
+9. **Target Audience and Context** - Target Audience, Usage Scenarios, etc.  
+10. **Sustainable Design** - Sustainable Materials, Sustainable Processes, Carbon Footprint Management, etc.  
+11. **Cultural and Emotional Expression** - Cultural Elements, Emotional Expression, etc.  
+
+### Fashion Model Appearance:
+1. **Ethnicities:** Caucasian, East Asian, South Asian, Middle Eastern, Black, Latino, Mixed, etc.
+2. **Skin Tones:** Fair, Medium, Dark, Tan, etc.
+3. **Height:** Tall (approximately 175 cm and above), Medium height (160-175 cm), Petite (below 160 cm), etc.
+4. **Body Types:** Slim, Standard, Curvy, Fit, Slender, Curvaceous, etc.
+5. **Facial Features:** Defined features, Round face, Oval face, Square face, Pointed chin, High cheekbones, etc.
+6. **Makeup Styles:** Natural makeup, Glam makeup, Vintage makeup, Smokey eye makeup, Japanese style makeup, European style makeup, Fresh makeup, etc.
+7. **Hairstyles:** Long hair, Short hair, Curly hair, Straight hair, Ponytail, Updo, Braids, Bun, Bangs, etc.
+8. **Expressions:** Smiling, Cool, Serious, Happy, Natural, Thoughtful, Playful, Dreamy, Fresh, Elegant, etc.
+9. **Accessories:** Necklace, Earrings, Bracelets, Rings, Watch, Sunglasses, Hat, Belt, Bag, Scarf, etc.
+10. **Poses:** Standing, Sitting, Kneeling, Walking, Leaning, Looking back, Squatting, Side pose, etc.
+11. **Gestures:** Hands on waist, Hands on forehead, Playing with hair, Raising hands, Touching clothes, Kicking, Arms open wide, etc.
+12. **Eye Expressions:** Determined, Confident, Soft, Ethereal, Flirtatious, Natural, etc.
+13. **Overall Vibe:** Elegant, Cool, Playful, Sweet, Intellectual, Sexy, Edgy, Energetic, Natural, etc.
+
+### Image Background:
+1. **Scenes/Settings:** City streets, Indoor studio, Outdoor natural scenery, Beach, Park, Urban skyline, Classical architecture, Modern architecture, Mansion interior, Minimalist background, Industrial background, etc.
+2. **Background Colors/Tones:** White, Grey, Black, Pink, Soft warm tones, Cool tones, Gradient background, Solid color background, etc.
+3. **Lighting:** Natural light, Soft light, Backlight, Side light, Hard light, Point light source, Light and shadow effects, Flash, Reflector, etc.
+4. **Props/Accessories:** Chairs, Tables, Plants, Umbrella, Sofa, Mirror, Picture frame, Books, Suitcase, Bicycle, Wallpaper, Lamps, Photo frames, etc.
+5. **Background Details/Decorations:** Paintings, Curtains, Bookshelves, Vases, Wall decor, Rugs, Background plants, Art sculptures, Wall clocks, etc.
+6. **Model and Background Relationship:** Model in the foreground, Blurred background, Model blending with background, Model contrasting with background, Combination of foreground and background, Background as part of the story context, etc.
+
+## Goals:
+Referring to the [Definition], provide a detailed description of the design element:
+1. **场景/环境**：
+   - 选择具体的背景，如晴天的城市街道、晚霞下的沙滩、春天阳光明媚的公园、现代建筑内的大堂等。
+   - 具体描述场景中的物件和细节，如城市街道上的行人和车辆、室内摄影棚中的道具布置、岸边的椰子树和沙滩椅。
+2. **服装风格和剪裁**：
+   - 明确服装的整体轮廓和剪裁细节，如A字裙的裙摆宽度和长度、高腰裤的腰线高度、V领上衣的V字深度、茧形大衣的轮廓和肩线设计。
+   - 详细描述领口形状（如高领、吊带领）、袖型（如灯笼袖、泡泡袖）、袖口（如介英袖口、螺纹袖口）、开襟方式（如拉链开襟、单排扣开襟）、衣门襟（如拉链开襟、套头开襟）、肩型（如正肩、落肩、插肩）、下摆形态（如流苏边、荷叶边）、扣子、有无口袋及口袋的款式等的设计风格（如休闲时尚、性感、甜美淑女）。
+3. **面料和质地**：
+   - 描述面料类型（如丝绸、羊毛、棉、麻、混纺、雪纺、合成纤维、再生纤维、皮革等）及其表面质地（如粗糙、光滑、柔软）。
+   - 在不同光照条件下的展示效果（如柔和窗光下丝绸的光泽、刺眼阳光下亚麻的质感）。
+4. **颜色和图案**：
+   - 指定衣服的主要色调和搭配色（如用Pantone色号标明）。
+   - 对图案元素的内容、细节形状、位置及排布关系、风格进行详细描述（如粗细相间的黑白条纹、复古风格的蓝色格纹、黑底白色小花、带有绿色叶子的蓝色大花、抽象印花的具体形状及颜色和覆盖范围）。
+5. **细节设计和装饰元素**：
+   - 精确描述装饰元素的位置和样式（如肩部的刺绣图案、袖口的纽扣样式和材质、腰带上的金属扣子）。
+   - 强调手工制作的工艺细节，如手工缝制的亮片、刺绣的针法和图样。
+6. **服装搭配和整体造型**：
+   - 提供明确的搭配建议，展示服装在不同场合（如办公、休闲、宴会）的搭配方式。
+   - 明确配饰的材质和风格（如银镯、皮质斜挎包、钻石项链）和艺术风格（如废土风、小香风、小清新），以及与主要服装的搭配效果。
+7. **模特外貌、姿势、表情和动作特征**：
+   - 具体描述模特的特征，包括国家、种族、身高、体重、具体肤色、发色和发型。
+   - 细化表情和动作（如微笑的弧度、走路的姿态、旋转的方向和速度）。
+8. **发型和妆容**：
+   - 描述发型的长度、卷曲度和颜色（如长直发、自然卷、波浪卷发，颜色如亚麻金、巧克力棕）。
+   - 指定妆容的具体细节（如眼影的颜色、唇彩的质感、腮红的位置和颜色变化），以及与服装的匹配效果。
+9. **光影效果和摄影构图**：
+   - 指定光源位置、光照强度及方向（如正面光、侧面光、逆光）。
+   - 对摄影构图提出具体要求（如三分法、对角线构图、中心对称构图），以及如何突出重点部位。
+10. **动态展示和细节特写**：
+    - 描述模特的动态动作（如模特旋转时裙摆的飞扬、模特行走时裤脚的摆动）。
+    - 强调需要展示的细节特写（如面料的质感、纽扣的切割、刺绣的精细图案）。
+
+## Constrains:
+1. 请将我提供的[款式真值B]整理为一句话[款式描述C]，注意不要丢失任何信息；
+2. 请将上一步的[款式描述C]全部合并到[服装描述A]中，不能有任何遗漏，合并规则如下：
+2.1. 在[服装描述A]和[款式描述C]都出现的内容，保留[服装描述A]的描述；
+2.2. 请将[款式描述C]中剩余的内容合并入上一步的结果中，如概念上有冲突，使用[款式描述C]中内容替换；
+2.3. 再次对比[服装描述A]和上一步的合并结果，如“buttoned, lace”等特殊描述词没有了，重新合并到结果中
+3. 遵循我的[Goals],对合并的内容提取关键设计要素；
+4. 按层次描述,从整体到局部，依次描述背景、整体风格（服装设计理念、艺术风格等）、设计元素(包括上装、下装、内搭、外穿)、面料和材质、模特、以及细节和配件。从背景到细节，确保先描述背景，再描述服装整体风格，详细说明设计元素，然后是面料和材质，之后描述一下模特，最后描述细节和配件。例如，首先描述背景（如“都市街道”），接着描述服装的整体风格（如“现代风格连衣裙”），然后详细说明主要设计元素（如“红色丝绸，几何图案”），之后说明模特（如“模特是一位南亚女性，年龄，身高，妆容等”）最后是细节和配件（如“金属扣，刺绣”）；
+5. 避免主观解释或情绪化语言，保持描述的客观性和专业性，避免""adding a touch of..."" 或 ""creating a sense of..."" 或""suggests a sense of calm""等；
+6. 字数要求在400 english words，当超出字数的时候要删减感觉性描述，保留客观性内容。
+"
