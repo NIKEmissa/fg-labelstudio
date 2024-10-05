@@ -138,34 +138,39 @@ flux_models_config: |
           <Header value=">> 人脸区域" size="3"/>
           <RectangleLabels name="label2-1" toName="image2">
             <Label value="脸崩：人脸崩坏(v1)" background="red" hotkey="1"/>
-            <Label value="脸崩：头颈比例异常(v1)" background="red" hotkey="2"/>
-            <Label value="脸崩：眼睛异常(v1)" background="red" hotkey="3"/>
+            <Label value="脸崩：表情异常(v1)" background="red" hotkey="2"/>
+            <Label value="脸崩：头颈比例异常(v1)" background="red" hotkey="3"/>
+            <Label value="脸崩：眼睛异常(v1)" background="red" hotkey="4"/>
           </RectangleLabels>
           <Header value=">> 躯体区域" size="3"/>
           <RectangleLabels name="label2-2" toName="image2">
-            <Label value="躯体崩：人体肌肉感异常(v1)" background="red" hotkey="4"/>
-            <Label value="躯体崩：人体膝盖褶皱异常(v1)" background="red" hotkey="5"/>
-            <Label value="躯体崩：模特身材比例异常(v1)" background="red" hotkey="6"/>
-            <Label value="躯体崩：模特与背景的交界处异常(v1)" background="red" hotkey="7"/>
-            <Label value="躯体崩：模特与背景的协调性异常(v1)" background="red" hotkey="8"/>
+            <Label value="躯体崩：多出四肢(v1)" background="red" hotkey="5"/>
+            <Label value="躯体崩：身体扭曲(v1)" background="red" hotkey="6"/>
+            <Label value="躯体崩：不合理穿搭(v1)" background="red" hotkey="7"/>
+            <Label value="躯体崩：躯体融合(v1)" background="red" hotkey="8"/>
+            <Label value="躯体崩：人体肌肉感异常(v1)" background="red" hotkey="9"/>
+            <Label value="躯体崩：人体膝盖褶皱异常(v1)" background="red" hotkey="0"/>
+            <Label value="躯体崩：模特身材比例异常(v1)" background="red" hotkey="ctrl+1"/>
+            <Label value="躯体崩：模特与背景的交界处异常(v1)" background="red" hotkey="ctrl+2"/>
+            <Label value="躯体崩：模特与背景的协调性异常(v1)" background="red" hotkey="ctrl+3"/>
           </RectangleLabels>
           <Header value=">> 手部区域" size="3"/>
           <RectangleLabels name="label2-3" toName="image2">
-            <Label value="手崩：左手纹理或结构异常(v1)" background="red" hotkey="9"/>
-            <Label value="手崩：左手模糊(v1)" background="red" hotkey="0"/>
-            <Label value="手崩：左手肤色异常(v1)" background="red" hotkey="ctrl+1"/>
-            <Label value="手崩：右手纹理或结构异常(v1)" background="red" hotkey="ctrl+2"/>
-            <Label value="手崩：右手模糊(v1)" background="red" hotkey="ctrl+3"/>
-            <Label value="手崩：右手肤色异常(v1)" background="red" hotkey="ctrl+4"/>
+            <Label value="手崩：左手纹理或结构异常(v1)" background="red" hotkey="ctrl+4"/>
+            <Label value="手崩：左手模糊(v1)" background="red" hotkey="ctrl+5"/>
+            <Label value="手崩：左手肤色异常(v1)" background="red" hotkey="ctrl+6"/>
+            <Label value="手崩：右手纹理或结构异常(v1)" background="red" hotkey="ctrl+7"/>
+            <Label value="手崩：右手模糊(v1)" background="red" hotkey="ctrl+8"/>
+            <Label value="手崩：右手肤色异常(v1)" background="red" hotkey="ctrl+9"/>
           </RectangleLabels>  
           <Header value=">> 脚部区域" size="3"/>
           <RectangleLabels name="label2-4" toName="image2">
-            <Label value="脚崩：左脚异常(v1)" background="red" hotkey="ctrl+5"/>
-            <Label value="脚崩：右脚异常(v1)" background="red" hotkey="ctrl+6"/>
+            <Label value="脚崩：左脚异常(v1)" background="red" hotkey="ctrl+0"/>
+            <Label value="脚崩：右脚异常(v1)" background="red" hotkey="alt+1"/>
           </RectangleLabels>        
           <Header value=">> 其它" size="3"/>
           <RectangleLabels name="label2-5" toName="image2">
-            <Label value="其它(v1)" background="red" hotkey="ctrl+7"/>
+            <Label value="其它(v1)" background="red" hotkey="alt+2"/>
           </RectangleLabels>              
           <TextArea name="custom-label-input-2" toName="image2" perRegion="true" placeholder="输入自定义标签" rows="3"/>
         </View>
@@ -174,6 +179,7 @@ flux_models_config: |
           <Header value="2. 一致性打标" size="3" />
           <Choices name="class-left2-1" toName="image2" choice="multiple">
             <Header value=">> 服装侧" size="3" />
+            <Choice value="品类不一致(v1)" hotkey="y"/>
             <Choice value="款式不一致(v1)" hotkey="a"/>
             <Choice value="工艺不一致(v1)" hotkey="b"/>
             <Choice value="辅料不一致(v1)" hotkey="c"/>
@@ -224,34 +230,39 @@ flux_models_config: |
           <Header value=">> 人脸区域" size="3"/>
           <RectangleLabels name="label3-1" toName="image3">
             <Label value="脸崩：人脸崩坏(v2)" background="red" hotkey="1"/>
-            <Label value="脸崩：头颈比例异常(v2)" background="red" hotkey="2"/>
-            <Label value="脸崩：眼睛异常(v2)" background="red" hotkey="3"/>
+            <Label value="脸崩：表情异常(v2)" background="red" hotkey="2"/>
+            <Label value="脸崩：头颈比例异常(v2)" background="red" hotkey="3"/>
+            <Label value="脸崩：眼睛异常(v2)" background="red" hotkey="4"/>
           </RectangleLabels>
           <Header value=">> 躯体区域" size="3"/>
           <RectangleLabels name="label3-2" toName="image3">
-            <Label value="躯体崩：人体肌肉感异常(v2)" background="red" hotkey="4"/>
-            <Label value="躯体崩：人体膝盖褶皱异常(v2)" background="red" hotkey="5"/>
-            <Label value="躯体崩：模特身材比例异常(v2)" background="red" hotkey="6"/>
-            <Label value="躯体崩：模特与背景的交界处异常(v2)" background="red" hotkey="7"/>
-            <Label value="躯体崩：模特与背景的协调性异常(v2)" background="red" hotkey="8"/>
+            <Label value="躯体崩：多出四肢(v2)" background="red" hotkey="5"/>
+            <Label value="躯体崩：身体扭曲(v2)" background="red" hotkey="6"/>
+            <Label value="躯体崩：不合理穿搭(v2)" background="red" hotkey="7"/>
+            <Label value="躯体崩：躯体融合(v2)" background="red" hotkey="8"/>
+            <Label value="躯体崩：人体肌肉感异常(v2)" background="red" hotkey="9"/>
+            <Label value="躯体崩：人体膝盖褶皱异常(v2)" background="red" hotkey="0"/>
+            <Label value="躯体崩：模特身材比例异常(v2)" background="red" hotkey="ctrl+1"/>
+            <Label value="躯体崩：模特与背景的交界处异常(v2)" background="red" hotkey="ctrl+2"/>
+            <Label value="躯体崩：模特与背景的协调性异常(v2)" background="red" hotkey="ctrl+3"/>
           </RectangleLabels>
           <Header value=">> 手部区域" size="3"/>
           <RectangleLabels name="label3-3" toName="image3">
-            <Label value="手崩：左手纹理或结构异常(v2)" background="red" hotkey="9"/>
-            <Label value="手崩：左手模糊(v2)" background="red" hotkey="0"/>
-            <Label value="手崩：左手肤色异常(v2)" background="red" hotkey="ctrl+1"/>
-            <Label value="手崩：右手纹理或结构异常(v2)" background="red" hotkey="ctrl+2"/>
-            <Label value="手崩：右手模糊(v2)" background="red" hotkey="ctrl+3"/>
-            <Label value="手崩：右手肤色异常(v2)" background="red" hotkey="ctrl+4"/>
+            <Label value="手崩：左手纹理或结构异常(v2)" background="red" hotkey="ctrl+4"/>
+            <Label value="手崩：左手模糊(v2)" background="red" hotkey="ctrl+5"/>
+            <Label value="手崩：左手肤色异常(v2)" background="red" hotkey="ctrl+6"/>
+            <Label value="手崩：右手纹理或结构异常(v2)" background="red" hotkey="ctrl+7"/>
+            <Label value="手崩：右手模糊(v2)" background="red" hotkey="ctrl+8"/>
+            <Label value="手崩：右手肤色异常(v2)" background="red" hotkey="ctrl+9"/>
           </RectangleLabels>  
           <Header value=">> 脚部区域" size="3"/>
           <RectangleLabels name="label3-4" toName="image3">
-            <Label value="脚崩：左脚异常(v2)" background="red" hotkey="ctrl+5"/>
-            <Label value="脚崩：右脚异常(v2)" background="red" hotkey="ctrl+6"/>
+            <Label value="脚崩：左脚异常(v2)" background="red" hotkey="ctrl+0"/>
+            <Label value="脚崩：右脚异常(v2)" background="red" hotkey="alt+1"/>
           </RectangleLabels>        
           <Header value=">> 其它" size="3"/>
           <RectangleLabels name="label3-5" toName="image3">
-            <Label value="其它(v2)" background="red" hotkey="ctrl+7"/>
+            <Label value="其它(v2)" background="red" hotkey="alt+2"/>
           </RectangleLabels>              
           <TextArea name="custom-label-input-3" toName="image3" perRegion="true" placeholder="输入自定义标签" rows="3"/>
         </View>
@@ -260,6 +271,7 @@ flux_models_config: |
           <Header value="2. 一致性打标" size="3" />
           <Choices name="class-left3-1" toName="image3" choice="multiple">
             <Header value=">> 服装侧" size="3" />
+            <Choice value="品类不一致(v2)" hotkey="ctrl+y"/>
             <Choice value="款式不一致(v2)" hotkey="ctrl+a"/>
             <Choice value="工艺不一致(v2)" hotkey="ctrl+b"/>
             <Choice value="辅料不一致(v2)" hotkey="ctrl+c"/>
@@ -309,34 +321,39 @@ flux_models_config: |
           <Header value=">> 人脸区域" size="3"/>
           <RectangleLabels name="label4-1" toName="image4">
             <Label value="脸崩：人脸崩坏(v3)" background="red" hotkey="1"/>
-            <Label value="脸崩：头颈比例异常(v3)" background="red" hotkey="2"/>
-            <Label value="脸崩：眼睛异常(v3)" background="red" hotkey="3"/>
+            <Label value="脸崩：表情异常(v3)" background="red" hotkey="2"/>
+            <Label value="脸崩：头颈比例异常(v3)" background="red" hotkey="3"/>
+            <Label value="脸崩：眼睛异常(v3)" background="red" hotkey="4"/>
           </RectangleLabels>
           <Header value=">> 躯体区域" size="3"/>
           <RectangleLabels name="label4-2" toName="image4">
-            <Label value="躯体崩：人体肌肉感异常(v3)" background="red" hotkey="4"/>
-            <Label value="躯体崩：人体膝盖褶皱异常(v3)" background="red" hotkey="5"/>
-            <Label value="躯体崩：模特身材比例异常(v3)" background="red" hotkey="6"/>
-            <Label value="躯体崩：模特与背景的交界处异常(v3)" background="red" hotkey="7"/>
-            <Label value="躯体崩：模特与背景的协调性异常(v3)" background="red" hotkey="8"/>
+            <Label value="躯体崩：多出四肢(v3)" background="red" hotkey="5"/>
+            <Label value="躯体崩：身体扭曲(v3)" background="red" hotkey="6"/>
+            <Label value="躯体崩：不合理穿搭(v3)" background="red" hotkey="7"/>
+            <Label value="躯体崩：躯体融合(v3)" background="red" hotkey="8"/>
+            <Label value="躯体崩：人体肌肉感异常(v3)" background="red" hotkey="9"/>
+            <Label value="躯体崩：人体膝盖褶皱异常(v3)" background="red" hotkey="0"/>
+            <Label value="躯体崩：模特身材比例异常(v3)" background="red" hotkey="ctrl+1"/>
+            <Label value="躯体崩：模特与背景的交界处异常(v3)" background="red" hotkey="ctrl+2"/>
+            <Label value="躯体崩：模特与背景的协调性异常(v3)" background="red" hotkey="ctrl+3"/>
           </RectangleLabels>
           <Header value=">> 手部区域" size="3"/>
           <RectangleLabels name="label4-3" toName="image4">
-            <Label value="手崩：左手纹理或结构异常(v3)" background="red" hotkey="9"/>
-            <Label value="手崩：左手模糊(v3)" background="red" hotkey="0"/>
-            <Label value="手崩：左手肤色异常(v3)" background="red" hotkey="ctrl+1"/>
-            <Label value="手崩：右手纹理或结构异常(v3)" background="red" hotkey="ctrl+2"/>
-            <Label value="手崩：右手模糊(v3)" background="red" hotkey="ctrl+3"/>
-            <Label value="手崩：右手肤色异常(v3)" background="red" hotkey="ctrl+4"/>
+            <Label value="手崩：左手纹理或结构异常(v3)" background="red" hotkey="ctrl+4"/>
+            <Label value="手崩：左手模糊(v3)" background="red" hotkey="ctrl+5"/>
+            <Label value="手崩：左手肤色异常(v3)" background="red" hotkey="ctrl+6"/>
+            <Label value="手崩：右手纹理或结构异常(v3)" background="red" hotkey="ctrl+7"/>
+            <Label value="手崩：右手模糊(v3)" background="red" hotkey="ctrl+8"/>
+            <Label value="手崩：右手肤色异常(v3)" background="red" hotkey="ctrl+9"/>
           </RectangleLabels>  
           <Header value=">> 脚部区域" size="3"/>
           <RectangleLabels name="label4-4" toName="image4">
-            <Label value="脚崩：左脚异常(v3)" background="red" hotkey="ctrl+5"/>
-            <Label value="脚崩：右脚异常(v3)" background="red" hotkey="ctrl+6"/>
+            <Label value="脚崩：左脚异常(v3)" background="red" hotkey="ctrl+0"/>
+            <Label value="脚崩：右脚异常(v3)" background="red" hotkey="alt+1"/>
           </RectangleLabels>        
           <Header value=">> 其它" size="3"/>
           <RectangleLabels name="label4-5" toName="image4">
-            <Label value="其它(v3)" background="red" hotkey="ctrl+7"/>
+            <Label value="其它(v3)" background="red" hotkey="ctrl+2"/>
           </RectangleLabels>              
           <TextArea name="custom-label-input-4" toName="image4" perRegion="true" placeholder="输入自定义标签" rows="3"/>
         </View>
@@ -345,6 +362,7 @@ flux_models_config: |
           <Header value="2. 一致性打标" size="3" />
           <Choices name="class-left4-1" toName="image4" choice="multiple">
             <Header value=">> 服装侧" size="3" />
+            <Choice value="品类不一致(v3)" hotkey="alt+y"/>
             <Choice value="款式不一致(v3)" hotkey="alt+a"/>
             <Choice value="工艺不一致(v3)" hotkey="alt+b"/>
             <Choice value="辅料不一致(v3)" hotkey="alt+c"/>
@@ -405,44 +423,47 @@ image_to_text_config: |
             <View className="text-block text-block-right">        
                 <Header value="1. 找出文本中描述和图片不一致的内容"/>          
                 <Header value=" >> 不一致标签" size="9"/>          
-                <Labels name="label1" toName="overall_all_prompts">
+                <Header value=" ---服装侧" size="10"/>          
+                <Labels name="label1-cloth" toName="overall_all_prompts">
                     <Label value="场景描述不一致" background="red" hotkey="1"/>
                     <Label value="款式设计不一致" background="red" hotkey="2"/>
-                    <Label value="服装面料不一致" background="red" hotkey="3"/>
-                    <Label value="模特描述（性别五官等）不一致" background="red" hotkey="4"/>
-                    <Label value="妆容不一致" background="red" hotkey="5"/>
+                    <Label value="品类不一致" background="red" hotkey="3"/>
+                    <Label value="花型图案不一致" background="red" hotkey="4"/>
+                    <Label value="服装工艺不一致" background="red" hotkey="5"/>
                     <Label value="配饰不一致" background="red" hotkey="6"/>
-                    <Label value="构图描述（展示效果）不一致" background="red" hotkey="7"/>          
+                    <Label value="妆容不一致" background="red" hotkey="7"/>
                 </Labels>       
+                <Header value=" ---面料侧" size="10"/>          
+                <Labels name="label1-fabric" toName="overall_all_prompts">
+                    <Label value="服装面料不一致" background="blue" hotkey="8"/>
+                    <Label value="服装颜色不一致" background="blue" hotkey="9"/>
+                    <Label value="模特描述（性别五官等）不一致" background="blue" hotkey="0"/>
+                    <Label value="构图描述（展示效果）不一致" background="blue" hotkey="a"/>          
+                </Labels>                 
                 <Header value=" >> 无中生有标签" size="9"/>          
-              <Labels name="label2" toName="overall_all_prompts">
-                    <Label value="场景描述无中生有" background="blue" hotkey="ctrl+1"/>
-                    <Label value="款式设计无中生有" background="blue" hotkey="ctrl+2"/>
-                    <Label value="服装面料无中生有" background="blue" hotkey="ctrl+3"/>
-                    <Label value="模特描述（性别五官等）无中生有" background="blue" hotkey="ctrl+4"/>
-                    <Label value="妆容无中生有" background="blue" hotkey="ctrl+5"/>
-                    <Label value="配饰无中生有" background="blue" hotkey="ctrl+6"/>
-                    <Label value="构图描述（展示效果）无中生有" background="blue" hotkey="ctrl+7"/>            
+                <Header value=" ---服装侧" size="10"/>                    
+                <Labels name="label2-cloth" toName="overall_all_prompts">
+                    <Label value="场景描述无中生有" background="Orange" hotkey="ctrl+1"/>
+                    <Label value="款式设计无中生有" background="Orange" hotkey="ctrl+2"/>
+                    <Label value="品类无中生有" background="Orange" hotkey="ctrl+3"/>
+                    <Label value="花型图案不一致" background="Orange" hotkey="ctrl+4"/>
+                    <Label value="服装工艺不一致" background="Orange" hotkey="ctrl+5"/>
+                    <Label value="配饰无中生有" background="Orange" hotkey="ctrl+6"/>
+                    <Label value="妆容无中生有" background="Orange" hotkey="ctrl+7"/>
+                </Labels>   
+                <Header value=" ---面料侧" size="10"/>          
+                <Labels name="label2-fabric" toName="overall_all_prompts">
+                    <Label value="服装面料无中生有" background="purple" hotkey="ctrl+8"/>
+                    <Label value="面料颜色无中生有" background="purple" hotkey="ctrl+9"/>
+                    <Label value="模特描述（性别五官等）无中生有" background="purple" hotkey="ctrl+0"/>
+                    <Label value="构图描述（展示效果）无中生有" background="purple" hotkey="ctrl+a"/>            
                 </Labels>   
                 <Header value=" >> 其他" size="9"/>          
-                <Labels name="label3" toName="overall_all_prompts">     
-                    <Label value="其他" background="yellow" hotkey="ctrl+8"/>              
+                <Labels name="label3-others" toName="overall_all_prompts">     
+                    <Label value="其他" background="yellow" hotkey="ctrl+b"/>              
                 </Labels>       
                 <TextArea name="custom-label-input" toName="overall_all_prompts" perRegion="true" placeholder="输入自定义标签" rows="3"/>               
-                <HyperText name="overall_all_prompts" value="$merged_caption_cn"/>
-                <Header value="2. 用检测框框出图片中被丢失的细节"/>
-                <Text name="detection-task-description" value="任务说明：图片中包含，但文字中没包含，用框框出来"/>
-                <RectangleLabels name="detection-labels" toName="url">
-                    <Label value="配饰丢失" background="orange" hotkey="alt+1"/>
-                    <Label value="款式丢失" background="orange" hotkey="alt+2"/>
-                    <Label value="工艺丢失" background="orange" hotkey="alt+3"/>
-                    <Label value="面料丢失" background="orange" hotkey="alt+4"/>
-                    <Label value="花型丢失" background="orange" hotkey="alt+5"/>
-                    <Label value="品类丢失" background="orange" hotkey="alt+6"/>
-                    <Label value="颜色丢失" background="orange" hotkey="alt+7"/>
-                    <Label value="其他丢失" background="purple" hotkey="alt+8"/>
-                </RectangleLabels>
-                <TextArea name="custom-label-input-detection" toName="url" perRegion="true" placeholder="输入自定义标签" rows="3"/>            
+                <HyperText name="overall_all_prompts" value="$merged_caption_cn"/>        
             </View>
         </View>
     </View>
@@ -473,20 +494,32 @@ text_to_image_config: |
             <View className="text-block text-block-right"> 
                 <Header value="1. 检查生成图片是否跟随原文描述"/>   
                 <Header value=" >> 不跟随标签" size="9"/>          
-                <Labels name="label1" toName="overall_all_prompts">
+                <Header value=" ---服装侧" size="10"/>          
+                <Labels name="label1-cloth" toName="overall_all_prompts">
                     <Label value="场景描述不跟随" background="red" hotkey="1"/>
                     <Label value="款式设计不跟随" background="red" hotkey="2"/>
-                    <Label value="服装面料不跟随" background="red" hotkey="3"/>
-                    <Label value="模特描述（性别五官等）不跟随" background="red" hotkey="4"/>
-                    <Label value="妆容不跟随" background="red" hotkey="5"/>
+                    <Label value="品类不跟随" background="red" hotkey="3"/>
+                    <Label value="花型图案不跟随" background="red" hotkey="4"/>              
+                    <Label value="服装工艺不跟随" background="red" hotkey="5"/>              
                     <Label value="配饰不跟随" background="red" hotkey="6"/>
-                    <Label value="构图描述（展示效果）不跟随" background="red" hotkey="7"/>              
-                    <Label value="其他" background="yellow" hotkey="8"/>              
+                    <Label value="妆容不跟随" background="red" hotkey="7"/>
+                </Labels>       
+                <Header value=" ---面料侧" size="10"/>          
+                <Labels name="label1-fabric" toName="overall_all_prompts">
+                    <Label value="服装面料不跟随" background="blue" hotkey="8"/>
+                    <Label value="服装颜色不跟随" background="blue" hotkey="9"/>
+                    <Label value="模特描述（性别五官等）不跟随" background="blue" hotkey="0"/>
+                    <Label value="构图描述（展示效果）不跟随" background="blue" hotkey="a"/>              
+                </Labels>       
+                <Header value=" >> 其他" size="10"/>          
+                <Labels name="label1-others" toName="overall_all_prompts">
+                    <Label value="其他不跟随" background="yellow" hotkey="ctrl+b"/>
                 </Labels>       
                 <TextArea name="custom-label-input" toName="overall_all_prompts" perRegion="true" placeholder="输入自定义标签" rows="3"/>          
                 <HyperText name="overall_all_prompts" value="$merged_caption_cn"/>
             </View>
         </View>
     </View>
+    
 inference:
   max_retry: 10
