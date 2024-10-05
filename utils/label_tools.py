@@ -11,7 +11,7 @@ def count_tokens(text, model="gpt-4o"):
     tokens = enc.encode(text)
     return len(tokens)
 
-def load_config(config_path='/data1/A800-01/data/xinzhedeng/MyCode/Project/labelstudio/config/config.yaml'):
+def load_config(config_path='./config/config.yaml'):
     """加载配置文件"""
     with open(config_path, 'r', encoding='utf-8') as file:
         return yaml.safe_load(file)

@@ -19,7 +19,8 @@ def openai_url():
 def load_config(config_path=None):
     """加载配置文件"""
     if config_path is None:
-        config_path = os.getenv('CONFIG_PATH', '/data1/A800-01/data/xinzhedeng/MyCode/Project/labelstudio/config/config.yaml')    
+        #config_path = os.getenv('CONFIG_PATH', '/data1/A800-01/data/xinzhedeng/MyCode/Project/labelstudio/config/config.yaml')    
+        config_path = os.getenv('CONFIG_PATH', './config/config.yaml')    
     try:
         with open(config_path, 'r', encoding='utf-8') as file:
             return yaml.safe_load(file)
