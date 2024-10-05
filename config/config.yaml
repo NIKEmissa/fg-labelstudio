@@ -396,6 +396,333 @@ flux_models_config: |
       </View>
     </View>
     
+flux_models_text_config: |
+    <View>
+      <Header value="$model1_name" size="1" />  
+      <View style="flex: 2; margin-right: 5px;">
+        <Header value="原图" />
+        <Image name="original_image_line1" value="$url"/>
+      </View>  
+
+      <View style="display: flex; flex-direction: row; margin-bottom: 100px;">
+        <View style="flex: 1;">
+          <Header value="$model1_name" />
+          <Image name="model1" value="$model1_path"/>
+        </View>
+
+        <View style="flex: 1; margin-right: 50px; height: 1000">
+          <Header value="gpt描述（baseline caption）" size="3" />
+          <HyperText name="all_prompts_txt_line1" value="$All_prompts" />      
+        </View>
+
+        <View style="flex: 1; margin-right: 5px;">
+          <Header value="1. 检查生成图片是否跟随原文描述" size="3"/>   
+          <Header value=" >> 不跟随标签" size="9"/>          
+          <Header value=" ---服装侧" size="10"/>          
+          <Labels name="label1-cloth" toName="all_prompts_txt_line1">
+            <Label value="品类b" background="red" hotkey="1"/>
+            <Label value="款式b" background="red" hotkey="2"/>
+            <Label value="工艺b" background="red" hotkey="3"/>              
+            <Label value="辅料" background="red" hotkey="4"/>        
+            <Label value="花型b" background="red" hotkey="5"/>              
+            <Label value="配饰b" background="red" hotkey="6"/>
+            <Label value="妆容b" background="red" hotkey="7"/>
+            <Label value="场景b" background="red" hotkey="8"/>
+          </Labels>       
+          <Header value=" ---面料侧" size="10"/>          
+          <Labels name="label1-fabric" toName="all_prompts_txt_line1">
+            <Label value="拼接b" background="blue" hotkey="a"/>
+            <Label value="材质b" background="blue" hotkey="b"/>
+            <Label value="透明度b" background="blue" hotkey="c"/>
+            <Label value="垂感b" background="blue" hotkey="d"/>
+            <Label value="蓬松感b" background="blue" hotkey="e"/>
+            <Label value="皱感b" background="blue" hotkey="f"/>
+            <Label value="光泽b" background="blue" hotkey="g"/>
+            <Label value="颜色b" background="blue" hotkey="h"/>
+            <Label value="工艺b" background="blue" hotkey="i"/>     
+            <Label value="模特外观b" background="blue" hotkey="j"/>
+            <Label value="模特姿势b" background="blue" hotkey="k"/>
+            <Label value="构图b" background="blue" hotkey="l"/>              
+          </Labels>       
+          <Header value=" >> 缺失标签" size="9"/>          
+          <Header value=" ---服装侧" size="10"/>          
+          <Labels name="label1-cloth-lack" toName="all_prompts_txt_line1">
+            <Label value="品类q" background="red" hotkey="ctrl+1"/>
+            <Label value="款式q" background="red" hotkey="ctrl+2"/>
+            <Label value="工艺q" background="red" hotkey="ctrl+3"/>              
+            <Label value="辅料q" background="red" hotkey="ctrl+4"/>        
+            <Label value="花型q" background="red" hotkey="ctrl+5"/>              
+            <Label value="配饰q" background="red" hotkey="ctrl+6"/>
+            <Label value="妆容q" background="red" hotkey="ctrl+7"/>
+            <Label value="场景q" background="red" hotkey="ctrl+8"/>
+          </Labels>       
+          <Header value=" ---面料侧" size="10"/>          
+          <Labels name="label1-fabric-lack" toName="all_prompts_txt_line1">
+            <Label value="拼接q" background="blue" hotkey="ctrl+a"/>
+            <Label value="材质q" background="blue" hotkey="ctrl+b"/>
+            <Label value="透明度q" background="blue" hotkey="ctrl+c"/>
+            <Label value="垂感q" background="blue" hotkey="ctrl+d"/>
+            <Label value="蓬松感q" background="blue" hotkey="ctrl+e"/>
+            <Label value="皱感q" background="blue" hotkey="ctrl+f"/>
+            <Label value="光泽q" background="blue" hotkey="ctrl+g"/>
+            <Label value="颜色q" background="blue" hotkey="ctrl+h"/>
+            <Label value="工艺q" background="blue" hotkey="ctrl+i"/>     
+            <Label value="模特外观q" background="blue" hotkey="ctrl+j"/>
+            <Label value="模特姿势q" background="blue" hotkey="ctrl+k"/>
+            <Label value="构图q" background="blue" hotkey="ctrl+l"/>              
+          </Labels>             
+          <Header value=" >> 其他" size="10"/>          
+          <Labels name="label1-others" toName="all_prompts_txt_line1">
+            <Label value="其他问题" background="yellow" hotkey="m"/>
+          </Labels>       
+          <TextArea name="custom-label-input-line1" toName="all_prompts_txt_line1" perRegion="true" placeholder="输入自定义标签" rows="3"/>                
+        </View>    
+      </View>
+
+      <Header value="$model2_name" size="1" />  
+      <View style="flex: 2; margin-right: 5px;">
+        <Header value="原图" />
+        <Image name="original_image_line2" value="$url"/>
+      </View>
+      <View style="display: flex; flex-direction: row; margin-bottom: 100px;">
+
+        <View style="flex: 1; margin-right: 5px;">
+          <Header value="$model2_name" />
+          <Image name="model2" value="$model2_path"/>
+        </View>
+
+        <View style="flex: 1; margin-right: 50px; height: 1000">
+          <Header value="gpt描述（baseline caption）" size="3" />
+          <HyperText name="all_prompts_txt_line2" value="$All_prompts"/>
+        </View>
+        <View style="flex: 1; margin-right: 5px;">
+
+          <Header value="1. 检查生成图片是否跟随原文描述" size="3"/>   
+          <Header value=" >> 不跟随标签" size="9"/>          
+          <Header value=" ---服装侧" size="10"/>          
+          <Labels name="label2-cloth" toName="all_prompts_txt_line2">
+            <Label value="品类b" background="red" hotkey="1"/>
+            <Label value="款式b" background="red" hotkey="2"/>
+            <Label value="工艺b" background="red" hotkey="3"/>              
+            <Label value="辅料b" background="red" hotkey="4"/>        
+            <Label value="花型b" background="red" hotkey="5"/>              
+            <Label value="配饰b" background="red" hotkey="6"/>
+            <Label value="妆容b" background="red" hotkey="7"/>
+            <Label value="场景b" background="red" hotkey="8"/>
+          </Labels>       
+          <Header value=" ---面料侧" size="10"/>          
+          <Labels name="label2-fabric" toName="all_prompts_txt_line2">
+            <Label value="拼接b" background="blue" hotkey="a"/>
+            <Label value="材质b" background="blue" hotkey="b"/>
+            <Label value="透明度b" background="blue" hotkey="c"/>
+            <Label value="垂感b" background="blue" hotkey="d"/>
+            <Label value="蓬松感b" background="blue" hotkey="e"/>
+            <Label value="皱感b" background="blue" hotkey="f"/>
+            <Label value="光泽b" background="blue" hotkey="g"/>
+            <Label value="颜色b" background="blue" hotkey="h"/>
+            <Label value="工艺b" background="blue" hotkey="i"/>     
+            <Label value="模特外观b" background="blue" hotkey="j"/>
+            <Label value="模特姿势b" background="blue" hotkey="k"/>
+            <Label value="构图b" background="blue" hotkey="l"/>              
+          </Labels>       
+          <Header value=" >> 缺失标签" size="9"/>          
+          <Header value=" ---服装侧" size="10"/>          
+          <Labels name="label2-cloth-lack" toName="all_prompts_txt_line2">
+            <Label value="品类q" background="red" hotkey="ctrl+1"/>
+            <Label value="款式q" background="red" hotkey="ctrl+2"/>
+            <Label value="工艺q" background="red" hotkey="ctrl+3"/>              
+            <Label value="辅料q" background="red" hotkey="ctrl+4"/>        
+            <Label value="花型q" background="red" hotkey="ctrl+5"/>              
+            <Label value="配饰q" background="red" hotkey="ctrl+6"/>
+            <Label value="妆容q" background="red" hotkey="ctrl+7"/>
+            <Label value="场景q" background="red" hotkey="ctrl+8"/>
+          </Labels>       
+          <Header value=" ---面料侧" size="10"/>          
+          <Labels name="label2-fabric-lack" toName="all_prompts_txt_line2">
+            <Label value="拼接q" background="blue" hotkey="ctrl+a"/>
+            <Label value="材质q" background="blue" hotkey="ctrl+b"/>
+            <Label value="透明度q" background="blue" hotkey="ctrl+c"/>
+            <Label value="垂感q" background="blue" hotkey="ctrl+d"/>
+            <Label value="蓬松感q" background="blue" hotkey="ctrl+e"/>
+            <Label value="皱感q" background="blue" hotkey="ctrl+f"/>
+            <Label value="光泽q" background="blue" hotkey="ctrl+g"/>
+            <Label value="颜色q" background="blue" hotkey="ctrl+h"/>
+            <Label value="工艺q" background="blue" hotkey="ctrl+i"/>     
+            <Label value="模特外观q" background="blue" hotkey="ctrl+j"/>
+            <Label value="模特姿势q" background="blue" hotkey="ctrl+k"/>
+            <Label value="构图q" background="blue" hotkey="ctrl+l"/>              
+          </Labels>             
+          <Header value=" >> 其他" size="10"/>          
+          <Labels name="label2-others" toName="all_prompts_txt_line2">
+            <Label value="其他问题" background="yellow" hotkey="m"/>
+          </Labels>       
+          <TextArea name="custom-label-input-line2" toName="all_prompts_txt_line2" perRegion="true" placeholder="输入自定义标签" rows="3"/>                
+        </View>    
+      </View>
+
+      <Header value="$model3_name" size="1" />    
+      <View style="flex: 2; margin-right: 5px;">
+        <Header value="原图" />
+        <Image name="original_image_line3" value="$url"/>
+      </View>  
+      <View style="display: flex; flex-direction: row; margin-bottom: 100px;">
+
+        <View style="flex: 1; margin-right: 5px;">
+          <Header value="$model3_name" />
+          <Image name="model3" value="$model3_path"/>
+        </View>
+
+        <View style="flex: 1; margin-right: 50px; height: 1000">
+          <Header value="gpt描述（baseline caption）" size="3" />
+          <HyperText name="all_prompts_txt_line3" value="$All_prompts"/>
+        </View>
+        <View style="flex: 1; margin-right: 5px;">
+
+          <Header value="1. 检查生成图片是否跟随原文描述" size="3"/>   
+          <Header value=" >> 不跟随标签" size="9"/>          
+          <Header value=" ---服装侧" size="10"/>          
+          <Labels name="label3-cloth" toName="all_prompts_txt_line3">
+            <Label value="品类b" background="red" hotkey="1"/>
+            <Label value="款式b" background="red" hotkey="2"/>
+            <Label value="工艺b" background="red" hotkey="3"/>              
+            <Label value="辅料b" background="red" hotkey="4"/>        
+            <Label value="花型b" background="red" hotkey="5"/>              
+            <Label value="配饰b" background="red" hotkey="6"/>
+            <Label value="妆容b" background="red" hotkey="7"/>
+            <Label value="场景b" background="red" hotkey="8"/>
+          </Labels>       
+          <Header value=" ---面料侧" size="10"/>          
+          <Labels name="label3-fabric" toName="all_prompts_txt_line3">
+            <Label value="拼接b" background="blue" hotkey="a"/>
+            <Label value="材质b" background="blue" hotkey="b"/>
+            <Label value="透明度b" background="blue" hotkey="c"/>
+            <Label value="垂感b" background="blue" hotkey="d"/>
+            <Label value="蓬松感b" background="blue" hotkey="e"/>
+            <Label value="皱感b" background="blue" hotkey="f"/>
+            <Label value="光泽b" background="blue" hotkey="g"/>
+            <Label value="颜色b" background="blue" hotkey="h"/>
+            <Label value="工艺b" background="blue" hotkey="i"/>     
+            <Label value="模特外观b" background="blue" hotkey="j"/>
+            <Label value="模特姿势b" background="blue" hotkey="k"/>
+            <Label value="构图b" background="blue" hotkey="l"/>              
+          </Labels>       
+          <Header value=" >> 缺失标签" size="9"/>          
+          <Header value=" ---服装侧" size="10"/>          
+          <Labels name="label3-cloth-lack" toName="all_prompts_txt_line3">
+            <Label value="品类q" background="red" hotkey="ctrl+1"/>
+            <Label value="款式q" background="red" hotkey="ctrl+2"/>
+            <Label value="工艺q" background="red" hotkey="ctrl+3"/>              
+            <Label value="辅料q" background="red" hotkey="ctrl+4"/>        
+            <Label value="花型q" background="red" hotkey="ctrl+5"/>              
+            <Label value="配饰q" background="red" hotkey="ctrl+6"/>
+            <Label value="妆容q" background="red" hotkey="ctrl+7"/>
+            <Label value="场景q" background="red" hotkey="ctrl+8"/>
+          </Labels>       
+          <Header value=" ---面料侧" size="10"/>          
+          <Labels name="label3-fabric-lack" toName="all_prompts_txt_line3">
+            <Label value="拼接q" background="blue" hotkey="ctrl+a"/>
+            <Label value="材质q" background="blue" hotkey="ctrl+b"/>
+            <Label value="透明度q" background="blue" hotkey="ctrl+c"/>
+            <Label value="垂感q" background="blue" hotkey="ctrl+d"/>
+            <Label value="蓬松感q" background="blue" hotkey="ctrl+e"/>
+            <Label value="皱感q" background="blue" hotkey="ctrl+f"/>
+            <Label value="光泽q" background="blue" hotkey="ctrl+g"/>
+            <Label value="颜色q" background="blue" hotkey="ctrl+h"/>
+            <Label value="工艺q" background="blue" hotkey="ctrl+i"/>     
+            <Label value="模特外观q" background="blue" hotkey="ctrl+j"/>
+            <Label value="模特姿势q" background="blue" hotkey="ctrl+k"/>
+            <Label value="构图q" background="blue" hotkey="ctrl+l"/>              
+          </Labels>             
+          <Header value=" >> 其他" size="10"/>          
+          <Labels name="label3-others" toName="all_prompts_txt_line3">
+            <Label value="其他问题" background="yellow" hotkey="m"/>
+          </Labels>       
+          <TextArea name="custom-label-input-line3" toName="all_prompts_txt_line3" perRegion="true" placeholder="输入自定义标签" rows="3"/>                
+        </View>    
+      </View>
+
+      <Header value="$model4_name" size="1" />    
+      <View style="flex: 2; margin-right: 5px;">
+        <Header value="原图" />
+        <Image name="original_image_line4" value="$url"/>
+      </View>  
+      <View style="display: flex; flex-direction: row; margin-bottom: 100px;">
+
+        <View style="flex: 1; margin-right: 5px;">
+          <Header value="$model4_name" />
+          <Image name="model4" value="$model4_path"/>
+        </View>
+
+        <View style="flex: 1; margin-right: 50px; height: 1000">
+          <Header value="gpt描述（baseline caption）" size="3" />
+          <HyperText name="all_prompts_txt_line4" value="$All_prompts"/>
+        </View>
+        <View style="flex: 1; margin-right: 5px;">
+
+          <Header value="1. 检查生成图片是否跟随原文描述" size="3"/>   
+          <Header value=" >> 不跟随标签" size="9"/>          
+          <Header value=" ---服装侧" size="10"/>          
+          <Labels name="label4-cloth" toName="all_prompts_txt_line4">
+            <Label value="品类b" background="red" hotkey="1"/>
+            <Label value="款式b" background="red" hotkey="2"/>
+            <Label value="工艺b" background="red" hotkey="3"/>              
+            <Label value="辅料b" background="red" hotkey="4"/>        
+            <Label value="花型b" background="red" hotkey="5"/>              
+            <Label value="配饰b" background="red" hotkey="6"/>
+            <Label value="妆容b" background="red" hotkey="7"/>
+            <Label value="场景b" background="red" hotkey="8"/>
+          </Labels>       
+          <Header value=" ---面料侧" size="10"/>          
+          <Labels name="label4-fabric" toName="all_prompts_txt_line4">
+            <Label value="拼接b" background="blue" hotkey="a"/>
+            <Label value="材质b" background="blue" hotkey="b"/>
+            <Label value="透明度b" background="blue" hotkey="c"/>
+            <Label value="垂感b" background="blue" hotkey="d"/>
+            <Label value="蓬松感b" background="blue" hotkey="e"/>
+            <Label value="皱感b" background="blue" hotkey="f"/>
+            <Label value="光泽b" background="blue" hotkey="g"/>
+            <Label value="颜色b" background="blue" hotkey="h"/>
+            <Label value="工艺b" background="blue" hotkey="i"/>     
+            <Label value="模特外观b" background="blue" hotkey="j"/>
+            <Label value="模特姿势b" background="blue" hotkey="k"/>
+            <Label value="构图b" background="blue" hotkey="l"/>              
+          </Labels>       
+          <Header value=" >> 缺失标签" size="9"/>          
+          <Header value=" ---服装侧" size="10"/>          
+          <Labels name="label4-cloth-lack" toName="all_prompts_txt_line4">
+            <Label value="品类q" background="red" hotkey="ctrl+1"/>
+            <Label value="款式q" background="red" hotkey="ctrl+2"/>
+            <Label value="工艺q" background="red" hotkey="ctrl+3"/>              
+            <Label value="辅料q" background="red" hotkey="ctrl+4"/>        
+            <Label value="花型q" background="red" hotkey="ctrl+5"/>              
+            <Label value="配饰q" background="red" hotkey="ctrl+6"/>
+            <Label value="妆容q" background="red" hotkey="ctrl+7"/>
+            <Label value="场景q" background="red" hotkey="ctrl+8"/>
+          </Labels>       
+          <Header value=" ---面料侧" size="10"/>          
+          <Labels name="label4-fabric-lack" toName="all_prompts_txt_line4">
+            <Label value="拼接q" background="blue" hotkey="ctrl+a"/>
+            <Label value="材质q" background="blue" hotkey="ctrl+b"/>
+            <Label value="透明度q" background="blue" hotkey="ctrl+c"/>
+            <Label value="垂感q" background="blue" hotkey="ctrl+d"/>
+            <Label value="蓬松感q" background="blue" hotkey="ctrl+e"/>
+            <Label value="皱感q" background="blue" hotkey="ctrl+f"/>
+            <Label value="光泽q" background="blue" hotkey="ctrl+g"/>
+            <Label value="颜色q" background="blue" hotkey="ctrl+h"/>
+            <Label value="工艺q" background="blue" hotkey="ctrl+i"/>     
+            <Label value="模特外观q" background="blue" hotkey="ctrl+j"/>
+            <Label value="模特姿势q" background="blue" hotkey="ctrl+k"/>
+            <Label value="构图q" background="blue" hotkey="ctrl+l"/>              
+          </Labels>                   
+          <Header value=" >> 其他" size="10"/>          
+          <Labels name="label4-others" toName="all_prompts_txt_line4">
+            <Label value="其他问题" background="yellow" hotkey="m"/>
+          </Labels>       
+          <TextArea name="custom-label-input-line4" toName="all_prompts_txt_line4" perRegion="true" placeholder="输入自定义标签" rows="3"/>                
+        </View>    
+      </View>  
+    </View>
+
 image_to_text_config: |    
     <View>
         <Header value="图生文评测"/>
@@ -416,56 +743,111 @@ image_to_text_config: |
             }
         </Style>
         <View className="container">
-            <View className="image-block">
+            <View style="flex: 1;" className="image-block">
                 <Header value="原图"/>
                 <Image name="url" value="$url" maxWidth="100%"/>
             </View>
-            <View className="text-block text-block-right">        
+            <View style="flex: 1; height: 400;" className="text-block text-block-right">        
+                <HyperText name="overall_all_prompts" value="$All_prompts" />                
+            </View>      
+            <View style="flex: 1;" className="text-block text-block-right">        
                 <Header value="1. 找出文本中描述和图片不一致的内容"/>          
                 <Header value=" >> 不一致标签" size="9"/>          
                 <Header value=" ---服装侧" size="10"/>          
                 <Labels name="label1-cloth" toName="overall_all_prompts">
-                    <Label value="场景描述不一致" background="red" hotkey="1"/>
-                    <Label value="款式设计不一致" background="red" hotkey="2"/>
-                    <Label value="品类不一致" background="red" hotkey="3"/>
-                    <Label value="花型图案不一致" background="red" hotkey="4"/>
-                    <Label value="服装工艺不一致" background="red" hotkey="5"/>
-                    <Label value="配饰不一致" background="red" hotkey="6"/>
-                    <Label value="妆容不一致" background="red" hotkey="7"/>
-                </Labels>       
+                  <Label value="品类b" background="red" hotkey="1"/>
+                  <Label value="款式b" background="red" hotkey="2"/>
+                  <Label value="工艺b" background="red" hotkey="3"/>              
+                  <Label value="辅料b" background="red" hotkey="4"/>        
+                  <Label value="花型b" background="red" hotkey="5"/>              
+                  <Label value="配饰b" background="red" hotkey="6"/>
+                  <Label value="妆容b" background="red" hotkey="7"/>
+                  <Label value="场景b" background="red" hotkey="8"/>
+                </Labels>                 
                 <Header value=" ---面料侧" size="10"/>          
                 <Labels name="label1-fabric" toName="overall_all_prompts">
-                    <Label value="服装面料不一致" background="blue" hotkey="8"/>
-                    <Label value="服装颜色不一致" background="blue" hotkey="9"/>
-                    <Label value="模特描述（性别五官等）不一致" background="blue" hotkey="0"/>
-                    <Label value="构图描述（展示效果）不一致" background="blue" hotkey="a"/>          
-                </Labels>                 
+                  <Label value="拼接b" background="blue" hotkey="a"/>
+                  <Label value="材质b" background="blue" hotkey="b"/>
+                  <Label value="透明度b" background="blue" hotkey="c"/>
+                  <Label value="垂感b" background="blue" hotkey="d"/>
+                  <Label value="蓬松感b" background="blue" hotkey="e"/>
+                  <Label value="皱感b" background="blue" hotkey="f"/>
+                  <Label value="光泽b" background="blue" hotkey="g"/>
+                  <Label value="颜色b" background="blue" hotkey="h"/>
+                  <Label value="工艺b" background="blue" hotkey="i"/>     
+                  <Label value="模特外观b" background="blue" hotkey="j"/>
+                  <Label value="模特姿势b" background="blue" hotkey="k"/>
+                  <Label value="构图b" background="blue" hotkey="l"/>              
+                </Labels>      
                 <Header value=" >> 无中生有标签" size="9"/>          
-                <Header value=" ---服装侧" size="10"/>                    
+                <Header value=" ---服装侧" size="10"/>          
                 <Labels name="label2-cloth" toName="overall_all_prompts">
-                    <Label value="场景描述无中生有" background="Orange" hotkey="ctrl+1"/>
-                    <Label value="款式设计无中生有" background="Orange" hotkey="ctrl+2"/>
-                    <Label value="品类无中生有" background="Orange" hotkey="ctrl+3"/>
-                    <Label value="花型图案不一致" background="Orange" hotkey="ctrl+4"/>
-                    <Label value="服装工艺不一致" background="Orange" hotkey="ctrl+5"/>
-                    <Label value="配饰无中生有" background="Orange" hotkey="ctrl+6"/>
-                    <Label value="妆容无中生有" background="Orange" hotkey="ctrl+7"/>
-                </Labels>   
+                  <Label value="品类w" background="red" hotkey="ctrl+1"/>
+                  <Label value="款式w" background="red" hotkey="ctrl+2"/>
+                  <Label value="工艺w" background="red" hotkey="ctrl+3"/>              
+                  <Label value="辅料w" background="red" hotkey="ctrl+4"/>        
+                  <Label value="花型w" background="red" hotkey="ctrl+5"/>              
+                  <Label value="配饰w" background="red" hotkey="ctrl+6"/>
+                  <Label value="妆容w" background="red" hotkey="ctrl+7"/>
+                  <Label value="场景w" background="red" hotkey="ctrl+8"/>
+                </Labels>      
                 <Header value=" ---面料侧" size="10"/>          
                 <Labels name="label2-fabric" toName="overall_all_prompts">
-                    <Label value="服装面料无中生有" background="purple" hotkey="ctrl+8"/>
-                    <Label value="面料颜色无中生有" background="purple" hotkey="ctrl+9"/>
-                    <Label value="模特描述（性别五官等）无中生有" background="purple" hotkey="ctrl+0"/>
-                    <Label value="构图描述（展示效果）无中生有" background="purple" hotkey="ctrl+a"/>            
+                  <Label value="拼接w" background="blue" hotkey="ctrl+a"/>
+                  <Label value="材质w" background="blue" hotkey="ctrl+b"/>
+                  <Label value="透明度w" background="blue" hotkey="ctrl+c"/>
+                  <Label value="垂感w" background="blue" hotkey="ctrl+d"/>
+                  <Label value="蓬松感w" background="blue" hotkey="ctrl+e"/>
+                  <Label value="皱感w" background="blue" hotkey="ctrl+f"/>
+                  <Label value="光泽w" background="blue" hotkey="ctrl+g"/>
+                  <Label value="颜色w" background="blue" hotkey="ctrl+h"/>
+                  <Label value="工艺w" background="blue" hotkey="ctrl+i"/>     
+                  <Label value="模特外观w" background="blue" hotkey="ctrl+j"/>
+                  <Label value="模特姿势w" background="blue" hotkey="ctrl+k"/>
+                  <Label value="构图w" background="blue" hotkey="ctrl+l"/>              
                 </Labels>   
                 <Header value=" >> 其他" size="9"/>          
                 <Labels name="label3-others" toName="overall_all_prompts">     
-                    <Label value="其他" background="yellow" hotkey="ctrl+b"/>              
+                    <Label value="其他" background="yellow" hotkey="m"/>              
                 </Labels>       
-                <TextArea name="custom-label-input" toName="overall_all_prompts" perRegion="true" placeholder="输入自定义标签" rows="3"/>               
-                <HyperText name="overall_all_prompts" value="$merged_caption_cn"/>        
+                <TextArea name="custom-label-input" toName="overall_all_prompts" perRegion="true" placeholder="输入自定义标签" rows="3"/>                      
             </View>
-        </View>
+            <View style="flex: 0.5;" className="text-block text-block-right">           
+                <Header value="2. 用检测框框出图片中被丢失的细节"/>
+                <Text name="detection-task-description" value="任务说明：图片缺失的主元素，但文字中缺失，用框在图中框出来（算法侧根据自我认知标注）"/>
+                <Header value=" ---服装侧" size="10"/>                      
+                <RectangleLabels name="detection-labels-cloth" toName="url">
+                  <Label value="品类q" background="red" hotkey="alt+1"/>
+                  <Label value="款式q" background="red" hotkey="alt+2"/>
+                  <Label value="工艺q" background="red" hotkey="alt+3"/>              
+                  <Label value="辅料q" background="red" hotkey="alt+4"/>        
+                  <Label value="图案q" background="red" hotkey="alt+5"/>              
+                  <Label value="配饰q" background="red" hotkey="alt+6"/>
+                  <Label value="妆容q" background="red" hotkey="alt+7"/>
+                  <Label value="场景q" background="red" hotkey="alt+8"/>
+                </RectangleLabels>
+                <Header value=" ---面料侧" size="10"/>          
+                <RectangleLabels name="detection-labels-fabric" toName="url">
+                  <Label value="拼接q" background="blue" hotkey="alt+a"/>
+                  <Label value="材质q" background="blue" hotkey="alt+b"/>
+                  <Label value="透明度q" background="blue" hotkey="alt+c"/>
+                  <Label value="垂感q" background="blue" hotkey="alt+d"/>
+                  <Label value="蓬松感q" background="blue" hotkey="alt+e"/>
+                  <Label value="皱感q" background="blue" hotkey="alt+f"/>
+                  <Label value="光泽q" background="blue" hotkey="alt+g"/>
+                  <Label value="颜色q" background="blue" hotkey="alt+h"/>
+                  <Label value="工艺q" background="blue" hotkey="alt+i"/>     
+                  <Label value="模特描述（性别五官）q" background="blue" hotkey="alt+j"/>
+                  <Label value="模特描述（姿势）q" background="blue" hotkey="alt+k"/>
+                  <Label value="构图q" background="blue" hotkey="alt+l"/>        
+                </RectangleLabels>
+                <Header value=" >> 其他" size="9"/>          
+                <RectangleLabels name="detection-labels-others" toName="url">
+                    <Label value="其他" background="yellow" hotkey="alt+m"/>                 
+                </RectangleLabels>
+              <TextArea name="custom-label-input-detection" toName="url" perRegion="true" placeholder="输入自定义标签" rows="3"/>              
+            </View>
+      </View>
     </View>
 
 text_to_image_config: |    

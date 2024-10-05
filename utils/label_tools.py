@@ -218,6 +218,8 @@ class LabelStudioManager:
             label_config = self.config['label_config']
         elif task_type == 'flux_models_compare':
             label_config = self.config['flux_models_config']
+        elif task_type == 'flux_models_compare_text':
+            label_config = self.config['flux_models_text_config']            
         elif task_type == 'image_to_text_compare':
             label_config = self.config['image_to_text_config']
         elif task_type == 'text_to_image_compare':
