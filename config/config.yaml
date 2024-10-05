@@ -9,10 +9,10 @@ openai:
 niutrans:
   api_key: "f185e293d09db7295ecfa027578d9833"
 labelstudio:
-  url: "http://localhost:20024"
-  api_key: "9228983fcb7d2d5aa2179ca73616585b1a20713a"
+  url: "http://localhost:20003"
+  api_key: "9c40d26689ca0b31c8998b423817e21c61853768"
   external_ip: "218.28.238.77"
-  external_port: "20024"
+  external_port: "20003"
 label_config: |
     <View>
         <Header value="提示词融合评估"/>
@@ -394,98 +394,6 @@ flux_models_config: |
                     rows="5" maxSubmissions="1"/> 
         </View>   	
       </View>
-
-
-      <View style="display: flex; flex-direction: row;">
-        <View style="flex: 2; margin-right: 5px;">
-          <Header value="原图" />
-          <Image name="image1-4" value="$url"/>
-          <HyperText name="txt-1-4" value="$All_prompts"/>
-        </View>
-        <View style="flex: 2; margin-right: 5px;">
-          <Header value="model4" />
-          <Image name="image5" value="$a800_15"/>
-        </View>
-
-        <View style="flex: 1; margin-right: 5px;">
-          <Header value="1. 生图质量打标" size="3" />
-          <Text name="description-input-5" value="任务说明：图片中异常部分拉框标记出来"/>
-          <Header value=">> 人脸区域" size="3"/>
-          <RectangleLabels name="label5-1" toName="image4">
-            <Label value="脸崩：人脸崩坏(v4)" background="red" hotkey="1"/>
-            <Label value="脸崩：表情异常(v4)" background="red" hotkey="2"/>
-            <Label value="脸崩：头颈比例异常(v4)" background="red" hotkey="3"/>
-            <Label value="脸崩：眼睛异常(v4)" background="red" hotkey="4"/>
-          </RectangleLabels>
-          <Header value=">> 躯体区域" size="3"/>
-          <RectangleLabels name="label5-2" toName="image4">
-            <Label value="躯体崩：多出四肢(v4)" background="red" hotkey="5"/>
-            <Label value="躯体崩：身体扭曲(v4)" background="red" hotkey="6"/>
-            <Label value="躯体崩：不合理穿搭(v4)" background="red" hotkey="7"/>
-            <Label value="躯体崩：躯体融合(v4)" background="red" hotkey="8"/>
-            <Label value="躯体崩：人体肌肉感异常(v4)" background="red" hotkey="9"/>
-            <Label value="躯体崩：人体膝盖褶皱异常(v4)" background="red" hotkey="0"/>
-            <Label value="躯体崩：模特身材比例异常(v4)" background="red" hotkey="ctrl+1"/>
-            <Label value="躯体崩：模特与背景的交界处异常(v4)" background="red" hotkey="ctrl+2"/>
-            <Label value="躯体崩：模特与背景的协调性异常(v4)" background="red" hotkey="ctrl+3"/>
-          </RectangleLabels>
-          <Header value=">> 手部区域" size="3"/>
-          <RectangleLabels name="label5-3" toName="image4">
-            <Label value="手崩：左手纹理或结构异常(v4)" background="red" hotkey="ctrl+4"/>
-            <Label value="手崩：左手模糊(v4)" background="red" hotkey="ctrl+5"/>
-            <Label value="手崩：左手肤色异常(v4)" background="red" hotkey="ctrl+6"/>
-            <Label value="手崩：右手纹理或结构异常(v4)" background="red" hotkey="ctrl+7"/>
-            <Label value="手崩：右手模糊(v4)" background="red" hotkey="ctrl+8"/>
-            <Label value="手崩：右手肤色异常(v4)" background="red" hotkey="ctrl+9"/>
-          </RectangleLabels>  
-          <Header value=">> 脚部区域" size="3"/>
-          <RectangleLabels name="label5-4" toName="image4">
-            <Label value="脚崩：左脚异常(v4)" background="red" hotkey="ctrl+0"/>
-            <Label value="脚崩：右脚异常(v4)" background="red" hotkey="alt+1"/>
-          </RectangleLabels>        
-          <Header value=">> 其它" size="3"/>
-          <RectangleLabels name="label5-5" toName="image4">
-            <Label value="其它(v4)" background="red" hotkey="ctrl+2"/>
-          </RectangleLabels>              
-          <TextArea name="custom-label-input-5" toName="image4" perRegion="true" placeholder="输入自定义标签" rows="3"/>
-        </View>
-        <View style="flex: 1; margin-right: 5px;">
-
-          <Header value="2. 一致性打标" size="3" />
-          <Choices name="class-left5-1" toName="image4" choice="multiple">
-            <Header value=">> 服装侧" size="3" />
-            <Choice value="品类不一致(v4)" hotkey="shift+y"/>
-            <Choice value="款式不一致(v4)" hotkey="shift+a"/>
-            <Choice value="工艺不一致(v4)" hotkey="shift+b"/>
-            <Choice value="辅料不一致(v4)" hotkey="shift+c"/>
-            <Choice value="图案不一致(v4)" hotkey="shift+d"/>		
-            <Choice value="配饰不一致(v4)" hotkey="shift+e"/>		
-            <Choice value="装饰不一致(v4)" hotkey="shift+f"/>		
-            <Choice value="生产不可行(v4)" hotkey="shift+g"/>		        
-            <Choice value="服装没问题(v4)" hotkey="shift+w"/>		        
-            <Header value=">> 面料侧" size="3" />
-            <Choice value="拼接不一致(v4)" hotkey="shift+h"/>
-            <Choice value="材质不一致(v4)" hotkey="shift+i"/>
-            <Choice value="厚度不一致(v4)" hotkey="shift+j"/>
-            <Choice value="透明度不一致(v4)" hotkey="shift+k"/>
-            <Choice value="垂感不一致(v4)" hotkey="shift+l"/>
-            <Choice value="柔软度不一致(v4)" hotkey="shift+m"/>
-            <Choice value="弹性不一致(v4)" hotkey="shift+n"/>
-            <Choice value="蓬松感不一致(v4)" hotkey="shift+o"/>
-            <Choice value="皱感不一致(v4)" hotkey="shift+p"/>
-            <Choice value="光泽不一致(v4)" hotkey="shift+q"/>
-            <Choice value="颜色不一致(v4)" hotkey="shift+r"/>		
-            <Choice value="图案不一致(v4)" hotkey="shift+s"/>		
-            <Choice value="工艺不一致(v4)" hotkey="shift+t"/>		
-            <Choice value="家族名不一致(v4)" hotkey="shift+u"/>		
-            <Choice value="面料没问题(v4)" hotkey="shift+x"/>		        
-            <Header value=">> 生图侧" size="3" />
-            <Choice value="四拼生成失败(v4)" hotkey="shift+v"/>		
-          </Choices>	       
-          <TextArea name="Producibility-text-left5-1" toName="image4" placeholder="如果不可生产，请输入原因..."
-                    rows="5" maxSubmissions="1"/> 
-        </View>   	
-      </View>  
     </View>
     
 image_to_text_config: |    
