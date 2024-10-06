@@ -10,7 +10,7 @@ from modules.logging import log_inference
 from utils.parser import get_base_prompt, get_merge_prompt
 from utils.label_tools import abc, load_config, format_string_for_xml, count_tokens, LabelStudioManager, convert_to_html_and_escape_xml, get_column_index
 
-config_path = "/data1/A800-01/data/xinzhedeng/MyCode/Project/labelstudio/config/prompts.py"
+config_path = "./config/prompts.py"
 BASE_PROMPT = get_base_prompt(config_path)
 MERGE_PROMPT = get_merge_prompt(config_path)
 # 加载配置
