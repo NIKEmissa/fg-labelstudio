@@ -471,6 +471,12 @@ flux_models_text_config: |
             <Label value="模特姿势q" background="blue" hotkey="ctrl+k"/>
             <Label value="构图q" background="blue" hotkey="ctrl+l"/>              
           </Labels>             
+          <Header value=">> 生图标签" size="10"/>
+          <Choices name="label1-generator-side" toName="model1" choice="multiple">
+            <Choice value="四拼失败" hotkey="none1"/>		
+            <Choice value="生图模糊" hotkey="none2"/>		
+          </Choices>
+          <TextArea name="Producibility-text-left2-1" toName="model1" placeholder="如有补充，请自行输入，按回车确认..." rows="1" /> 
           <Header value=" >> 其他" size="10"/>          
           <Labels name="label1-others" toName="all_prompts_txt_line1">
             <Label value="其他问题" background="yellow" hotkey="m"/>
@@ -552,6 +558,12 @@ flux_models_text_config: |
             <Label value="模特姿势q" background="blue" hotkey="ctrl+k"/>
             <Label value="构图q" background="blue" hotkey="ctrl+l"/>              
           </Labels>             
+          <Header value=">> 生图标签" size="10"/>
+          <Choices name="label2-generator-side" toName="model2" choice="multiple">
+            <Choice value="四拼失败" hotkey="none1"/>		
+            <Choice value="生图模糊" hotkey="none2"/>		
+          </Choices>
+          <TextArea name="Producibility-text-left2-2" toName="model2" placeholder="如有补充，请自行输入，按回车确认..." rows="1" /> 
           <Header value=" >> 其他" size="10"/>          
           <Labels name="label2-others" toName="all_prompts_txt_line2">
             <Label value="其他问题" background="yellow" hotkey="m"/>
@@ -633,6 +645,12 @@ flux_models_text_config: |
             <Label value="模特姿势q" background="blue" hotkey="ctrl+k"/>
             <Label value="构图q" background="blue" hotkey="ctrl+l"/>              
           </Labels>             
+          <Header value=">> 生图标签" size="10"/>
+          <Choices name="label3-generator-side" toName="model3" choice="multiple">
+            <Choice value="四拼失败" hotkey="none1"/>		
+            <Choice value="生图模糊" hotkey="none2"/>		
+          </Choices>
+          <TextArea name="Producibility-text-left2-3" toName="model3" placeholder="如有补充，请自行输入，按回车确认..." rows="1" /> 
           <Header value=" >> 其他" size="10"/>          
           <Labels name="label3-others" toName="all_prompts_txt_line3">
             <Label value="其他问题" background="yellow" hotkey="m"/>
@@ -714,6 +732,12 @@ flux_models_text_config: |
             <Label value="模特姿势q" background="blue" hotkey="ctrl+k"/>
             <Label value="构图q" background="blue" hotkey="ctrl+l"/>              
           </Labels>                   
+          <Header value=">> 生图标签" size="10"/>
+          <Choices name="label4-generator-side" toName="model4" choice="multiple">
+            <Choice value="四拼失败" hotkey="none1"/>		
+            <Choice value="生图模糊" hotkey="none2"/>		
+          </Choices>
+          <TextArea name="Producibility-text-left2-4" toName="model4" placeholder="如有补充，请自行输入，按回车确认..." rows="1" /> 
           <Header value=" >> 其他" size="10"/>          
           <Labels name="label4-others" toName="all_prompts_txt_line4">
             <Label value="其他问题" background="yellow" hotkey="m"/>
