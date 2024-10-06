@@ -861,8 +861,8 @@ image_to_text_config: |
                   <Label value="光泽q" background="blue" hotkey="alt+g"/>
                   <Label value="颜色q" background="blue" hotkey="alt+h"/>
                   <Label value="工艺q" background="blue" hotkey="alt+i"/>     
-                  <Label value="模特描述（性别五官）q" background="blue" hotkey="alt+j"/>
-                  <Label value="模特描述（姿势）q" background="blue" hotkey="alt+k"/>
+                  <Label value="模特外观q" background="blue" hotkey="alt+j"/>
+                  <Label value="模特姿势q" background="blue" hotkey="alt+k"/>
                   <Label value="构图q" background="blue" hotkey="alt+l"/>        
                 </RectangleLabels>
                 <Header value=" >> 其他" size="9"/>          

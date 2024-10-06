@@ -9,6 +9,7 @@ from utils.ai_tools import gpt
 from modules.logging import log_inference
 from utils.parser import get_base_prompt, get_merge_prompt
 from utils.label_tools import abc, load_config, format_string_for_xml, count_tokens, LabelStudioManager, convert_to_html_and_escape_xml, get_column_index
+from utils.utils import save_uploaded_file
 
 config_path = "./config/prompts.py"
 BASE_PROMPT = get_base_prompt(config_path)
@@ -16,8 +17,6 @@ MERGE_PROMPT = get_merge_prompt(config_path)
 # 加载配置
 label_config = load_config()
 pprint(label_config)
-# label_config['labelstudio']['url'] = 'http://localhost:20004'
-# label_config['labelstudio']['external_port'] = '20004'
 pprint(label_config)
 
 def image_to_text_compare():
@@ -34,6 +33,9 @@ def image_to_text_compare():
     label_manager = LabelStudioManager(label_config)    
 
     if uploaded_file is not None:
+        # 保存上传的 CSV 文件
+        csv_path = save_uploaded_file(uploaded_file)  # 保存文件
+        
         # 解析 CSV 文件
         df = pd.read_csv(uploaded_file)
         
@@ -108,7 +110,15 @@ def image_to_text_compare():
                 
                 # 获取当前用户名
                 current_username = st.session_state["username"]
-                log_inference(project_url, current_username)  # 记录日志
+                
+                # 记录日志，包括上传的 CSV 路径、start_row 和 end_row
+                log_data = {
+                    "csv_path": csv_path,
+                    "start_row": start_row,
+                    "end_row": end_row
+                }
+                
+                log_inference(project_url, current_username, log_data)  # 记录日志
 
                 st.success('运行完成！')
                 st.markdown(f'请打开 [结果链接]({project_url})')
