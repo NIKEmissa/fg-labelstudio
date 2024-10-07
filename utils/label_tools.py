@@ -14,7 +14,7 @@ def count_tokens(text, model="gpt-4o"):
 def load_config(config_path='./config/config.yaml'):
     """加载配置文件"""
     with open(config_path, 'r', encoding='utf-8') as file:
-        return yaml.safe_load(file)
+        return yaml.safe_load(file)   
     
 def get_column_index(df, column_name):
     try:
@@ -168,6 +168,7 @@ class LabelStudioManager:
         """
         self.config = config
         self.client = self.login()
+        self.validate_config()
 
     def login(self):
         """
@@ -178,6 +179,18 @@ class LabelStudioManager:
         print(f"Initializing Label Studio Client with URL: {url} and API Key: {api_key}")
         client = Client(url=url, api_key=api_key)
         return client
+
+    def validate_config(self):
+        """验证配置的完整性"""
+        required_keys = [
+            'url', 
+            'api_key', 
+            'external_ip', 
+            'external_port', 
+        ]
+        for key in required_keys:
+            if key not in self.config['labelstudio']:
+                raise ValueError(f"Missing required configuration key: {key}")
 
     def list_projects(self):
         """
@@ -190,26 +203,12 @@ class LabelStudioManager:
             project_info = {
                 'id': project.id,
                 'title': project.title,
-                'created_at': project.created_at,
-                'updated_at': project.updated_at
+                'created_at': project.created_at
             }
             project_list.append(project_info)
             print(project_info)
         return project_list
 
-    # def create_project(self, title='New Fashion Project'):
-    #     """
-    #     创建一个新的项目，并返回项目对象。
-    #     """
-    #     label_config = self.config['label_config']
-    #     print("Creating new project...")
-    #     project = self.client.start_project(
-    #         title=title,
-    #         label_config=label_config
-    #     )
-    #     print(f"Project '{title}' created successfully with ID: {project.id}")
-    #     return project
-    
     def create_project(self, title='New Fashion Project', task_type='merge_compare'):
         """
         创建一个新的项目，并返回项目对象。
@@ -270,8 +269,9 @@ class LabelStudioManager:
         try:
             tasks = project.get_tasks()
             for task in tasks:
-                for prediction in task.get('predictions', []):
-                    annotations.append(prediction)
+                # 从 annotations 字段获取标注结果
+                for annotation in task.get('annotations', []):
+                    annotations.append(annotation)
             print(f"Retrieved {len(annotations)} annotations.")
             return annotations
         except Exception as e:
@@ -280,19 +280,35 @@ class LabelStudioManager:
 
     def get_project_status(self, project):
         """
-        列出指定项目的状态信息。
+        列出指定项目的状态信息，包括任务完成百分比和标注人。
         """
         print(f"Fetching statistics for project ID {project.id}...")
         try:
-            stats = project.get_statistics()
+            tasks = project.get_tasks()
+            total_tasks = len(tasks)
+            completed_count = sum(1 for task in tasks if task['annotations'])
+            in_progress_count = total_tasks - completed_count
+            completion_percentage = (completed_count / total_tasks * 100) if total_tasks > 0 else 0
+
+            # 提取标注人信息
+            annotators = set()
+            for task in tasks:
+                for annotation in task.get('annotations', []):
+                    username = annotation.get('created_username')
+                    if username:
+                        # 去掉后面的数字
+                        username_cleaned = username.split(',')[0].strip()
+                        annotators.add(username_cleaned)
+
             status = {
                 'id': project.id,
                 'title': project.title,
-                'task_count': stats.get('total_tasks', 0),
-                'completed_count': stats.get('completed_tasks', 0),
-                'in_progress_count': stats.get('in_progress_tasks', 0),
+                'task_count': total_tasks,
+                'completed_count': completed_count,
+                'in_progress_count': in_progress_count,
+                'completion_percentage': completion_percentage,
                 'created_at': project.created_at,
-                'updated_at': project.updated_at
+                'annotators': list(annotators)  # 记录所有标注人
             }
             print(f"Project Status: {status}")
             return status
@@ -309,65 +325,103 @@ class LabelStudioManager:
         project_data_url = f"http://{external_ip}:{external_port}/projects/{project.id}/data/"
         print(f"Project data URL: {project_data_url}")
         return project_data_url
+    
+    def load_project_by_url(self, project_url):
+        """
+        通过项目 URL 加载项目。
+        """
+        try:
+            project_id = project_url.split('/')[-2]  # 获取项目 ID
+            project = self.client.get_project(project_id)
+            print(f"Loaded project with ID: {project.id} from URL: {project_url}")
+            return project
+        except Exception as e:
+            print(f"Error loading project from URL: {e}")
+            return None
+
 
 if __name__ == '__main__':
-    # 加载配置
-    config = load_config()
-
-    # 读取 CSV 文件
-    csv_path = '/data1/A800-01/data/xinzhedeng/MyCode/Project/labelstudio/output2_2024-09-25 06:54:50.csv'
-    print(f"Reading CSV file from: {csv_path}")
-    df = pd.read_csv(csv_path)
-
-    # 调用原有的 abc 函数
-    print("\n=== 使用原有的 abc 函数 ===")
-    project_data_url_abc = abc(config, df)
-    if project_data_url_abc:
-        print(f"Label Studio project (abc) is available at: {project_data_url_abc}")
-    else:
-        print("Failed to create and upload tasks to the Label Studio project via abc().")
-
-    # 新增：使用 LabelStudioManager 类进行操作
-    print("\n=== 使用 LabelStudioManager 类 ===")
-    label_manager = LabelStudioManager(config)
-
-    # 示例 1: 创建项目，读取 CSV，逐条上传任务
-    print("\n--- 示例 1: 创建项目并逐条上传任务 ---")
-    project = label_manager.create_project(title='New Fashion Project via Class')
+    run_example = 2
     
-    print(f"Reading CSV file from: {csv_path}")
-    df = pd.read_csv(csv_path)
+    if run_example == 1:
+        # 加载配置
+        config = load_config()
 
-    print("Uploading tasks one by one...")
-    for index, row in df.iterrows():
-        task_data = {
-            'data': {
-                'OriginalImage': row['url'],
-                'Baseline': format_string_for_xml(row['image_caption_cn']),
-                'Baseline_token_cnt': count_tokens(format_string_for_xml(row['image_caption_cn'])),
-                'Baseline_EN': format_string_for_xml(row['image_caption_en']),
-                'Baseline_EN_token_cnt': count_tokens(format_string_for_xml(row['image_caption_en'])),
-                'All_Others': format_string_for_xml(row['all_others_cn']),
-                'All_Others_token_cnt': count_tokens(format_string_for_xml(row['all_others_cn'])),
-                'All_Others_EN': format_string_for_xml(row['all_others_en']),
-                'All_Others_EN_token_cnt': count_tokens(format_string_for_xml(row['all_others_en'])),
-                'Merged_Description': format_string_for_xml(row['merged_caption_cn']),
-                'Merged_Description_token_cnt': count_tokens(format_string_for_xml(row['merged_caption_cn'])),
-                'Merged_Description_EN': format_string_for_xml(row['merged_caption_en']),
-                'Merged_Description_EN_token_cnt': count_tokens(format_string_for_xml(row['merged_caption_en']))
-            }
-        }
-        success = label_manager.upload_task(project, task_data)
-        if success:
-            print(f"Task {index} uploaded successfully.")
+        # 读取 CSV 文件
+        csv_path = '/data1/A800-01/data/xinzhedeng/MyCode/Project/labelstudio/output2_2024-09-25 06:54:50.csv'
+        print(f"Reading CSV file from: {csv_path}")
+        df = pd.read_csv(csv_path)
+
+        # 调用原有的 abc 函数
+        print("\n=== 使用原有的 abc 函数 ===")
+        project_data_url_abc = abc(config, df)
+        if project_data_url_abc:
+            print(f"Label Studio project (abc) is available at: {project_data_url_abc}")
         else:
-            print(f"Failed to upload Task {index}.")
+            print("Failed to create and upload tasks to the Label Studio project via abc().")
 
-    # 示例 2: 获取项目的所有信息
-    print("\n--- 示例 2: 获取项目的所有信息 ---")
-    project_status = label_manager.get_project_status(project)
-    annotations = label_manager.get_all_annotations(project)
-    project_url = label_manager.get_project_data_url(project)
-    print(f"Project Status: {project_status}")
-    print(f"Number of Annotations: {len(annotations)}")
-    print(f"Project Data URL: {project_url}")
+        # 新增：使用 LabelStudioManager 类进行操作
+        print("\n=== 使用 LabelStudioManager 类 ===")
+        label_manager = LabelStudioManager(config)
+
+        # 示例 1: 创建项目，读取 CSV，逐条上传任务
+        print("\n--- 示例 1: 创建项目并逐条上传任务 ---")
+        project = label_manager.create_project(title='New Fashion Project via Class')
+
+        print(f"Reading CSV file from: {csv_path}")
+        df = pd.read_csv(csv_path)
+
+        print("Uploading tasks one by one...")
+        for index, row in df.iterrows():
+            task_data = {
+                'data': {
+                    'OriginalImage': row['url'],
+                    'Baseline': format_string_for_xml(row['image_caption_cn']),
+                    'Baseline_token_cnt': count_tokens(format_string_for_xml(row['image_caption_cn'])),
+                    'Baseline_EN': format_string_for_xml(row['image_caption_en']),
+                    'Baseline_EN_token_cnt': count_tokens(format_string_for_xml(row['image_caption_en'])),
+                    'All_Others': format_string_for_xml(row['all_others_cn']),
+                    'All_Others_token_cnt': count_tokens(format_string_for_xml(row['all_others_cn'])),
+                    'All_Others_EN': format_string_for_xml(row['all_others_en']),
+                    'All_Others_EN_token_cnt': count_tokens(format_string_for_xml(row['all_others_en'])),
+                    'Merged_Description': format_string_for_xml(row['merged_caption_cn']),
+                    'Merged_Description_token_cnt': count_tokens(format_string_for_xml(row['merged_caption_cn'])),
+                    'Merged_Description_EN': format_string_for_xml(row['merged_caption_en']),
+                    'Merged_Description_EN_token_cnt': count_tokens(format_string_for_xml(row['merged_caption_en']))
+                }
+            }
+            success = label_manager.upload_task(project, task_data)
+            if success:
+                print(f"Task {index} uploaded successfully.")
+            else:
+                print(f"Failed to upload Task {index}.")
+
+        # 示例 2: 获取项目的所有信息
+        print("\n--- 示例 2: 获取项目的所有信息 ---")
+        project_status = label_manager.get_project_status(project)
+        annotations = label_manager.get_all_annotations(project)
+        project_url = label_manager.get_project_data_url(project)
+        print(f"Project Status: {project_status}")
+        print(f"Number of Annotations: {len(annotations)}")
+        print(f"Project Data URL: {project_url}")
+        
+        
+    elif run_example == 2:
+        # 加载配置
+        config = load_config()    
+
+        # 创建 LabelStudioManager 实例
+        manager = LabelStudioManager(config)
+
+        # 列出所有项目
+        manager.list_projects()
+
+        # 通过 URL 加载项目示例
+        project_url = 'http://218.28.238.77:20003/projects/262/data?tab=214'  # 修改为你的项目 URL
+        loaded_project = manager.load_project_by_url(project_url)
+
+        annotations = manager.get_all_annotations(loaded_project)
+        print(annotations)        
+        
+        project_status = manager.get_project_status(loaded_project)
+        print(project_status)
