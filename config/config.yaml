@@ -423,7 +423,7 @@ flux_models_text_config: |
             <Label value="品类b" background="red" hotkey="1"/>
             <Label value="款式b" background="red" hotkey="2"/>
             <Label value="工艺b" background="red" hotkey="3"/>              
-            <Label value="辅料" background="red" hotkey="4"/>        
+            <Label value="辅料b" background="red" hotkey="4"/>        
             <Label value="花型b" background="red" hotkey="5"/>              
             <Label value="配饰b" background="red" hotkey="6"/>
             <Label value="妆容b" background="red" hotkey="7"/>
@@ -837,8 +837,8 @@ image_to_text_config: |
                 <TextArea name="custom-label-input" toName="overall_all_prompts" perRegion="true" placeholder="输入自定义标签" rows="3"/>                      
             </View>
             <View style="flex: 0.5;" className="text-block text-block-right">           
-                <Header value="2. 用检测框框出图片中被丢失的细节"/>
-                <Text name="detection-task-description" value="任务说明：图片缺失的主元素，但文字中缺失，用框在图中框出来（算法侧根据自我认知标注）"/>
+                <Header value="2. 用检测框框出图片中被丢失的内容"/>
+                <Text name="detection-task-description" value="任务说明：图片中存在的显著元素，但在文字中缺失，在图中框出来（算法侧根据自我认知标注，无严格统一标准）"/>
                 <Header value=" ---服装侧" size="10"/>                      
                 <RectangleLabels name="detection-labels-cloth" toName="url">
                   <Label value="品类q" background="red" hotkey="alt+1"/>
