@@ -339,9 +339,37 @@ class LabelStudioManager:
             print(f"Error loading project from URL: {e}")
             return None
 
+    def load_project_by_id(self, project_id):
+        """
+        通过项目 ID 加载项目。
+        """
+        try:
+            project = self.client.get_project(project_id)
+            print(f"Loaded project with ID: {project.id} ")
+            return project
+        except Exception as e:
+            print(f"Error loading project with ID: {e}")
+            return None
+        
+    def get_projects_completion_df(self, project_ids):
+        """
+        根据项目 ID 列表加载多个项目，统计每个项目的完成度，并返回 DataFrame。
+        """
+        records = []
+        for project_id in project_ids:
+            project = self.load_project_by_id(project_id)
+            if project:
+                project_status = self.get_project_status(project)
+                for username in project_status['annotators']:
+                    records.append({
+                        'project_id': project.id,
+                        'created_username': username,
+                        'completion_percentage': project_status['completion_percentage']
+                    })
+        return pd.DataFrame(records)
 
 if __name__ == '__main__':
-    run_example = 2
+    run_example = 4
     
     if run_example == 1:
         # 加载配置
@@ -409,6 +437,11 @@ if __name__ == '__main__':
     elif run_example == 2:
         # 加载配置
         config = load_config()    
+        
+        # 自定义config配置
+        config['labelstudio']['url'] = "http://zjstudio2024.top:20003"
+        config['labelstudio']['api_key'] = "68d132dbafe046a52d91f620e29fabca8970568a"
+        config['labelstudio']['external_ip'] = "zjstudio2024.top"        
 
         # 创建 LabelStudioManager 实例
         manager = LabelStudioManager(config)
@@ -418,6 +451,7 @@ if __name__ == '__main__':
 
         # 通过 URL 加载项目示例
         project_url = 'http://218.28.238.77:20003/projects/262/data?tab=214'  # 修改为你的项目 URL
+        project_url = 'http://zjstudio2024.top:20003/projects/184/data?tab=146'  # 修改为你的项目 URL
         loaded_project = manager.load_project_by_url(project_url)
 
         annotations = manager.get_all_annotations(loaded_project)
@@ -425,3 +459,64 @@ if __name__ == '__main__':
         
         project_status = manager.get_project_status(loaded_project)
         print(project_status)
+        
+    elif run_example == 3:
+        # 加载配置
+        config = load_config()    
+        
+        # 自定义config配置
+        config['labelstudio']['url'] = "http://zjstudio2024.top:20003"
+        config['labelstudio']['api_key'] = "68d132dbafe046a52d91f620e29fabca8970568a"
+        config['labelstudio']['external_ip'] = "zjstudio2024.top"        
+
+        # 创建 LabelStudioManager 实例
+        manager = LabelStudioManager(config)
+
+        # 列出所有项目
+        manager.list_projects()
+
+        # 通过 URL 加载项目示例
+        project_url = 'http://218.28.238.77:20003/projects/262/data?tab=214'  # 修改为你的项目 URL
+        project_url = 'http://zjstudio2024.top:20003/projects/184/data?tab=146'  # 修改为你的项目 URL
+        loaded_project = manager.load_project_by_url(project_url)
+
+        annotations = manager.get_all_annotations(loaded_project)
+        print(annotations)        
+        
+        project_status = manager.get_project_status(loaded_project)
+        print(project_status)
+        
+    # 在 run_example 中使用示例
+    elif run_example == 4:
+        # 加载配置
+        config = load_config()    
+
+        # 自定义config配置
+        config['labelstudio']['url'] = "http://zjstudio2024.top:20003"
+        config['labelstudio']['api_key'] = "68d132dbafe046a52d91f620e29fabca8970568a"
+        config['labelstudio']['external_ip'] = "zjstudio2024.top"        
+
+        # 创建 LabelStudioManager 实例
+        manager = LabelStudioManager(config)
+
+        # 根据项目 ID 列表加载项目并统计完成度
+#         project_list = ["184", "185"]
+#         project_list = [
+#         '123', '124', '125', '126', '127', '128', '129', '131', '132', '133', '134',
+#         '52', '53', '66', '55', '56', '57', '58', '59', '60', '61', '62', '63'
+#         ]        
+        
+#         # 专家文生图
+#         project_list = [
+#             '160', '177', '163', '169', '172', '180', '182', '146', '135', '138', '140', '148', '147',
+#             '162', '179', '167', '171', '174', '181', '183', '152', '154', '150', '156', '164', '168',
+#             '176', '173', '158', '149', '187', '188', '185', '184'
+#         ]        
+        project_list = ["123", "130", "133"]
+
+        completion_df = manager.get_projects_completion_df(project_list)
+
+        # 输出 DataFrame
+        print(completion_df)       
+        
+        completion_df.to_csv('completion_df.csv')
