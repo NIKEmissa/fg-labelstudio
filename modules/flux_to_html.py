@@ -82,7 +82,10 @@ def generate_summary_table(filtered_df, selected_guidances, selected_model_ids, 
         if model_id in selected_model_ids and img_seq_len in selected_img_seq_lens and size in selected_sizes and seed in selected_seeds and guidance in selected_guidances:
             model_img_seq_size_seed_idx = model_img_seq_size_seed_pairs.index((model_id, img_seq_len, size, seed))
             guide_idx = guide_values.index(guidance)
-            summary_table[model_img_seq_size_seed_idx, guide_idx] = row['image_path']
+            if str(model_id) == "6": 
+                summary_table[model_img_seq_size_seed_idx, guide_idx] = row['image_path'].replace(".jpg", "_sxp.jpg")
+            else:
+                summary_table[model_img_seq_size_seed_idx, guide_idx] = row['image_path']
 
     return summary_table, model_img_seq_size_seed_pairs, guide_values
 
