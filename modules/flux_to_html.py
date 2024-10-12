@@ -139,8 +139,10 @@ def generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_value
     for guide in guide_values:
         html_content += f"<th>{guide}</th>"
     html_content += "</tr>"
-
+    
+    model_id_set = set([])
     for i, (model_id, img_seq_len, size, seed) in enumerate(model_img_seq_size_seed_pairs):
+        model_id_set.add(str(model_id))
         html_content += "<tr>"
         html_content += f"<td>{model_id}</td><td>{img_seq_len}</td><td>{size}</td><td>{seed}</td>"
 
@@ -230,8 +232,10 @@ def generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_value
     </body>
     </html>
     """
-
-    output_file = os.path.join(output_path, f'{img_id}.html')
+    
+    formatted_model_id = ['modelID{0}'.format(i) for i in model_id_set]
+    model_id_str = "_".join(formatted_model_id)
+    output_file = os.path.join(output_path, f'{img_id}_{model_id_str}.html')
     with open(output_file, 'w') as file:
         file.write(html_content)
 
