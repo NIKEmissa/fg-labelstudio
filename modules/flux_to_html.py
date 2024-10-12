@@ -238,7 +238,18 @@ def generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_value
     output_file = os.path.join(output_path, f'{img_id}_{model_id_str}.html')
     with open(output_file, 'w') as file:
         file.write(html_content)
-
+        
+        
+@st.fragment()
+def download_without_reload(file_path, filename):
+    with open(file_path, "rb") as file:
+        st.download_button(
+            label=f"下载 {filename}",
+            data=file,
+            file_name=filename,
+            mime="text/html"
+        )
+        
 def flux_to_html():
     st.title("HTML Generator from Uploaded Text Files")
 
@@ -287,10 +298,4 @@ def flux_to_html():
             st.success("HTML文件生成成功！")
             for filename in os.listdir(output_path):
                 file_path = os.path.join(output_path, filename)
-                with open(file_path, "rb") as file:
-                    st.download_button(
-                        label=f"下载 {filename}",
-                        data=file,
-                        file_name=filename,
-                        mime="text/html"
-                    )
+                download_without_reload(file_path, filename)
