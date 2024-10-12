@@ -48,40 +48,45 @@ def parse_uploaded_files(uploaded_files):
     return df
 
 # 生成整理表格
-def generate_summary_table(filtered_df, selected_guidances, selected_img_seq_lens, selected_sizes, selected_seeds):
-    img_seq_size_seed_pairs = []
+def generate_summary_table(filtered_df, selected_guidances, selected_model_ids, selected_img_seq_lens, selected_sizes, selected_seeds):
+    model_img_seq_size_seed_pairs = []
 
     # 根据用户选择的维度值进行过滤和排序组合
+    model_id_values = [val for val in sorted(filtered_df['model_id'].unique()) if val in selected_model_ids]
     img_seq_len_values = [val for val in sorted(filtered_df['img_seq_len'].unique()) if val in selected_img_seq_lens]
     size_values = [val for val in sorted(filtered_df['size'].unique()) if val in selected_sizes]
     seed_values = [val for val in sorted(filtered_df['seed'].unique()) if val in selected_seeds]
 
-    for img_seq_len in img_seq_len_values:
-        for size in size_values:
-            for seed in seed_values:
-                if len(filtered_df[
-                    (filtered_df['img_seq_len'] == img_seq_len) &
-                    (filtered_df['size'] == size) &
-                    (filtered_df['seed'] == seed)
-                ]) > 0:
-                    img_seq_size_seed_pairs.append((img_seq_len, size, seed))
+    # 生成 model_id, img_seq_len, size, seed 的组合
+    for model_id in model_id_values:
+        for img_seq_len in img_seq_len_values:
+            for size in size_values:
+                for seed in seed_values:
+                    if len(filtered_df[
+                        (filtered_df['model_id'] == model_id) &
+                        (filtered_df['img_seq_len'] == img_seq_len) &
+                        (filtered_df['size'] == size) &
+                        (filtered_df['seed'] == seed)
+                    ]) > 0:
+                        model_img_seq_size_seed_pairs.append((model_id, img_seq_len, size, seed))
 
     guide_values = [val for val in sorted(filtered_df['guidance'].unique()) if val in selected_guidances]
 
-    summary_table = np.empty((len(img_seq_size_seed_pairs), len(guide_values)), dtype=object)
+    summary_table = np.empty((len(model_img_seq_size_seed_pairs), len(guide_values)), dtype=object)
     summary_table[:] = ''  # 初始化为空字符串
 
+    # 填充表格内容
     for _, row in filtered_df.iterrows():
-        img_seq_len, size, seed, guidance = row['img_seq_len'], row['size'], row['seed'], row['guidance']
-        if img_seq_len in selected_img_seq_lens and size in selected_sizes and seed in selected_seeds and guidance in selected_guidances:
-            img_seq_size_seed_idx = img_seq_size_seed_pairs.index((img_seq_len, size, seed))
+        model_id, img_seq_len, size, seed, guidance = row['model_id'], row['img_seq_len'], row['size'], row['seed'], row['guidance']
+        if model_id in selected_model_ids and img_seq_len in selected_img_seq_lens and size in selected_sizes and seed in selected_seeds and guidance in selected_guidances:
+            model_img_seq_size_seed_idx = model_img_seq_size_seed_pairs.index((model_id, img_seq_len, size, seed))
             guide_idx = guide_values.index(guidance)
-            summary_table[img_seq_size_seed_idx, guide_idx] = row['image_path']
+            summary_table[model_img_seq_size_seed_idx, guide_idx] = row['image_path']
 
-    return summary_table, img_seq_size_seed_pairs, guide_values
+    return summary_table, model_img_seq_size_seed_pairs, guide_values
 
 # 生成HTML页面以查看图像
-def generate_html_page(summary_table, img_seq_size_seed_pairs, guide_values, img_id, output_path='output_html'):
+def generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_values, img_id, output_path='output_html'):
     html_content = """
     <html>
     <head>
@@ -130,14 +135,14 @@ def generate_html_page(summary_table, img_seq_size_seed_pairs, guide_values, img
     """
 
     # 添加表格标题
-    html_content += "<th>img_seq_len</th><th>size</th><th>seed</th>"
+    html_content += "<th>model_id</th><th>img_seq_len</th><th>size</th><th>seed</th>"
     for guide in guide_values:
         html_content += f"<th>{guide}</th>"
     html_content += "</tr>"
 
-    for i, (img_seq_len, size, seed) in enumerate(img_seq_size_seed_pairs):
+    for i, (model_id, img_seq_len, size, seed) in enumerate(model_img_seq_size_seed_pairs):
         html_content += "<tr>"
-        html_content += f"<td>{img_seq_len}</td><td>{size}</td><td>{seed}</td>"
+        html_content += f"<td>{model_id}</td><td>{img_seq_len}</td><td>{size}</td><td>{seed}</td>"
 
         for j in range(len(guide_values)):
             image_path = summary_table[i, j]
@@ -243,6 +248,7 @@ def flux_to_html():
         # 用户选择具体的维度值
         st.subheader("选择维度值")
         selected_guidances = st.multiselect("选择guidance值", sorted(df['guidance'].unique()), default=sorted(df['guidance'].unique()))
+        selected_model_ids = st.multiselect("选择model_id值", sorted(df['model_id'].unique()), default=sorted(df['model_id'].unique()))
         selected_img_seq_lens = st.multiselect("选择img_seq_len值", sorted(df['img_seq_len'].unique()), default=sorted(df['img_seq_len'].unique()))
         selected_sizes = st.multiselect("选择size值", sorted(df['size'].unique()), default=sorted(df['size'].unique()))
         selected_seeds = st.multiselect("选择seed值", sorted(df['seed'].unique()), default=sorted(df['seed'].unique()))
@@ -263,14 +269,15 @@ def flux_to_html():
                 unique_img_ids = df['img_id'].unique()
                 for img_id in unique_img_ids:
                     filtered_df = df[df['img_id'] == img_id]
-                    summary_table, img_seq_size_seed_pairs, guide_values = generate_summary_table(
+                    summary_table, model_img_seq_size_seed_pairs, guide_values = generate_summary_table(
                         filtered_df,
                         selected_guidances,
+                        selected_model_ids,
                         selected_img_seq_lens,
                         selected_sizes,
                         selected_seeds
                     )
-                    generate_html_page(summary_table, img_seq_size_seed_pairs, guide_values, img_id, output_path)
+                    generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_values, img_id, output_path)
 
             # 提供下载链接
             st.success("HTML文件生成成功！")
