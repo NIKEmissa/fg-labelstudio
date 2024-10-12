@@ -4,7 +4,6 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 from tqdm import tqdm
-from pprint import pprint
 from utils.ai_tools import gpt
 from modules.logging import log_inference
 from utils.parser import get_base_prompt, get_merge_prompt
@@ -16,10 +15,6 @@ BASE_PROMPT = get_base_prompt(config_path)
 MERGE_PROMPT = get_merge_prompt(config_path)
 # 加载配置
 label_config = load_config()
-pprint(label_config)
-# label_config['labelstudio']['url'] = 'http://localhost:20004'
-# label_config['labelstudio']['external_port'] = '20004'
-pprint(label_config)
 
 def text_to_image_compare():
     # Streamlit 页面配置

@@ -4,20 +4,17 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 from tqdm import tqdm
-from pprint import pprint
 from utils.ai_tools import gpt
 from modules.logging import log_inference
 from utils.parser import get_base_prompt, get_merge_prompt
 from utils.label_tools import abc, load_config, format_string_for_xml, count_tokens, LabelStudioManager, convert_to_html_and_escape_xml, get_column_index
-from utils.utils import save_uploaded_file
+from utils.utils2 import save_uploaded_file
 
 config_path = "./config/prompts.py"
 BASE_PROMPT = get_base_prompt(config_path)
 MERGE_PROMPT = get_merge_prompt(config_path)
 # 加载配置
 label_config = load_config()
-pprint(label_config)
-pprint(label_config)
 
 def image_to_text_compare():
     # Streamlit 页面配置

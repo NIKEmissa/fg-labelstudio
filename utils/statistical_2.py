@@ -111,53 +111,6 @@ def parse_and_count_labels_from_annotations(annotations):
     headers = ["模型", "标签", "统计次数"]
     print(tabulate(table_data, headers=headers, tablefmt="grid"))
 
-# def parse_and_count_labels_from_csv(df):
-#     label_counter_by_model = defaultdict(Counter)
-
-#     # 定义模型 ID 和维度的映射
-#     model_id_map = {
-#         'label1': 1,
-#         'label2': 2,
-#         'label3': 3,
-#         'label4': 4
-#     }
-    
-#     dimension_map = {
-#         'cloth': '服装',
-#         'fabric': '面料',
-#         'generator-side': '生图侧',
-#         'others': '其它',
-#     }
-
-#     # 遍历 DataFrame 的每一行，统计标签
-#     for index, row in df.iterrows():
-#         from_name = row['模型']
-#         label = row['标签']
-#         model_id = next((model_id_map[key] for key in model_id_map if key in from_name), None)
-#         dimension = next((dimension_map[key] for key in dimension_map if key in from_name), None)
-        
-#         # 统计标签和相应的模型id和维度
-#         label_counter_by_model[from_name].update([label])
-
-#     # 按顺序（label1-cloth, label2-cloth...）排序并生成统计结果
-#     sorted_models = sorted(label_counter_by_model.keys(), key=sort_from_name_key)
-
-#     # 准备表格数据
-#     table_data = []
-#     for model in sorted_models:
-#         for label, count in label_counter_by_model[model].items():
-#             # 将模型id和维度也加入到表格数据中
-#             model_id = next((model_id_map[key] for key in model_id_map if key in model), None)
-#             dimension = next((dimension_map[key] for key in dimension_map if key in model), None)
-#             table_data.append([model, label, count, model_id, dimension])
-
-#     # 创建 DataFrame
-#     df_result = pd.DataFrame(table_data, columns=["模型", "标签", "统计次数", "模型id", "维度"])
-
-#     # 打印表格
-#     print(tabulate(df_result.values, headers=df_result.columns, tablefmt="grid"))
-
-#     return df_result  # 返回结果的 DataFrame
 
 def parse_and_count_labels_from_csv(df):
     label_counter_by_model = defaultdict(Counter)
@@ -177,15 +130,26 @@ def parse_and_count_labels_from_csv(df):
         'others': '其它',
     }
 
+    # 初始化任务 ID 集合
+    task_ids = set()
+
     # 遍历 DataFrame 的每一行，统计标签
     for index, row in df.iterrows():
         from_name = row['模型']
         label = row['标签']
-        model_id = next((model_id_map[key] for key in model_id_map if key in from_name), None)
-        dimension = next((dimension_map[key] for key in dimension_map if key in from_name), None)
+        task_id = row['id']  # 获取任务 ID
         
+        # 将任务 ID 添加到集合中
+        task_ids.add(task_id)
+        
+        model_id = next((model_id_map[key] for key in model_id_map if key in from_name), -1)
+        dimension = next((dimension_map[key] for key in dimension_map if key in from_name), '未知')
+
         # 统计标签和相应的模型id和维度
         label_counter_by_model[model_id].update([(label, dimension)])  # 更新为标签和维度的组合
+
+    # 统计任务量
+    task_count = len(task_ids)
 
     # 准备透视表数据
     table_data = []
@@ -199,10 +163,14 @@ def parse_and_count_labels_from_csv(df):
     # 使用透视表
     df_pivot = df_result.pivot_table(index='模型id', columns=['标签', '维度'], values='统计次数', fill_value=0)
 
+    # 将任务量添加到透视表的最左第二列
+    df_pivot.insert(0, '任务量', task_count)
+
     # 打印表格
-    print(tabulate(df_pivot.fillna(0).values, headers=df_pivot.columns, tablefmt="grid"))
+    print(tabulate(df_pivot.fillna(0).reset_index().values, headers=df_pivot.reset_index().columns, tablefmt="grid"))
 
     return df_pivot  # 返回透视结果的 DataFrame
+
 
 def parse_and_count_unique_labels_from_csv(df):
     # 定义模型 ID 和维度的映射
@@ -220,49 +188,47 @@ def parse_and_count_unique_labels_from_csv(df):
         'others': '其它',
     }
 
-    # 使用一个集合来记录每个 ID 下的标签
-    unique_labels_by_id = defaultdict(set)
-    id_count_by_model = defaultdict(set)  # 记录每个模型 ID 的唯一 ID 数量
+    # 根据 id、标签、模型 id 去重
+    df = df.drop_duplicates(subset=['id', '标签', '模型'])
+
+    # 使用 Counter 记录每个模型的标签统计
+    label_counter_by_model = defaultdict(Counter)
+
+    # 使用集合统计唯一任务数量根据 "原图URL"
+    unique_task_ids = set(df['原图URL'])
+    task_count = len(unique_task_ids)
 
     # 遍历 DataFrame 的每一行，统计标签
-    for index, row in df.iterrows():
-        task_id = row['id']  # 假设 DataFrame 中有 'id' 列
+    for _, row in df.iterrows():
         from_name = row['模型']
         label = row['标签']
-        model_id = next((model_id_map[key] for key in model_id_map if key in from_name), None)
-        dimension = next((dimension_map[key] for key in dimension_map if key in from_name), None)
-        
-        # 添加标签到对应 ID 的集合中
-        if model_id is not None and dimension is not None:
-            unique_labels_by_id[task_id].add((label, model_id, dimension))
-            id_count_by_model[model_id].add(task_id)  # 记录模型 ID 对应的任务 ID
+        model_id = next((model_id_map[key] for key in model_id_map if key in from_name), -1)
+        dimension = next((dimension_map[key] for key in dimension_map if key in from_name), '未知')
 
-    # 准备统计数据
-    label_counter_by_model = defaultdict(int)
-    for labels in unique_labels_by_id.values():
-        for label, model_id, dimension in labels:
-            label_counter_by_model[(model_id, label, dimension)] += 1
+        # 统计标签和相应的模型 id 和维度
+        if model_id is not None and dimension is not None:
+            label_counter_by_model[model_id].update([(label, dimension)])
 
     # 准备透视表数据
     table_data = []
-    for (model_id, label, dimension), count in label_counter_by_model.items():
-        id_count = len(id_count_by_model[model_id])  # 获取该模型 ID 的唯一 ID 数量
-        table_data.append([model_id, label, dimension, count, id_count])  # 添加 ID 数量
+    for model_id in sorted(label_counter_by_model.keys()):
+        for (label, dimension), count in label_counter_by_model[model_id].items():
+            table_data.append([model_id, task_count, label, dimension, count])
 
     # 创建 DataFrame
-    df_result = pd.DataFrame(table_data, columns=["模型id", "标签", "维度", "统计次数", "唯一ID数量"])
+    df_result = pd.DataFrame(table_data, columns=["模型id", "任务量", "标签", "维度", "统计次数"])
 
     # 使用透视表
     df_pivot = df_result.pivot_table(index='模型id', columns=['标签', '维度'], values='统计次数', fill_value=0)
+    df_pivot.insert(0, '任务量', task_count)
 
     # 打印表格
     print(tabulate(df_pivot.fillna(0).values, headers=df_pivot.columns, tablefmt="grid"))
 
-    return df_pivot  # 返回透视结果的 DataFrame
-
-
+    return df_pivot
     
 def collect_raw_annotations_info(annotations):
+    print(annotations)
     raw_data = []
 
     # 定义模型 ID 和维度的映射
@@ -284,6 +250,8 @@ def collect_raw_annotations_info(annotations):
         task_id = annotation.get('id')
         created_username = annotation.get('created_username', '')
         results = annotation.get('result', [])
+        url = annotation.get('data', {}).get('url', '') or annotation.get('image_url', '')  # 获取原图信息
+        print(url)
 
         for result in results:
             from_name = result.get('from_name', '')
@@ -300,7 +268,8 @@ def collect_raw_annotations_info(annotations):
                         '标签': label,
                         'created_username': created_username,
                         '模型id': model_id,
-                        '维度': dimension
+                        '维度': dimension,
+                        '原图URL': url
                     })
             # 处理 choices 类型
             elif result.get('type') == 'choices':
@@ -312,13 +281,27 @@ def collect_raw_annotations_info(annotations):
                         '标签': choice,
                         'created_username': created_username,
                         '模型id': model_id,
-                        '维度': dimension
+                        '维度': dimension,
+                        '原图URL': url
                     })
+                    
+            # 处理 rectanglelabels 类型
+            elif result.get('type') == 'rectanglelabels':
+                rectangle_labels = result.get('value', {}).get('rectanglelabels', [])
+                for rectangle_label in rectangle_labels:
+                    raw_data.append({
+                        'id': task_id,
+                        '模型': from_name,
+                        '标签': rectangle_label,
+                        'created_username': created_username,
+                        '模型id': model_id,
+                        '维度': dimension,
+                        '原图URL': url
+                    })                    
 
     # 创建 DataFrame
     df_raw = pd.DataFrame(raw_data)
     return df_raw
-
 
 
 def merge_annotations_by_project_ids(project_id_list, manager):
@@ -328,6 +311,7 @@ def merge_annotations_by_project_ids(project_id_list, manager):
         print(f'Fetching annotations for project ID: {project_id}')
         loaded_project = manager.load_project_by_id(project_id)
         annotations = manager.get_all_annotations(loaded_project)  # 假设这是获取标注的函数
+        project_status = manager.get_project_status(loaded_project)
         
         if annotations:
             raw_data = collect_raw_annotations_info(annotations)  # 使用之前定义的函数
@@ -359,12 +343,12 @@ if __name__ == "__main__":
         manager = LabelStudioManager(config)
 
         # 列出所有项目
-        manager.list_projects()
+        # manager.list_projects()
 
         # 通过 URL 加载项目示例
-        project_url = 'http://218.28.238.77:20003/projects/262/data?tab=214'  # 修改为你的项目 URL
-        project_url = 'http://zjstudio2024.top:20003/projects/184/data?tab=146'  # 修改为你的项目 URL
-        project_url = 'http://zjstudio2024.top:20003/projects/53/data?tab=30'
+        # project_url = 'http://218.28.238.77:20003/projects/262/data?tab=214'  # 修改为你的项目 URL
+        # project_url = 'http://zjstudio2024.top:20003/projects/184/data?tab=146'  # 修改为你的项目 URL
+        # project_url = 'http://zjstudio2024.top:20003/projects/53/data?tab=30'
         # loaded_project = manager.load_project_by_url(project_url)
 #         loaded_project = manager.load_project_by_id('53')
 
@@ -378,32 +362,47 @@ if __name__ == "__main__":
         
 #         parse_and_count_labels_from_annotations(annotations)
         
-        project_list = ['52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '66', '123', '124', '125', '126', '127', '128', '129', '130', '131', '132', '133', '134']
-        # project_list = ['52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '66']
-        # project_list = ['123', '124', '125', '126', '127', '128', '129', '130', '131', '132', '133', '134']
-        # project_list = ['123', '124', '125', '126', '127', '128', '129', '130', '131', '132', '133', '134']
-
-        # # 专家图生文
-        # project_list = [
-        #      '74', '75', '76', '77', '78', '79', '81', '82', '83', '86', '88', '89', '92', '94', '95', '97', '90', '98', '87', '99', '100', '91', '105', '80', '102', '106', '104', '103'
-        # ]   
+        # # 算法文生图
+        # project_list = ['52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '66', '123', '124', '125', '126', '127', '128', '129', '130', '131', '132', '133', '134']
         
-        # # 专家文生图
+        # 专家文生图
         # project_list = [
         #     '160', '177', '163', '169', '172', '180', '182', '146', '135', '138', '140', '148', '147',
         #     '162', '179', '167', '171', '174', '181', '183', '152', '154', '150', '156', '164', '168',
         #     '176', '173', '158', '149', '187', '188', '185', '184'
         # ]
-        # df = merge_annotations_by_project_ids(['52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66'], manager)
-        # df = merge_annotations_by_project_ids(['123', '124', '125', '126', '127', '128', '129', '130', '131', '132', '133', '134'], manager)        
-        df = merge_annotations_by_project_ids(project_list, manager)        
 
-#         df.to_csv('resutls.csv')
-#         print(df.head())
+        ###### 专家 文生图 结果汇总 #########
+        
+        # # 专家图生文
+        project_list = ['74', '75', '76', '77', '78', '79', '81', '82', '83', '86', '88', '89', '92', '94', '95', '90', '99', '91', '105', '80', '194', '195', '196', '102', '106', '104', '103', '197', '198', '199', '200', '202', '203', '204', '206', '207']
+
+        # # 算法图生文
+        # project_list = ["65", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "64", "201", "205", "208", "210", "211", "212", "215", "216", "217"]
+
+        
+        df = merge_annotations_by_project_ids(project_list, manager)        
+        df.to_csv('resutls_zhuanjia.csv')
     
-#         df2 = parse_and_count_labels_from_csv(df)
-#         # df2.to_csv('results_zhuanjia_text_to_image_1006.csv')
-#         df2.to_csv('results_zhuanjia_image_to_text_1006.csv')        
+        df2 = parse_and_count_labels_from_csv(df)
+        df2.to_csv('results_zhuanjia_image_to_text_1006.csv')        
         
         df3 = parse_and_count_unique_labels_from_csv(df)
-        df3.to_csv('results_set_text_to_image_1006.csv')        
+        df3.to_csv('results_zhuanjia_set_image_to_text_1006.csv')
+        
+        
+        ###### 算法 文生图 结果汇总 #########
+
+        # 算法图生文
+        project_list = ["65", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "64", "201", "205", "208", "210", "211", "212", "215", "216", "217"]
+
+        
+        df = merge_annotations_by_project_ids(project_list, manager)        
+        df.to_csv('resutls_suanfa.csv')
+    
+        df2 = parse_and_count_labels_from_csv(df)
+        df2.to_csv('results_suanfa_image_to_text_1006.csv')        
+        
+        df3 = parse_and_count_unique_labels_from_csv(df)
+        df3.to_csv('results_suanfa_set_image_to_text_1006.csv')        
+        

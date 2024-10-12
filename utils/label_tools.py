@@ -269,8 +269,10 @@ class LabelStudioManager:
         try:
             tasks = project.get_tasks()
             for task in tasks:
+                url = task.get('data', {}).get('url', '')  # 获取原图信息
                 # 从 annotations 字段获取标注结果
                 for annotation in task.get('annotations', []):
+                    annotation['image_url'] = url  # 添加原图 URL 信息
                     annotations.append(annotation)
             print(f"Retrieved {len(annotations)} annotations.")
             return annotations
@@ -367,6 +369,42 @@ class LabelStudioManager:
                         'completion_percentage': project_status['completion_percentage']
                     })
         return pd.DataFrame(records)
+    
+    def get_projects_completion_summary_df(self, project_ids):
+        """
+        根据项目 ID 列表加载多个项目，统计每个项目的整体完成度，并返回 DataFrame。
+        """
+        records = []
+        for project_id in project_ids:
+            project = self.load_project_by_id(project_id)
+            if project:
+                project_status = self.get_project_status(project)
+                records.append({
+                    'project_id': project_status['id'],
+                    'title': project_status['title'],
+                    'task_count': project_status['task_count'],
+                    'completed_count': project_status['completed_count'],
+                    'in_progress_count': project_status['in_progress_count'],
+                    'completion_percentage': project_status['completion_percentage'] / 100,
+                    'created_at': project_status['created_at'],
+                    'annotators': ', '.join(project_status['annotators']) if project_status['annotators'] else 'None',
+                    'absolute_completed': int(project_status['completion_percentage'] / 100 * project_status['task_count'])
+                })
+        df = pd.DataFrame(records)
+        total_row = pd.DataFrame([{
+            'project_id': 'Total',
+            'title': 'N/A',
+            'task_count': df['task_count'].sum(),
+            'completed_count': df['completed_count'].sum(),
+            'in_progress_count': df['in_progress_count'].sum(),
+            'completion_percentage': df['completion_percentage'].mean(),
+            'created_at': 'N/A',
+            'annotators': 'N/A',
+            'absolute_completed': int(df['absolute_completed'].sum())
+        }])
+        df = pd.concat([df, total_row], ignore_index=True)
+        return df
+
 
 if __name__ == '__main__':
     run_example = 4
@@ -501,10 +539,10 @@ if __name__ == '__main__':
 
         # 根据项目 ID 列表加载项目并统计完成度
 #         project_list = ["184", "185"]
-#         project_list = [
-#         '123', '124', '125', '126', '127', '128', '129', '131', '132', '133', '134',
-#         '52', '53', '66', '55', '56', '57', '58', '59', '60', '61', '62', '63'
-#         ]        
+        project_list = [
+        '123', '124', '125', '126', '127', '128', '129', '131', '132', '133', '134',
+        '52', '53', '66', '55', '56', '57', '58', '59', '60', '61', '62', '63'
+        ]        
         
 #         # 专家文生图
 #         project_list = [
@@ -512,11 +550,24 @@ if __name__ == '__main__':
 #             '162', '179', '167', '171', '174', '181', '183', '152', '154', '150', '156', '164', '168',
 #             '176', '173', '158', '149', '187', '188', '185', '184'
 #         ]        
-        project_list = ["123", "130", "133"]
+        # project_list = ["123", "130", "133"]
+        # project_list = [
+        #     '65', '113', '114', '115', '116', '117', '118', '119', '120', '121', '122', '64'
+        # ]    
 
-        completion_df = manager.get_projects_completion_df(project_list)
+        # 算法图生文
+        project_list = ["65", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "64", "201", "205", "208", "210", "211", "212", "215", "216", "217"]
+        
+#         completion_df = manager.get_projects_completion_df(project_list)
+
+#         # 输出 DataFrame
+#         print(completion_df)       
+        
+#         completion_df.to_csv('completion_df.csv')
+        
+        completion_df = manager.get_projects_completion_summary_df(project_list)
 
         # 输出 DataFrame
         print(completion_df)       
         
-        completion_df.to_csv('completion_df.csv')
+        completion_df.to_csv('completion_df_project.csv')
