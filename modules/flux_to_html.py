@@ -5,6 +5,7 @@ import numpy as np
 from urllib.parse import urlparse
 import uuid
 import time
+import shutil
 
 # 创建DataFrame，从上传的txt文件解析内容
 def parse_uploaded_files(uploaded_files):
@@ -249,7 +250,17 @@ def download_without_reload(file_path, filename):
             file_name=filename,
             mime="text/html"
         )
-        
+
+@st.fragment()
+def download_zip_file(zip_path, filename):
+    with open(zip_path, "rb") as zip_file:
+        st.download_button(
+            label=f"下载整个压缩文件（点了按钮会反应段时间，请耐心）: {filename}",
+            data=zip_file,
+            file_name=filename,
+            mime="application/zip"
+        )
+
 def flux_to_html():
     st.title("HTML Generator from Uploaded Text Files")
 
@@ -274,7 +285,8 @@ def flux_to_html():
             unique_id = str(uuid.uuid4())  # 生成唯一的 UUID
             timestamp = int(time.time())  # 获取当前时间戳
             output_path = f'output_html/output_html_{unique_id}_{timestamp}'
-            
+            zip_path = f'{output_path}.zip'
+
             # 创建 output_path 文件夹
             if not os.path.exists(output_path):
                 os.makedirs(output_path)
@@ -294,8 +306,15 @@ def flux_to_html():
                     )
                     generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_values, img_id, output_path)
 
+            # 压缩输出文件夹为ZIP
+            shutil.make_archive(output_path, 'zip', output_path)
+
             # 提供下载链接
             st.success("HTML文件生成成功！")
+            # 下载ZIP文件
+            download_zip_file(zip_path, f'output_html_{unique_id}_{timestamp}.zip')
+
+            # 下载单个HTML文件
             for filename in os.listdir(output_path):
                 file_path = os.path.join(output_path, filename)
                 download_without_reload(file_path, filename)
