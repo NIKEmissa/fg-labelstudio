@@ -202,7 +202,7 @@ def generate_html_page(summary_table, img_seq_size_seed_pairs, guide_values, img
                                 scaleLevel = 2;
                                 offsetX = 0;
                                 offsetY = 0;
-                            } else if (scaleLevel < 10) {
+                            } else if (scaleLevel < 1000) {
                                 scaleLevel += 1;
                                 this.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scaleLevel})`;
                             }
