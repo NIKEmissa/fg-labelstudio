@@ -49,79 +49,100 @@ def parse_uploaded_files(uploaded_files):
     return df
 
 # 生成整理表格
-def generate_summary_table(filtered_df, selected_guidances, selected_model_ids, selected_img_seq_lens, selected_sizes, selected_seeds):
-    model_img_seq_size_seed_pairs = []
+def generate_summary_table(filtered_df, row_fields, col_fields):
+    row_combinations = []
+    col_combinations = []
 
-    # 根据用户选择的维度值进行过滤和排序组合
-    model_id_values = [val for val in sorted(filtered_df['model_id'].unique()) if val in selected_model_ids]
-    img_seq_len_values = [val for val in sorted(filtered_df['img_seq_len'].unique()) if val in selected_img_seq_lens]
-    size_values = [val for val in sorted(filtered_df['size'].unique()) if val in selected_sizes]
-    seed_values = [val for val in sorted(filtered_df['seed'].unique()) if val in selected_seeds]
+    # 根据用户选择的行字段生成唯一组合并排序
+    unique_row_combinations = filtered_df[row_fields].drop_duplicates().sort_values(by=row_fields)
+    for _, row in unique_row_combinations.iterrows():
+        row_combinations.append(tuple(row[row_fields]))
 
-    # 生成 model_id, img_seq_len, size, seed 的组合
-    for model_id in model_id_values:
-        for img_seq_len in img_seq_len_values:
-            for size in size_values:
-                for seed in seed_values:
-                    if len(filtered_df[
-                        (filtered_df['model_id'] == model_id) &
-                        (filtered_df['img_seq_len'] == img_seq_len) &
-                        (filtered_df['size'] == size) &
-                        (filtered_df['seed'] == seed)
-                    ]) > 0:
-                        model_img_seq_size_seed_pairs.append((model_id, img_seq_len, size, seed))
+    # 根据用户选择的列字段生成唯一组合并排序
+    unique_col_combinations = filtered_df[col_fields].drop_duplicates().sort_values(by=col_fields)
+    for _, row in unique_col_combinations.iterrows():
+        col_combinations.append(tuple(row[col_fields]))
 
-    guide_values = [val for val in sorted(filtered_df['guidance'].unique()) if val in selected_guidances]
-
-    summary_table = np.empty((len(model_img_seq_size_seed_pairs), len(guide_values)), dtype=object)
+    summary_table = np.empty((len(row_combinations), len(col_combinations)), dtype=object)
     summary_table[:] = ''  # 初始化为空字符串
 
     # 填充表格内容
     for _, row in filtered_df.iterrows():
-        model_id, img_seq_len, size, seed, guidance = row['model_id'], row['img_seq_len'], row['size'], row['seed'], row['guidance']
-        if model_id in selected_model_ids and img_seq_len in selected_img_seq_lens and size in selected_sizes and seed in selected_seeds and guidance in selected_guidances:
-            model_img_seq_size_seed_idx = model_img_seq_size_seed_pairs.index((model_id, img_seq_len, size, seed))
-            guide_idx = guide_values.index(guidance)
-            if str(model_id) == "6": 
-                summary_table[model_img_seq_size_seed_idx, guide_idx] = row['image_path'].replace(".jpg", "_sxp.jpg")
-            else:
-                summary_table[model_img_seq_size_seed_idx, guide_idx] = row['image_path']
+        row_value = tuple(row[row_fields])
+        col_value = tuple(row[col_fields])
+        try:
+            row_idx = row_combinations.index(row_value)
+            col_idx = col_combinations.index(col_value)
+            summary_table[row_idx, col_idx] = row['image_path']
+        except ValueError:
+            continue
 
-    return summary_table, model_img_seq_size_seed_pairs, guide_values
+    return summary_table, row_combinations, col_combinations
 
-# 生成HTML页面以查看图像
-def generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_values, img_id, output_path='output_html'):
-    html_content = """
+def generate_html_page(summary_table, row_combinations, col_combinations, row_fields, col_fields, img_id, output_path='output_html'):
+    # 构建表格结构
+    num_rows = len(row_fields)
+    num_cols = len(col_fields)
+    data_size = len(row_combinations)  # 根据实际行组合数量
+
+    # 初始化表格，使用空字符串填充
+    header = [['' for _ in range(num_rows + len(col_combinations))] for _ in range(num_cols + 1 + data_size)]
+
+    # 填充行字段表头
+    for i in range(num_rows):
+        header[num_cols][i] = row_fields[i]
+
+    # 填充列字段表头
+    for j in range(num_cols):
+        header[j][num_rows - 1] = col_fields[j]
+
+    # 填充列字段的值
+    for i in range(len(col_combinations)):
+        for j in range(num_cols):
+            header[j][i + num_rows] = col_combinations[i][j]
+
+    # 填充行字段的值
+    for i in range(len(row_combinations)):
+        for j in range(num_rows):
+            header[i + num_cols + 1][j] = row_combinations[i][j]
+
+    # 填充表格数据部分
+    for i in range(len(row_combinations)):
+        for j in range(len(col_combinations)):
+            header[i + num_cols + 1][j + num_rows] = summary_table[i, j] if summary_table[i, j] else "图片占位符"
+
+    # 生成HTML表格
+    html_content = f"""
     <html>
     <head>
-        <title>Summary Table Visualization</title>
+        <title>Debug Table Visualization - img_id: {img_id}</title>
         <style>
-            table {
+            table {{
                 width: 100%;
                 border-collapse: collapse;
-            }
-            table, th, td {
+            }}
+            table, th, td {{
                 border: 1px solid black;
-            }
-            th, td {
+            }}
+            th, td {{
                 padding: 10px;
                 text-align: center;
-            }
-            img {
+            }}
+            img {{
                 max-width: 200px;
                 max-height: 200px;
                 cursor: zoom-in;
                 transition: transform 0.3s ease;
-            }
-            img.fullscreen {
+            }}
+            img.fullscreen {{
                 position: fixed;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%) scale(2);
                 cursor: zoom-out;
                 z-index: 1000;
-            }
-            .overlay {
+            }}
+            .overlay {{
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -129,82 +150,78 @@ def generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_value
                 height: 100vh;
                 background: rgba(0, 0, 0, 0.7);
                 z-index: 999;
-            }
+            }}
         </style>
     </head>
     <body>
-        <h1>Summary Table Visualization - img_id: """ + str(img_id) + """</h1>
+        <h1>Debug Table Visualization - img_id: {img_id}</h1>
         <table>
-            <tr>
     """
 
-    # 添加表格标题
-    html_content += "<th>model_id</th><th>img_seq_len</th><th>size</th><th>seed</th>"
-    for guide in guide_values:
-        html_content += f"<th>{guide}</th>"
-    html_content += "</tr>"
-    
-    model_id_set = set([])
-    for i, (model_id, img_seq_len, size, seed) in enumerate(model_img_seq_size_seed_pairs):
-        model_id_set.add(str(model_id))
+    # 添加表头行
+    for row in header[:num_cols + 1]:
         html_content += "<tr>"
-        html_content += f"<td>{model_id}</td><td>{img_seq_len}</td><td>{size}</td><td>{seed}</td>"
+        for cell in row:
+            html_content += f"<th>{cell}</th>" if cell != '' else "<th></th>"
+        html_content += "</tr>"
 
-        for j in range(len(guide_values)):
-            image_path = summary_table[i, j]
-            if image_path:
-                html_content += f"<td><img src='{image_path}' alt='Image' class='zoomable'></td>"
+    # 添加数据部分
+    for row in header[num_cols + 1:]:
+        html_content += "<tr>"
+        for cell in row:
+            if isinstance(cell, str) and cell.startswith('http'):
+                html_content += f"<td><img src='{cell}' alt='Image' class='zoomable'></td>"
             else:
-                html_content += "<td></td>"
+                html_content += f"<td>{cell}</td>" if cell != '' else "<td></td>"
         html_content += "</tr>"
 
     html_content += """
         </table>
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function () {{
                 const images = document.querySelectorAll("img.zoomable");
 
-                images.forEach(image => {
+                images.forEach(image => {{
                     let scaleLevel = 1;
                     let isDragging = false;
                     let startX, startY;
                     let offsetX = 0, offsetY = 0;
 
-                    image.addEventListener("mousedown", function (event) {
-                        if (this.classList.contains("fullscreen")) {
+                    image.addEventListener("mousedown", function (event) {{
+                        if (this.classList.contains("fullscreen")) {{
                             isDragging = true;
                             startX = event.clientX - offsetX;
                             startY = event.clientY - offsetY;
-                        }
-                    });
+                        }}
+                    }});
 
-                    document.addEventListener("mousemove", function (event) {
-                        if (isDragging) {
+                    document.addEventListener("mousemove", function (event) {{
+                        if (isDragging) {{
                             offsetX = event.clientX - startX;
                             offsetY = event.clientY - startY;
                             image.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scaleLevel})`;
-                        }
-                    });
+                        }}
+                    }});
 
-                    document.addEventListener("mouseup", function () {
+                    document.addEventListener("mouseup", function () {{
                         isDragging = false;
-                    });
+                    }});
 
-                    image.addEventListener("click", function (event) {
-                        if (event.ctrlKey) {
-                            if (scaleLevel > 1) {
+                    image.addEventListener("click", function (event) {{
+                        if (event.ctrlKey) {{
+                            if (scaleLevel > 1) {{
                                 scaleLevel -= 1;
                                 this.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scaleLevel})`;
-                            } else {
+                            }} else {{
                                 document.querySelector(".overlay")?.remove();
                                 this.classList.remove("fullscreen");
                                 scaleLevel = 1;
                                 offsetX = 0;
                                 offsetY = 0;
                                 this.style.transform = `translate(-50%, -50%) scale(${scaleLevel})`;
-                            }
-                        } else {
-                            if (!this.classList.contains("fullscreen")) {
+                            }}
+                        }} else {{
+                            if (!this.classList.contains("fullscreen")) {{
                                 const overlay = document.createElement("div");
                                 overlay.classList.add("overlay");
                                 document.body.appendChild(overlay);
@@ -213,36 +230,36 @@ def generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_value
                                 scaleLevel = 2;
                                 offsetX = 0;
                                 offsetY = 0;
-                            } else if (scaleLevel < 1000) {
+                            }} else if (scaleLevel < 1000) {{
                                 scaleLevel += 1;
                                 this.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scaleLevel})`;
-                            }
-                        }
-                    });
-                });
+                            }}
+                        }}
+                    }});
+                }});
 
-                document.body.addEventListener("click", function (event) {
-                    if (event.target.classList.contains("overlay")) {
+                document.body.addEventListener("click", function (event) {{
+                    if (event.target.classList.contains("overlay")) {{
                         document.querySelector(".overlay")?.remove();
                         const fullscreenImage = document.querySelector("img.fullscreen");
-                        if (fullscreenImage) {
+                        if (fullscreenImage) {{
                             fullscreenImage.classList.remove("fullscreen");
                             fullscreenImage.style.transform = "scale(1)";
-                        }
-                    }
-                });
-            });
+                        }}
+                    }}
+                }});
+            }});
         </script>
     </body>
     </html>
     """
-    
-    formatted_model_id = ['modelID{0}'.format(i) for i in model_id_set]
-    model_id_str = "_".join(formatted_model_id)
-    output_file = os.path.join(output_path, f'{img_id}_{model_id_str}.html')
+
+    # 保存HTML文件
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+    output_file = os.path.join(output_path, f'debug_table_{img_id}.html')
     with open(output_file, 'w') as file:
         file.write(html_content)
-        
         
 @st.fragment()
 def download_without_reload(file_path, filename):
@@ -264,6 +281,7 @@ def download_zip_file(zip_path, filename):
             mime="application/zip"
         )
 
+# Streamlit应用主函数
 def flux_to_html():
     st.title("HTML Generator from Uploaded Text Files")
 
@@ -274,23 +292,26 @@ def flux_to_html():
         # 解析上传的文件
         df = parse_uploaded_files(uploaded_files)
 
+        # 允许用户选择行和列的字段
+        available_fields = ['img_id', 'model_id', 'guidance', 'img_seq_len', 'size', 'seed']
+        row_fields = st.multiselect("选择用于生成表格的字段（行）", available_fields, default=['model_id', 'img_seq_len', 'size', 'seed'])
+        col_fields = st.multiselect("选择用于生成表格的字段（列）", available_fields, default=['guidance'])
+
         # 用户选择具体的维度值
         st.subheader("选择维度值")
-        selected_guidances = st.multiselect("选择guidance值", sorted(df['guidance'].unique()), default=sorted(df['guidance'].unique()))
         selected_model_ids = st.multiselect("选择model_id值", sorted(df['model_id'].unique()), default=sorted(df['model_id'].unique()))
         selected_img_seq_lens = st.multiselect("选择img_seq_len值", sorted(df['img_seq_len'].unique()), default=sorted(df['img_seq_len'].unique()))
         selected_sizes = st.multiselect("选择size值", sorted(df['size'].unique()), default=sorted(df['size'].unique()))
         selected_seeds = st.multiselect("选择seed值", sorted(df['seed'].unique()), default=sorted(df['seed'].unique()))
+        selected_guidances = st.multiselect("选择guidance值", sorted(df['guidance'].unique()), default=sorted(df['guidance'].unique()))
 
         # 增加Run按钮
         if st.button("Run"):
-            # 创建唯一的 output_path
-            unique_id = str(uuid.uuid4())  # 生成唯一的 UUID
-            timestamp = int(time.time())  # 获取当前时间戳
+            unique_id = str(uuid.uuid4())  
+            timestamp = int(time.time())
             output_path = f'output_html/output_html_{unique_id}_{timestamp}'
             zip_path = f'{output_path}.zip'
 
-            # 创建 output_path 文件夹
             if not os.path.exists(output_path):
                 os.makedirs(output_path)
 
@@ -299,22 +320,25 @@ def flux_to_html():
                 unique_img_ids = df['img_id'].unique()
                 for img_id in unique_img_ids:
                     filtered_df = df[df['img_id'] == img_id]
-                    summary_table, model_img_seq_size_seed_pairs, guide_values = generate_summary_table(
+                    filtered_df = filtered_df[
+                        (filtered_df['model_id'].isin(selected_model_ids)) &
+                        (filtered_df['img_seq_len'].isin(selected_img_seq_lens)) &
+                        (filtered_df['size'].isin(selected_sizes)) &
+                        (filtered_df['seed'].isin(selected_seeds)) &
+                        (filtered_df['guidance'].isin(selected_guidances))
+                    ]
+                    summary_table, row_combinations, col_combinations = generate_summary_table(
                         filtered_df,
-                        selected_guidances,
-                        selected_model_ids,
-                        selected_img_seq_lens,
-                        selected_sizes,
-                        selected_seeds
+                        row_fields,
+                        col_fields
                     )
-                    generate_html_page(summary_table, model_img_seq_size_seed_pairs, guide_values, img_id, output_path)
+                    generate_html_page(summary_table, row_combinations, col_combinations, row_fields, col_fields, img_id, output_path)
+
 
             # 压缩输出文件夹为ZIP
             shutil.make_archive(output_path, 'zip', output_path)
 
-            # 提供下载链接
             st.success("HTML文件生成成功！")
-            # 下载ZIP文件
             download_zip_file(zip_path, f'output_html_{unique_id}_{timestamp}.zip')
 
             # 下载单个HTML文件
