@@ -16,6 +16,7 @@ def parse_uploaded_files(uploaded_files):
     img_seq_lens = []
     sizes = []
     seeds = []
+    customed_tags = []
 
     for uploaded_file in uploaded_files:
         lines = uploaded_file.readlines()
@@ -34,6 +35,16 @@ def parse_uploaded_files(uploaded_files):
                 sizes.append(parts[4])
                 seeds.append(int(parts[5]))
                 image_paths.append(line)
+                customed_tags.append(str('None'))
+            elif len(parts) == 7:
+                img_ids.append(int(parts[0]))
+                model_ids.append(int(parts[1]))
+                guidances.append(float(parts[2]))
+                img_seq_lens.append(int(parts[3]))
+                sizes.append(parts[4])
+                seeds.append(int(parts[5]))
+                image_paths.append(line)
+                customed_tags.append(str(parts[6]))                
 
     # 创建DataFrame
     df = pd.DataFrame({
@@ -43,7 +54,8 @@ def parse_uploaded_files(uploaded_files):
         'guidance': guidances,
         'img_seq_len': img_seq_lens,
         'size': sizes,
-        'seed': seeds
+        'seed': seeds,
+        'customed_tags': customed_tags,
     })
 
     return df
@@ -293,7 +305,7 @@ def flux_to_html():
         df = parse_uploaded_files(uploaded_files)
 
         # 允许用户选择行和列的字段
-        available_fields = ['img_id', 'model_id', 'guidance', 'img_seq_len', 'size', 'seed']
+        available_fields = ['img_id', 'model_id', 'guidance', 'img_seq_len', 'size', 'seed', 'customed_tags']
         row_fields = st.multiselect("选择用于生成表格的字段（行）", available_fields, default=['model_id', 'img_seq_len', 'size', 'seed'])
         col_fields = st.multiselect("选择用于生成表格的字段（列）", available_fields, default=['guidance'])
 
@@ -304,6 +316,7 @@ def flux_to_html():
         selected_sizes = st.multiselect("选择size值", sorted(df['size'].unique()), default=sorted(df['size'].unique()))
         selected_seeds = st.multiselect("选择seed值", sorted(df['seed'].unique()), default=sorted(df['seed'].unique()))
         selected_guidances = st.multiselect("选择guidance值", sorted(df['guidance'].unique()), default=sorted(df['guidance'].unique()))
+        selected_customed_tags = st.multiselect("选择customed_tags值", sorted(df['customed_tags'].unique()), default=sorted(df['customed_tags'].unique()))
 
         # 增加Run按钮
         if st.button("Run"):
@@ -325,7 +338,8 @@ def flux_to_html():
                         (filtered_df['img_seq_len'].isin(selected_img_seq_lens)) &
                         (filtered_df['size'].isin(selected_sizes)) &
                         (filtered_df['seed'].isin(selected_seeds)) &
-                        (filtered_df['guidance'].isin(selected_guidances))
+                        (filtered_df['guidance'].isin(selected_guidances)) &
+                        (filtered_df['customed_tags'].isin(selected_customed_tags)) 
                     ]
                     summary_table, row_combinations, col_combinations = generate_summary_table(
                         filtered_df,
