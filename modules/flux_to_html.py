@@ -306,7 +306,7 @@ def flux_to_html():
 
         # 允许用户选择行和列的字段
         available_fields = ['img_id', 'model_id', 'guidance', 'img_seq_len', 'size', 'seed', 'customed_tags']
-        row_fields = st.multiselect("选择用于生成表格的字段（行）", available_fields, default=['model_id', 'img_seq_len', 'size', 'seed'])
+        row_fields = st.multiselect("选择用于生成表格的字段（行）", available_fields, default=['model_id', 'img_seq_len', 'size', 'seed', 'customed_tags'])
         col_fields = st.multiselect("选择用于生成表格的字段（列）", available_fields, default=['guidance'])
 
         # 用户选择具体的维度值
