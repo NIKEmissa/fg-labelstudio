@@ -268,6 +268,7 @@ class LabelStudioManager:
         annotations = []
         try:
             tasks = project.get_tasks()
+            # print(f">>>>tasks:{tasks}")
             for task in tasks:
                 url = task.get('data', {}).get('url', '')  # 获取原图信息
                 # 从 annotations 字段获取标注结果

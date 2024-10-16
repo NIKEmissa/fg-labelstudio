@@ -227,6 +227,27 @@ def parse_and_count_unique_labels_from_csv(df):
 
     return df_pivot
     
+import pandas as pd
+
+# 定义处理DataFrame的函数
+def process_annotations(df):
+    # 按照annotation_id分组，将标注类型为'补充文本'的行进行分组并转换为字典
+    supplementary_texts = df[df['标注类型'] == '补充文本'].groupby('annotation_id')['标签'].apply(list).to_dict()
+
+    # 定义函数，用于将补充文本追加到非补充文本的行
+    def append_supplementary(row):
+        if row['annotation_id'] in supplementary_texts:
+            return supplementary_texts[row['annotation_id']]
+        return []
+
+    # 应用该函数创建“自定义文本”列
+    df['自定义文本'] = df.apply(append_supplementary, axis=1)
+    
+    # 删除标注类型为“补充文本”的行
+    df = df[df['标注类型'] != '补充文本']
+    
+    return df
+    
 def collect_raw_annotations_info(annotations):
     print(annotations)
     raw_data = []
@@ -255,6 +276,9 @@ def collect_raw_annotations_info(annotations):
 
         for result in results:
             from_name = result.get('from_name', '')
+            annotation_id = result.get('id', '')
+            print(result)
+            text = result.get('value', {}).get('text', '')
             model_id = next((model_id_map[key] for key in model_id_map if key in from_name), None)
             dimension = next((dimension_map[key] for key in dimension_map if key in from_name), None)
             
@@ -264,8 +288,11 @@ def collect_raw_annotations_info(annotations):
                 for label in labels:
                     raw_data.append({
                         'id': task_id,
+                        '标注类型': 'labels',
+                        'annotation_id': annotation_id,
                         '模型': from_name,
                         '标签': label,
+                        '标注文本': text,
                         'created_username': created_username,
                         '模型id': model_id,
                         '维度': dimension,
@@ -277,8 +304,11 @@ def collect_raw_annotations_info(annotations):
                 for choice in choices:
                     raw_data.append({
                         'id': task_id,
+                        '标注类型': 'choices',
                         '模型': from_name,
+                        'annotation_id': annotation_id,                        
                         '标签': choice,
+                        '标注文本': text,
                         'created_username': created_username,
                         '模型id': model_id,
                         '维度': dimension,
@@ -291,16 +321,37 @@ def collect_raw_annotations_info(annotations):
                 for rectangle_label in rectangle_labels:
                     raw_data.append({
                         'id': task_id,
+                        '标注类型': 'rectanglelabels',
                         '模型': from_name,
+                        'annotation_id': annotation_id,
                         '标签': rectangle_label,
+                        '标注文本': text,
                         'created_username': created_username,
                         '模型id': model_id,
                         '维度': dimension,
                         '原图URL': url
-                    })                    
+                    })                  
+                    
+            # 处理 textarea 类型
+            elif result.get('type') == 'textarea':
+                textarea_labels = result.get('value', {}).get('text', [])
+                for textarea_label in textarea_labels:
+                    raw_data.append({
+                        'id': task_id,
+                        '标注类型': '补充文本',
+                        '模型': from_name,
+                        'annotation_id': annotation_id,
+                        '标签': textarea_label,
+                        '标注文本': '',
+                        'created_username': created_username,
+                        '模型id': model_id,
+                        '维度': dimension,
+                        '原图URL': url
+                    })                                        
 
     # 创建 DataFrame
     df_raw = pd.DataFrame(raw_data)
+    df_raw = process_annotations(df_raw)
     return df_raw
 
 
@@ -372,14 +423,17 @@ if __name__ == "__main__":
         #     '176', '173', '158', '149', '187', '188', '185', '184'
         # ]
 
-        ###### 专家 文生图 结果汇总 #########
+        ###### 专家 文生图 图生文 结果汇总 #########
+        
+        # 专家文生图
+        project_list = [
+            '160', '177', '163', '169', '172', '180', '182', '146', '135', '138', '140', '148', '147',
+            '162', '179', '167', '171', '174', '181', '183', '152', '154', '150', '156', '164', '168',
+            '176', '173', '158', '149', '187', '188', '185', '184'
+        ]
         
         # # 专家图生文
-        project_list = ['74', '75', '76', '77', '78', '79', '81', '82', '83', '86', '88', '89', '92', '94', '95', '90', '99', '91', '105', '80', '194', '195', '196', '102', '106', '104', '103', '197', '198', '199', '200', '202', '203', '204', '206', '207']
-
-        # # 算法图生文
-        # project_list = ["65", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "64", "201", "205", "208", "210", "211", "212", "215", "216", "217"]
-
+        # project_list = ['74', '75', '76', '77', '78', '79', '81', '82', '83', '86', '88', '89', '92', '94', '95', '90', '99', '91', '105', '80', '194', '195', '196', '102', '106', '104', '103', '197', '198', '199', '200', '202', '203', '204', '206', '207']
         
         df = merge_annotations_by_project_ids(project_list, manager)        
         df.to_csv('resutls_zhuanjia.csv')
@@ -393,16 +447,17 @@ if __name__ == "__main__":
         
         ###### 算法 文生图 结果汇总 #########
 
-        # 算法图生文
-        project_list = ["65", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "64", "201", "205", "208", "210", "211", "212", "215", "216", "217"]
+#         # 算法图生文
+#         project_list = ["65", "113", "114", "115", "116", "117", "118", "119", "120", "121", "122", "64", "201", "205", "208", "210", "211", "212", "215", "216", "217"]
+#         # project_list = ["219"]
 
         
-        df = merge_annotations_by_project_ids(project_list, manager)        
-        df.to_csv('resutls_suanfa.csv')
+#         df = merge_annotations_by_project_ids(project_list, manager)        
+#         df.to_csv('resutls_suanfa.csv')
     
-        df2 = parse_and_count_labels_from_csv(df)
-        df2.to_csv('results_suanfa_image_to_text_1006.csv')        
+#         df2 = parse_and_count_labels_from_csv(df)
+#         df2.to_csv('results_suanfa_image_to_text_1006.csv')        
         
-        df3 = parse_and_count_unique_labels_from_csv(df)
-        df3.to_csv('results_suanfa_set_image_to_text_1006.csv')        
+#         df3 = parse_and_count_unique_labels_from_csv(df)
+#         df3.to_csv('results_suanfa_set_image_to_text_1006.csv')        
         
