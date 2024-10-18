@@ -6,60 +6,151 @@ from urllib.parse import urlparse
 import uuid
 import time
 import shutil
+import re
+
+def extract_comment_and_base(s):
+    # 提取 comment
+    last_underscore_index = s.rfind('__')
+    comment = s[last_underscore_index + 2:].rsplit('.', 1)[0] if last_underscore_index != -1 else ''
+    
+    # 去掉 comment 部分
+    s_without_comment = s[:last_underscore_index]
+    
+    return comment, s_without_comment
+
+def split_and_extract_comment(s):
+    # 提取 comment 和去掉 comment 的字符串
+    comment, s_without_comment = extract_comment_and_base(s)
+
+    data_dict = {}
+    start = 0  # 初始化 start 变量
+    # 找到所有 @ 的索引
+    at_indices = [i for i, char in enumerate(s_without_comment) if char == '@']
+    
+    for index in at_indices:
+        # 找到 @ 后第一个 _
+        next_index = s_without_comment.find('_', index)
+        if next_index != -1:
+            field_name = s_without_comment[start:index].strip('_')
+            field_value = s_without_comment[index + 1:next_index]
+            data_dict[field_name] = field_value
+            
+            start = next_index + 1  # 更新起始位置为下一个字符
+
+    # 处理最后一个 @ 的特殊情况
+    if start < len(s_without_comment):
+        last_field_name = s_without_comment[start:].strip('_')
+        last_field_value = s_without_comment[start:].rsplit('@', 1)[-1] if '@' in s_without_comment[start:] else ''
+        
+        if '@' in last_field_name:
+            last_field_name, last_field_value = last_field_name.split('@', 1)
+        
+        data_dict[last_field_name] = last_field_value
+    
+    # 添加 comment 字段
+    data_dict['comment'] = comment
+    
+    return data_dict
 
 # 创建DataFrame，从上传的txt文件解析内容
-def parse_uploaded_files(uploaded_files):
-    image_paths = []
-    img_ids = []
-    model_ids = []
-    guidances = []
-    img_seq_lens = []
-    sizes = []
-    seeds = []
-    customed_tags = []
+def parse_uploaded_files(uploaded_files, split_version):
+#     uploaded_files_cp = uploaded_files
+#     split_version = "0"
+    
+#     for uploaded_file in uploaded_files:
+#         lines = uploaded_file.readlines()
+#         for line in lines:
+#             line = line.decode('utf-8').strip()  # 解码为字符串并去除两端空白
+#             if "@" in line:
+#                 split_version = "1"
+#             else:
+#                 split_version = "0"
+#             break
+            
+    print(f">>>>>>>>>{split_version}")
+    
+    if split_version == "0":
+        image_paths = []
+        img_ids = []
+        model_ids = []
+        guidances = []
+        img_seq_lens = []
+        sizes = []
+        seeds = []
+        customed_tags = []
 
-    for uploaded_file in uploaded_files:
-        lines = uploaded_file.readlines()
-        for line in lines:
-            line = line.decode('utf-8').strip()  # 解码为字符串并去除两端空白
-            # 提取 URL 中的文件名部分
-            path = urlparse(line).path
-            file_name = os.path.basename(path).rpartition('.')[0]
-            # 分割文件名并解析各个部分
-            parts = file_name.split('_')
-            if len(parts) == 6:
-                img_ids.append(int(parts[0]))
-                model_ids.append(int(parts[1]))
-                guidances.append(float(parts[2]))
-                img_seq_lens.append(int(parts[3]))
-                sizes.append(parts[4])
-                seeds.append(int(parts[5]))
+        for uploaded_file in uploaded_files:
+            lines = uploaded_file.readlines()
+            for line in lines:
+                line = line.decode('utf-8').strip()  # 解码为字符串并去除两端空白
+                # 提取 URL 中的文件名部分
+                path = urlparse(line).path
+                file_name = os.path.basename(path).rpartition('.')[0]
+                # 分割文件名并解析各个部分
+                parts = file_name.split('_')
+                if len(parts) == 6:
+                    img_ids.append(int(parts[0]))
+                    model_ids.append(int(parts[1]))
+                    guidances.append(float(parts[2]))
+                    img_seq_lens.append(int(parts[3]))
+                    sizes.append(parts[4])
+                    seeds.append(int(parts[5]))
+                    image_paths.append(line)
+                    customed_tags.append(str('None'))
+                elif len(parts) == 7:
+                    img_ids.append(int(parts[0]))
+                    model_ids.append(int(parts[1]))
+                    guidances.append(float(parts[2]))
+                    img_seq_lens.append(int(parts[3]))
+                    sizes.append(parts[4])
+                    seeds.append(int(parts[5]))
+                    image_paths.append(line)
+                    customed_tags.append(str(parts[6]))                
+
+        # 创建DataFrame
+        df = pd.DataFrame({
+            'image_path': image_paths,
+            'img_id': img_ids,
+            'model_id': model_ids,
+            'guidance': guidances,
+            'img_seq_len': img_seq_lens,
+            'size': sizes,
+            'seed': seeds,
+            'customed_tags': customed_tags,
+        })
+
+        return df
+    
+    else:
+
+        # 动态解析存储
+        dynamic_lists = {'image_path': []}  # 直接初始化 image_path
+        image_paths = []
+
+        for uploaded_file in uploaded_files:
+            lines = uploaded_file.readlines()
+            for line in lines:
+                line = line.decode('utf-8').strip()  # 解码为字符串并去除两端空白
+                # 提取 URL 中的文件名部分
+                path = urlparse(line).path
+                file_name = os.path.basename(path).rpartition('.')[0]
+
+                # 使用 split_and_extract_comment 提取键值对
+                parsed_data = split_and_extract_comment(file_name)
+                for key, value in parsed_data.items():
+                    dynamic_lists.setdefault(key, []).append(value)
+
                 image_paths.append(line)
-                customed_tags.append(str('None'))
-            elif len(parts) == 7:
-                img_ids.append(int(parts[0]))
-                model_ids.append(int(parts[1]))
-                guidances.append(float(parts[2]))
-                img_seq_lens.append(int(parts[3]))
-                sizes.append(parts[4])
-                seeds.append(int(parts[5]))
-                image_paths.append(line)
-                customed_tags.append(str(parts[6]))                
 
-    # 创建DataFrame
-    df = pd.DataFrame({
-        'image_path': image_paths,
-        'img_id': img_ids,
-        'model_id': model_ids,
-        'guidance': guidances,
-        'img_seq_len': img_seq_lens,
-        'size': sizes,
-        'seed': seeds,
-        'customed_tags': customed_tags,
-    })
+        # 将 image_paths 添加到 dynamic_lists
+        dynamic_lists['image_path'] = image_paths
 
-    return df
+        # 创建 DataFrame
+        df = pd.DataFrame.from_dict(dynamic_lists, orient='index').transpose()
 
+        return df
+    
+ 
 # 生成整理表格
 def generate_summary_table(filtered_df, row_fields, col_fields):
     row_combinations = []
@@ -314,24 +405,38 @@ def flux_to_html():
 
     # 上传文件
     uploaded_files = st.file_uploader("上传所有的txt文件", type=["txt"], accept_multiple_files=True)
+    # 定义前端显示的选项和后端实际使用的值的映射字典
+    option_mapping = {
+        "老格式选这个": "0",
+        "新格式选这个（带@的）": "1",
+    }
 
+    # 创建单选按钮，用户的选择将存储在变量selected_option_display中
+    selected_option_display = st.radio("Choose an option", list(option_mapping.keys()))
+
+    # 获取后端实际使用的值
+    selected_option_value = option_mapping[selected_option_display]
+    
     if uploaded_files:
         # 解析上传的文件
-        df = parse_uploaded_files(uploaded_files)
+        df = parse_uploaded_files(uploaded_files, selected_option_value)
+
+        # 根据DataFrame的列动态生成可选字段
+        available_fields = df.columns.tolist()
+        # 剔除不需要的字段
+        excluded_fields = ['image_id', 'image_path', 'comment']
+        select_fields = [field for field in available_fields if field not in excluded_fields]
 
         # 允许用户选择行和列的字段
-        available_fields = ['img_id', 'model_id', 'guidance', 'img_seq_len', 'size', 'seed', 'customed_tags']
-        row_fields = st.multiselect("选择用于生成表格的字段（行）", available_fields, default=['model_id', 'img_seq_len', 'size', 'seed', 'customed_tags'])
-        col_fields = st.multiselect("选择用于生成表格的字段（列）", available_fields, default=['guidance'])
+        row_fields = st.multiselect("选择用于生成表格的字段（行）", select_fields, default=select_fields[1:])  # 默认选择前两个字段
+        col_fields = st.multiselect("选择用于生成表格的字段（列）", select_fields, default=[select_fields[0]])  # 默认选择第一个字段
 
         # 用户选择具体的维度值
         st.subheader("选择维度值")
-        selected_model_ids = st.multiselect("选择model_id值", sorted(df['model_id'].unique()), default=sorted(df['model_id'].unique()))
-        selected_img_seq_lens = st.multiselect("选择img_seq_len值", sorted(df['img_seq_len'].unique()), default=sorted(df['img_seq_len'].unique()))
-        selected_sizes = st.multiselect("选择size值", sorted(df['size'].unique()), default=sorted(df['size'].unique()))
-        selected_seeds = st.multiselect("选择seed值", sorted(df['seed'].unique()), default=sorted(df['seed'].unique()))
-        selected_guidances = st.multiselect("选择guidance值", sorted(df['guidance'].unique()), default=sorted(df['guidance'].unique()))
-        selected_customed_tags = st.multiselect("选择customed_tags值", sorted(df['customed_tags'].unique()), default=sorted(df['customed_tags'].unique()))
+        dimension_values = {}
+        for field in select_fields:
+            if field in df.columns:
+                dimension_values[field] = st.multiselect(f"选择{field}值", sorted(df[field].unique()), default=sorted(df[field].unique()))
 
         # 增加Run按钮
         if st.button("Run"):
@@ -345,24 +450,18 @@ def flux_to_html():
 
             # 生成HTML文件
             with st.spinner("正在生成HTML文件，请稍候..."):
-                unique_img_ids = df['img_id'].unique()
+                unique_img_ids = df['image_id'].unique()
                 for img_id in unique_img_ids:
-                    filtered_df = df[df['img_id'] == img_id]
-                    filtered_df = filtered_df[
-                        (filtered_df['model_id'].isin(selected_model_ids)) &
-                        (filtered_df['img_seq_len'].isin(selected_img_seq_lens)) &
-                        (filtered_df['size'].isin(selected_sizes)) &
-                        (filtered_df['seed'].isin(selected_seeds)) &
-                        (filtered_df['guidance'].isin(selected_guidances)) &
-                        (filtered_df['customed_tags'].isin(selected_customed_tags)) 
-                    ]
+                    filtered_df = df[df['image_id'] == img_id]
+                    for field in dimension_values:
+                        filtered_df = filtered_df[filtered_df[field].isin(dimension_values[field])]
+                    
                     summary_table, row_combinations, col_combinations = generate_summary_table(
                         filtered_df,
                         row_fields,
                         col_fields
                     )
                     generate_html_page(summary_table, row_combinations, col_combinations, row_fields, col_fields, img_id, output_path)
-
 
             # 压缩输出文件夹为ZIP
             shutil.make_archive(output_path, 'zip', output_path)
