@@ -149,18 +149,36 @@ def parse_uploaded_files(uploaded_files, split_version):
         return df
     
  
-# 生成整理表格
 def generate_summary_table(filtered_df, row_fields, col_fields):
     row_combinations = []
     col_combinations = []
 
+    # 定义一个函数来检查列是否可以完全转换为数值
+    def is_numeric_column(column):
+        try:
+            pd.to_numeric(column)
+            return True
+        except ValueError:
+            return False
+
+    # 定义一个通用的排序键函数
+    def custom_sort_key(series):
+        if is_numeric_column(series):
+            return pd.to_numeric(series, errors='coerce').fillna(float('inf'))
+        else:
+            return series
+
     # 根据用户选择的行字段生成唯一组合并排序
-    unique_row_combinations = filtered_df[row_fields].drop_duplicates().sort_values(by=row_fields)
+    unique_row_combinations = filtered_df[row_fields].drop_duplicates()
+    unique_row_combinations = unique_row_combinations.sort_values(by=row_fields, key=custom_sort_key)
+
     for _, row in unique_row_combinations.iterrows():
         row_combinations.append(tuple(row[row_fields]))
 
     # 根据用户选择的列字段生成唯一组合并排序
-    unique_col_combinations = filtered_df[col_fields].drop_duplicates().sort_values(by=col_fields)
+    unique_col_combinations = filtered_df[col_fields].drop_duplicates()
+    unique_col_combinations = unique_col_combinations.sort_values(by=col_fields, key=custom_sort_key)
+
     for _, row in unique_col_combinations.iterrows():
         col_combinations.append(tuple(row[col_fields]))
 
