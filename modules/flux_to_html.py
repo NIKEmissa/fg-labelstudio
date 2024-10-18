@@ -118,10 +118,22 @@ def generate_html_page(summary_table, row_combinations, col_combinations, row_fi
         for j in range(num_rows):
             header[i + num_cols + 1][j] = row_combinations[i][j]
 
-    # 填充表格数据部分
+    # 填充表格数据部分并添加表头信息到图片格
     for i in range(len(row_combinations)):
         for j in range(len(col_combinations)):
-            header[i + num_cols + 1][j + num_rows] = summary_table[i, j] if summary_table[i, j] else "图片占位符"
+            cell_value = summary_table[i, j] if summary_table[i, j] else "图片占位符"
+            if isinstance(cell_value, str) and cell_value.startswith('http'):
+                # 构建表头名：表头值的字符串
+                header_info = []
+                for row_field, row_value in zip(row_fields, row_combinations[i]):
+                    header_info.append(f"{row_field}: {row_value}")
+                for col_field, col_value in zip(col_fields, col_combinations[j]):
+                    header_info.append(f"{col_field}: {col_value}")
+                header_text = ", ".join(header_info)
+                # 在图片上添加表头信息
+                header[i + num_cols + 1][j + num_rows] = f"<div>{header_text}</div><img src='{cell_value}' alt='Image' class='zoomable'>"
+            else:
+                header[i + num_cols + 1][j + num_rows] = cell_value
 
     # 生成HTML表格
     html_content = f"""
@@ -181,7 +193,9 @@ def generate_html_page(summary_table, row_combinations, col_combinations, row_fi
     for row in header[num_cols + 1:]:
         html_content += "<tr>"
         for cell in row:
-            if isinstance(cell, str) and cell.startswith('http'):
+            if isinstance(cell, str) and cell.startswith('<div>'):
+                html_content += f"<td>{cell}</td>"
+            elif isinstance(cell, str) and cell.startswith('http'):
                 html_content += f"<td><img src='{cell}' alt='Image' class='zoomable'></td>"
             else:
                 html_content += f"<td>{cell}</td>" if cell != '' else "<td></td>"
@@ -272,6 +286,7 @@ def generate_html_page(summary_table, row_combinations, col_combinations, row_fi
     output_file = os.path.join(output_path, f'debug_table_{img_id}.html')
     with open(output_file, 'w') as file:
         file.write(html_content)
+
         
 @st.fragment()
 def download_without_reload(file_path, filename):
