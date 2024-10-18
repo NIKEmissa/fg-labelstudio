@@ -424,7 +424,7 @@ def flux_to_html():
         # 根据DataFrame的列动态生成可选字段
         available_fields = df.columns.tolist()
         # 剔除不需要的字段
-        excluded_fields = ['image_id', 'image_path', 'comment']
+        excluded_fields = ['image_id', 'image_path', 'comment', 'img_id']
         select_fields = [field for field in available_fields if field not in excluded_fields]
 
         # 允许用户选择行和列的字段
