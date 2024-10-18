@@ -7,7 +7,7 @@ import uuid
 import time
 import shutil
 import re
-
+ 
 def extract_comment_and_base(s):
     print(s)
     # 找到最后一个 "__" 的位置
