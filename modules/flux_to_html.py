@@ -9,14 +9,22 @@ import shutil
 import re
 
 def extract_comment_and_base(s):
-    # 提取 comment
+    print(s)
+    # 找到最后一个 "__" 的位置
     last_underscore_index = s.rfind('__')
-    comment = s[last_underscore_index + 2:].rsplit('.', 1)[0] if last_underscore_index != -1 else ''
     
-    # 去掉 comment 部分
-    s_without_comment = s[:last_underscore_index]
-    
+    if last_underscore_index != -1:
+        # 提取 comment
+        comment = s[last_underscore_index + 2:]
+        # 去掉 comment 部分
+        s_without_comment = s[:last_underscore_index]
+    else:
+        # 没有 "__"，则 comment 为空，s_without_comment 去掉后缀
+        comment = ''
+        s_without_comment = s
+
     return comment, s_without_comment
+
 
 def split_and_extract_comment(s):
     # 提取 comment 和去掉 comment 的字符串
@@ -39,6 +47,7 @@ def split_and_extract_comment(s):
 
     # 处理最后一个 @ 的特殊情况
     if start < len(s_without_comment):
+        print(s_without_comment)
         last_field_name = s_without_comment[start:].strip('_')
         last_field_value = s_without_comment[start:].rsplit('@', 1)[-1] if '@' in s_without_comment[start:] else ''
         
@@ -54,19 +63,7 @@ def split_and_extract_comment(s):
 
 # 创建DataFrame，从上传的txt文件解析内容
 def parse_uploaded_files(uploaded_files, split_version):
-#     uploaded_files_cp = uploaded_files
-#     split_version = "0"
-    
-#     for uploaded_file in uploaded_files:
-#         lines = uploaded_file.readlines()
-#         for line in lines:
-#             line = line.decode('utf-8').strip()  # 解码为字符串并去除两端空白
-#             if "@" in line:
-#                 split_version = "1"
-#             else:
-#                 split_version = "0"
-#             break
-            
+
     print(f">>>>>>>>>{split_version}")
     
     if split_version == "0":
@@ -139,6 +136,7 @@ def parse_uploaded_files(uploaded_files, split_version):
                 parsed_data = split_and_extract_comment(file_name)
                 for key, value in parsed_data.items():
                     dynamic_lists.setdefault(key, []).append(value)
+                    print(key, value)
 
                 image_paths.append(line)
 
