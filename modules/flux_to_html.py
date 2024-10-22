@@ -444,6 +444,7 @@ def flux_to_html():
         select_fields = [field for field in available_fields if field not in excluded_fields]
         
         # 允许用户选择行和列的字段
+        st.subheader("选择划分表格的字段")        
         html_spliter = st.selectbox("选择用于划分表的字段（表）", select_fields + ["None:选这个，则在同一个HTML放入所有字段"])  # 默认选择前两个字段
         select_fields = [field for field in select_fields if field not in html_spliter]
 
