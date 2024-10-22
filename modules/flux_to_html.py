@@ -198,7 +198,7 @@ def generate_summary_table(filtered_df, row_fields, col_fields):
 
     return summary_table, row_combinations, col_combinations
 
-def generate_html_page(summary_table, row_combinations, col_combinations, row_fields, col_fields, img_id, output_path='output_html'):
+def generate_html_page(summary_table, row_combinations, col_combinations, row_fields, col_fields, html_spliter, img_id, output_path='output_html'):
     # 构建表格结构
     num_rows = len(row_fields)
     num_cols = len(col_fields)
@@ -246,7 +246,7 @@ def generate_html_page(summary_table, row_combinations, col_combinations, row_fi
     html_content = f"""
     <html>
     <head>
-        <title>Debug Table Visualization - img_id: {img_id}</title>
+        <title>Debug Table Visualization - {html_spliter}: {img_id}</title>
         <style>
             table {{
                 width: 100%;
@@ -285,7 +285,7 @@ def generate_html_page(summary_table, row_combinations, col_combinations, row_fi
         </style>
     </head>
     <body>
-        <h1>Debug Table Visualization - img_id: {img_id}</h1>
+        <h1>Debug Table Visualization - {html_spliter}: {img_id}</h1>
         <table>
     """
 
@@ -482,7 +482,7 @@ def flux_to_html():
                         row_fields,
                         col_fields
                     )
-                    generate_html_page(summary_table, row_combinations, col_combinations, row_fields, col_fields, img_id, output_path)
+                    generate_html_page(summary_table, row_combinations, col_combinations, row_fields, col_fields, html_spliter, img_id, output_path)
 
             # 压缩输出文件夹为ZIP
             shutil.make_archive(output_path, 'zip', output_path)
