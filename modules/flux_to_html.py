@@ -440,12 +440,16 @@ def flux_to_html():
         # 根据DataFrame的列动态生成可选字段
         available_fields = df.columns.tolist()
         # 剔除不需要的字段
-        excluded_fields = ['image_id', 'image_path', 'comment', 'img_id']
+        excluded_fields = ['image_path', 'comment']
         select_fields = [field for field in available_fields if field not in excluded_fields]
-
+        
         # 允许用户选择行和列的字段
+        html_spliter = st.selectbox("选择用于划分表的字段（表）", select_fields + ["None:选这个，则在同一个HTML放入所有字段"])  # 默认选择前两个字段
+        select_fields = [field for field in select_fields if field not in html_spliter]
+
         row_fields = st.multiselect("选择用于生成表格的字段（行）", select_fields, default=select_fields[1:])  # 默认选择前两个字段
-        col_fields = st.multiselect("选择用于生成表格的字段（列）", select_fields, default=[select_fields[0]])  # 默认选择第一个字段
+        select_col_fields = [field for field in select_fields if field not in row_fields]
+        col_fields = st.multiselect("选择用于生成表格的字段（列）", select_col_fields, default=[select_col_fields[0]])  # 默认选择第一个字段     
 
         # 用户选择具体的维度值
         st.subheader("选择维度值")
@@ -466,9 +470,9 @@ def flux_to_html():
 
             # 生成HTML文件
             with st.spinner("正在生成HTML文件，请稍候..."):
-                unique_img_ids = df['image_id'].unique()
+                unique_img_ids = df[html_spliter].unique() if ("None" not in html_spliter) else ["None"]
                 for img_id in unique_img_ids:
-                    filtered_df = df[df['image_id'] == img_id]
+                    filtered_df = df[df[html_spliter] == img_id] if ("None" not in html_spliter) else df
                     for field in dimension_values:
                         filtered_df = filtered_df[filtered_df[field].isin(dimension_values[field])]
                     
