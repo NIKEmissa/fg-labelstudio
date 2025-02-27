@@ -133,36 +133,40 @@ def main():
     
     st.write("请选择要对比的标注结果：")
 
-    # 读取文件
-    with open('/data1/code/dengxinzhe/fg-labelstudio/other_interesting/dense_caption/标注明细-3189-72025022600101-20250227094903.txt') as f:
-        rst1 = json.load(f)
-    # 读取文件
-    with open('/data1/code/dengxinzhe/fg-labelstudio/other_interesting/dense_caption/标注明细-3190-72025022600102-20250227094859.txt') as f:
-        rst2 = json.load(f)        
+    # 上传文件
+    uploaded_file1 = st.file_uploader("上传第一个标注员的标注结果文件", type="txt")
+    uploaded_file2 = st.file_uploader("上传第二个标注员的标注结果文件", type="txt")
 
-    # 增加一个选项来决定是否进行过滤
-    filter_option = st.selectbox("是否只选择两个标注员都有标注结果的log_id？", ["全部", "仅有两个标注员标注的结果"])
+    if uploaded_file1 is not None and uploaded_file2 is not None:
+        # 读取并解析文件
+        rst1 = json.load(uploaded_file1)
+        rst2 = json.load(uploaded_file2)
 
-    # 获取所有的log_id
-    all_log_ids = [log["id"] for log in rst1]
+        # 增加一个选项来决定是否进行过滤
+        filter_option = st.selectbox("是否只选择两个标注员都有标注结果的log_id？", ["全部", "仅有两个标注员标注的结果"])
 
-    if filter_option == "仅有两个标注员标注的结果":
-        # 过滤出两个标注员都有标注的log_id
-        filtered_log_ids = [log_id for log_id in all_log_ids if any(log1["id"] == log_id for log1 in rst1) and any(log2["id"] == log_id for log2 in rst2)]
-        all_log_ids = filtered_log_ids
+        # 获取所有的log_id
+        all_log_ids = [log["id"] for log in rst1]
 
-    # 按照log_id数字大小排序
-    all_log_ids.sort(key=lambda x: int(x))  # 将log_id作为整数排序
+        if filter_option == "仅有两个标注员标注的结果":
+            # 过滤出两个标注员都有标注的log_id
+            filtered_log_ids = [log_id for log_id in all_log_ids if any(log1["id"] == log_id for log1 in rst1) and any(log2["id"] == log_id for log2 in rst2)]
+            all_log_ids = filtered_log_ids
 
-    # 选择要对比的标注数据
-    log_id = st.selectbox("选择要对比的标注结果", all_log_ids)
+        # 按照log_id数字大小排序
+        all_log_ids.sort(key=lambda x: int(x))  # 将log_id作为整数排序
 
-    # 获取对应的标注数据
-    log1 = next(log for log in rst1 if log["id"] == log_id)
-    log2 = next(log for log in rst2 if log["id"] == log_id)
+        # 选择要对比的标注数据
+        log_id = st.selectbox("选择要对比的标注结果", all_log_ids)
 
-    # 显示对比结果
-    compare_annotations(log1, log2)
+        # 获取对应的标注数据
+        log1 = next(log for log in rst1 if log["id"] == log_id)
+        log2 = next(log for log in rst2 if log["id"] == log_id)
+
+        # 显示对比结果
+        compare_annotations(log1, log2)
+    else:
+        st.write("请上传两个标注员的标注结果文件（txt格式）。")
 
 if __name__ == "__main__":
     main()
