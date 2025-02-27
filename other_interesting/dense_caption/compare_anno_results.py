@@ -5,6 +5,7 @@ import matplotlib.patches as patches
 from PIL import Image
 import requests
 from io import BytesIO
+import pandas as pd
 
 # 解析日志的函数
 def parse_log(log_data):
@@ -98,24 +99,33 @@ def compare_annotations(log1, log2):
                 rect = patches.Rectangle((x1, y1), width, height, linewidth=2, edgecolor='red', facecolor='none', label="标注员2")
                 ax.add_patch(rect)
 
-    st.pyplot(fig)
+    # 在col1中显示图片
+    col1, col2 = st.columns([1, 1])
 
-    # 在右侧显示对比的标注结果
-    st.write("标注员1的标注结果:")
-    for label in parsed_data1["labels_info"]:
-        st.write(f"标签: {label['tag']}")
-        for dimension in label["dimensionValues"]:
-            st.write(f"  维度: {dimension['name']}")
-            for value in dimension["dimensionValues"]:
-                st.write(f"    选项: {value}")
-    
-    st.write("标注员2的标注结果:")
-    for label in parsed_data2["labels_info"]:
-        st.write(f"标签: {label['tag']}")
-        for dimension in label["dimensionValues"]:
-            st.write(f"  维度: {dimension['name']}")
-            for value in dimension["dimensionValues"]:
-                st.write(f"    选项: {value}")
+    with col1:
+        st.pyplot(fig)
+
+    # 对比标注结果，显示在col2
+    with col2:
+        table_data = []
+        
+        for i, label1 in enumerate(parsed_data1["labels_info"]):
+            label2 = parsed_data2["labels_info"][i]  # 假设两个标注员的顺序一致
+            for dim1, dim2 in zip(label1["dimensionValues"], label2["dimensionValues"]):
+                row = {"维度": dim1["name"]}
+                for value1, value2 in zip(dim1["dimensionValues"], dim2["dimensionValues"]):
+                    # 如果不相同，高亮显示
+                    if value1 != value2:
+                        row["标注员1"] = f"<span style='color:red'>{value1}</span>"
+                        row["标注员2"] = f"<span style='color:red'>{value2}</span>"
+                    else:
+                        row["标注员1"] = value1
+                        row["标注员2"] = value2
+                table_data.append(row)
+
+        # 创建并展示表格
+        df = pd.DataFrame(table_data)
+        st.markdown(df.to_html(escape=False), unsafe_allow_html=True)
 
 # 主界面逻辑
 def main():
