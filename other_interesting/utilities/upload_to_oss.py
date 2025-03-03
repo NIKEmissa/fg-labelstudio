@@ -77,7 +77,7 @@ def upload_files_to_oss(files, bucket, local_dir, max_workers, verbose):
 if __name__ == "__main__":
     
     # 参考命令
-    # python3 upload_to_oss4.py --access_key_id xxx --access_key_secret xxx --local_dir /data1/datasets/lqp/data/denseData/ --oss_dir ai_images/xd2/Downloads/images/dense_annotations/test_anno_images/spider/ --processes 120
+    # python3 upload_to_oss.py --access_key_id xxx --access_key_secret xxx --local_dir /data1/datasets/lqp/data/denseData/ --oss_dir ai_images/xd2/Downloads/images/dense_annotations/test_anno_images/spider/ --processes 120
     # 配置命令行参数
     parser = argparse.ArgumentParser(description="Upload a folder to OSS")
     parser.add_argument('--access_key_id', required=True, help="Your OSS Access Key ID")

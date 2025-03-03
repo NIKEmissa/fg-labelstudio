@@ -50,6 +50,9 @@ def main(args):
     download_files_concurrently(bucket, args.oss_folder_path, args.local_download_path, args.processes)
 
 if __name__ == '__main__':
+    # 示例命令
+    # python3 download_from_oss.py --access_key_id xxx --access_key_secret xxx --oss_folder_path ai_images/xd2/Downloads/sources/dress_fg_images.csv --local_download_path ~/Sources/ --bucket_name oss-datawork
+    
     # 创建命令行参数解析器
     parser = argparse.ArgumentParser(description='Download files from OSS with multi-process.')
     parser.add_argument('--access_key_id', required=True, help='Your OSS Access Key ID')
