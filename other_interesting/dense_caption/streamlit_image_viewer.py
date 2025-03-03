@@ -24,8 +24,10 @@ def load_dataframe(file_path):
 # Function to display images with pagination in n x n grid
 def display_images_with_pagination(df, filter_column, filter_value, images_per_page=3):
     # Filter rows based on the specified column and value
-    filtered_df = df[df[filter_column] == filter_value]
-    filtered_df = filtered_df[filtered_df['category'] == '连衣裙']
+    # filtered_df = df[df[filter_column] == filter_value]
+    # filtered_df = filtered_df[filtered_df['category'] == '连衣裙']
+    filtered_df = df[df[filter_column].str.contains(filter_value, na=False) & (df['category'] == '连衣裙')]
+    
     
     if filtered_df.empty:
         st.write("没有符合条件的图片")
