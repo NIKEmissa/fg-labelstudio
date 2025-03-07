@@ -119,9 +119,9 @@ def display_images_with_pagination(df, filter_column, filter_value, images_per_p
     st.write(f"当前页数: {st.session_state.current_page}/{total_pages}") 
 
 # Streamlit App
-def main():
+def image_viewer():
     # 设置宽屏模式
-    st.set_page_config(layout="wide")
+    # st.set_page_config(layout="wide")
     
     # Load the DataFrame (only loads once when the app starts)
     if 'df' not in st.session_state:
@@ -162,6 +162,3 @@ def main():
 
     if filter_value:
         display_images_with_pagination(df, filter_column, filter_value, images_per_page)
-
-if __name__ == "__main__":
-    main()

@@ -129,6 +129,9 @@ def compare_annotations(log1, log2):
 
 # 主界面逻辑
 def main():
+    # 设置宽屏模式
+    st.set_page_config(layout="wide")
+        
     st.title("标注结果对比")
     
     st.write("请选择要对比的标注结果：")

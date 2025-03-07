@@ -109,7 +109,7 @@ def display_images_with_pagination(df, filter_column, filter_value, images_per_p
                 row = page_images.iloc[image_idx]
                 with cols[col_idx]:
                     # Display the image
-                    st.image(load_image(row['url']), caption=f"{row['url']}", use_container_width=True)
+                    st.image(load_image(row['url']), caption=f"图片 URL: {row['url']}", use_container_width=True)
                     # # Add a button to copy the URL to clipboard
                     # if st.button(f"复制 {row['url']} 到剪贴板", key=f"copy_{image_idx}"):
                     #     pyperclip.copy(row['url'])  # Copy URL to clipboard
