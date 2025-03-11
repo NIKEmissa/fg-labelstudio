@@ -21,3 +21,9 @@ __pycache__/
 *.bak
 *.swp
 
+*.csv
+*.txt
+*.pdf
+
+other_interesting/dense_caption/output_images/
+

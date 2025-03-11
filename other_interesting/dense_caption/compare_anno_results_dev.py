@@ -98,81 +98,197 @@ def parse_log(log_data):
         "labels_info": labels_info,
     }
 
-def match_boxes(boxes1, boxes2):
+def match_boxes(boxes1, boxes2, threshold=0.3, debug=False):
     # boxes1、boxes2 为列表，每一项为 (box, annotation)
     n1 = len(boxes1)
     n2 = len(boxes2)
     print(n1, n2)
     cost_matrix = np.zeros((n1, n2))
+    iou_matrix = np.zeros((n1, n2))
     for i, (box1, _) in enumerate(boxes1):
         for j, (box2, _) in enumerate(boxes2):
             iou = compute_iou(box1, box2)
             cost_matrix[i, j] = 1 - iou  # cost 越小匹配越好
-    st.table(cost_matrix)
-    row_ind, col_ind = linear_sum_assignment(cost_matrix)
+            iou_matrix[i, j] = iou
+    if debug:
+        st.header("debug: 匹配框iou_matrix")
+        st.table(iou_matrix)
+    
     matched_pairs = []
-    for i, j in zip(row_ind, col_ind):
-        matched_pairs.append((boxes1[i], boxes2[j], 1 - cost_matrix[i, j]))  # 同时返回 IoU 值
+    # 采用类似 NMS 的思想，不过滤框，仅分组：当 IoU >= threshold 时，归为一组
+    for i, (box1, ann1) in enumerate(boxes1):
+        for j, (box2, ann2) in enumerate(boxes2):
+            iou = compute_iou(box1, box2)
+            if iou >= threshold:
+                matched_pairs.append(((box1, ann1), (box2, ann2), iou))
+                if debug:
+                    st.write(f"debug: 匹配到框：Annotator1 box {box1} 与 Annotator2 box {box2}，IoU = {iou:.2f}")
     return matched_pairs
 
-# ----------------------------
-# 计算所有匹配对，并为每个匹配对分配全局组号
-# ----------------------------
-def compute_matched_pairs(log1, log2):
+def compute_matched_pairs(log1, log2, debug=False):
+    import re
+    def clean_tag(tag):
+        # 移除尾部数字后缀，如果 tag 为 None 则返回 "UNKNOWN"
+        return re.sub(r'\d+$', '', tag) if tag else "UNKNOWN"
+    
     parsed_data1 = parse_log(log1)
     parsed_data2 = parse_log(log2)
     
-    # 按 tag 分组
-    ann1_by_tag = {}
+    # ----------------------------
+    # 阶段1：提取所有框（不按 tag 分组）
+    # ----------------------------
+    boxes1 = []
     for ann in parsed_data1['labels_info']:
-        tag = ann.get("tag")
-        print(tag)
-        if tag:
-            ann1_by_tag.setdefault(tag, []).append(ann)
-    ann2_by_tag = {}
-    for ann in parsed_data2['labels_info']:
-        tag = ann.get("tag")
-        if tag:
-            ann2_by_tag.setdefault(tag, []).append(ann)
+        tag = ann.get("tag", "UNKNOWN")
+        for box in ann["boxes"]:
+            boxes1.append((box, ann, tag))
     
-    common_tags = set(ann1_by_tag.keys()).intersection(set(ann2_by_tag.keys()))
-    matched_pairs_list = []
-    global_group = 0
-    for tag in common_tags:
-        boxes1 = []
-        for ann in ann1_by_tag[tag]:
-            for box in ann["boxes"]:
-                boxes1.append((box, ann))
-        boxes2 = []
-        for ann in ann2_by_tag[tag]:
-            for box in ann["boxes"]:
-                boxes2.append((box, ann))
-        if not boxes1 or not boxes2:
-            continue
-        matched_pairs = match_boxes(boxes1, boxes2)
-        for pair_index, (item1, item2, iou) in enumerate(matched_pairs):
-            global_group += 1
+    boxes2 = []
+    for ann in parsed_data2['labels_info']:
+        tag = ann.get("tag", "UNKNOWN")
+        for box in ann["boxes"]:
+            boxes2.append((box, ann, tag))
+    
+    # Debug：显示两个标注员提取到的框（文字表格）
+    if debug:
+        debug_boxes1 = [{"Annotator": "Annotator1", "Tag": item[2], "Box": item[0]} for item in boxes1]
+        debug_boxes2 = [{"Annotator": "Annotator2", "Tag": item[2], "Box": item[0]} for item in boxes2]
+        st.write("### Debug: 从 Annotator1 中提取到的所有框")
+        st.dataframe(pd.DataFrame(debug_boxes1))
+        st.write("### Debug: 从 Annotator2 中提取到的所有框")
+        st.dataframe(pd.DataFrame(debug_boxes2))
+    
+    # （可选）如果有图片，则可视化展示提取到的框
+    if debug and parsed_data1['picture_info']:
+        img_url = parsed_data1['picture_info'][0]['url']
+        try:
+            response = requests.get(img_url)
+            img = Image.open(BytesIO(response.content))
+            fig, ax = plt.subplots(figsize=(10, 10))
+            ax.imshow(img)
+            # 绘制 Annotator1 的框（蓝色）
+            for box, ann, tag in boxes1:
+                x, y, w, h = box
+                rect = patches.Rectangle((x, y), w, h, edgecolor='blue', facecolor='none', linewidth=2)
+                ax.add_patch(rect)
+                ax.text(x, y, f"{tag} (A1)", color='blue', fontsize=10, backgroundcolor='white')
+            # 绘制 Annotator2 的框（红色）
+            for box, ann, tag in boxes2:
+                x, y, w, h = box
+                rect = patches.Rectangle((x, y), w, h, edgecolor='red', facecolor='none', linewidth=2)
+                ax.add_patch(rect)
+                ax.text(x, y, f"{tag} (A2)", color='red', fontsize=10, backgroundcolor='white')
+            st.write("### Debug: 可视化展示提取到的所有框")
+            st.pyplot(fig)
+        except Exception as e:
+            if debug:
+                st.write("可视化提取框失败：", e)
+    
+    # ----------------------------
+    # 阶段2：对所有提取到的框进行匹配（仅根据 IoU，不考虑 tag）
+    # ----------------------------
+    # 为匹配函数准备数据：每项只保留 (box, ann)
+    boxes1_for_match = [(box, ann) for box, ann, tag in boxes1]
+    boxes2_for_match = [(box, ann) for box, ann, tag in boxes2]
+    
+    matched_pairs = match_boxes(boxes1_for_match, boxes2_for_match, debug=debug)
+    
+    # Debug：展示原始匹配结果（表格）
+    if debug:
+        debug_matches = []
+        for idx, (item1, item2, iou) in enumerate(matched_pairs):
             box1, ann1 = item1
             box2, ann2 = item2
+            tag1 = ann1.get("tag", "UNKNOWN")
+            tag2 = ann2.get("tag", "UNKNOWN")
+            debug_matches.append({
+                "Pair Index": idx + 1,
+                "Annotator1 Tag": tag1,
+                "Annotator1 Box": box1,
+                "Annotator2 Tag": tag2,
+                "Annotator2 Box": box2,
+                "IoU": iou
+            })
+        st.write("### Debug: 原始框匹配结果（不考虑 tag）")
+        st.dataframe(pd.DataFrame(debug_matches))
+    
+    # （可选）可视化原始匹配结果：在图片上画出匹配对，并用虚线连接两个框中心
+    if debug and parsed_data1['picture_info']:
+        img_url = parsed_data1['picture_info'][0]['url']
+        try:
+            response = requests.get(img_url)
+            img = Image.open(BytesIO(response.content))
+            fig, ax = plt.subplots(figsize=(10, 10))
+            ax.imshow(img)
+            for item1, item2, iou in matched_pairs:
+                box1, ann1 = item1
+                box2, ann2 = item2
+                x1, y1, w1, h1 = box1
+                x2, y2, w2, h2 = box2
+                rect1 = patches.Rectangle((x1, y1), w1, h1, edgecolor='blue', facecolor='none', linewidth=2)
+                rect2 = patches.Rectangle((x2, y2), w2, h2, edgecolor='red', facecolor='none', linewidth=2)
+                ax.add_patch(rect1)
+                ax.add_patch(rect2)
+                center1 = (x1 + w1/2, y1 + h1/2)
+                center2 = (x2 + w2/2, y2 + h2/2)
+                ax.plot([center1[0], center2[0]], [center1[1], center2[1]], linestyle='--', color='green')
+            st.write("### Debug: 可视化原始框匹配结果")
+            st.pyplot(fig)
+        except Exception as e:
+            if debug:
+                st.write("可视化原始匹配结果失败：", e)
+    
+    # ----------------------------
+    # 阶段3：对匹配对按 tag 进行过滤和分组（仅保留 tag 相同的匹配对，忽略 tag 尾部数字）
+    # ----------------------------
+    matched_pairs_list = []
+    global_group = 0
+    used_boxes1 = set()  # 记录通过匹配使用的 Annotator1 的框（以 tuple 形式记录）
+    used_boxes2 = set()  # 记录通过匹配使用的 Annotator2 的框
+    for idx, (item1, item2, iou) in enumerate(matched_pairs):
+        box1, ann1 = item1
+        box2, ann2 = item2
+        tag1 = ann1.get("tag", "UNKNOWN")
+        tag2 = ann2.get("tag", "UNKNOWN")
+        if clean_tag(tag1) == clean_tag(tag2):
+            global_group += 1
             matched_pairs_list.append({
                 "global_group": global_group,
-                "tag": tag,
-                "pair_index": pair_index + 1,  # 当前 tag 内的匹配序号
+                "tag": tag1,  # 保留原始 tag
+                "pair_index": idx + 1,  # 整体匹配序号
                 "box1": box1,
                 "ann1": ann1,
                 "box2": box2,
                 "ann2": ann2,
                 "iou": iou
             })
+            used_boxes1.add(box1)
+            used_boxes2.add(box2)
+        else:
+            if debug:
+                st.write(f"### Debug: 丢弃匹配对 - Annotator1 tag: {tag1} 与 Annotator2 tag: {tag2} 不一致（忽略数字后缀后分别为 {clean_tag(tag1)} 与 {clean_tag(tag2)}）")
+    
+    if debug:
+        st.write("### Debug: 按 tag 过滤后的最终匹配结果")
+        st.dataframe(pd.DataFrame(matched_pairs_list))
+    
+    # ----------------------------
+    # 阶段4：记录未匹配上的框
+    # ----------------------------
+    if debug:
+        unmatched_boxes1 = [{"Annotator": "Annotator1", "Tag": tag, "Box": box} for (box, ann, tag) in boxes1 if box not in used_boxes1]
+        unmatched_boxes2 = [{"Annotator": "Annotator2", "Tag": tag, "Box": box} for (box, ann, tag) in boxes2 if box not in used_boxes2]
+        st.write("### Debug: 未匹配上的框 - Annotator1")
+        st.dataframe(pd.DataFrame(unmatched_boxes1))
+        st.write("### Debug: 未匹配上的框 - Annotator2")
+        st.dataframe(pd.DataFrame(unmatched_boxes2))
+    
     return matched_pairs_list
 
 # ----------------------------
 # 正常模式下的对比与可视化（支持匹配组选择）
 # ----------------------------
-def compare_annotations(log1, log2, selected_group):
-    # 先计算所有匹配对及全局组号
-    matched_pairs_list = compute_matched_pairs(log1, log2)
-    
+def compare_annotations(log1, log2, selected_group, matched_pairs_list):
     # 加载图片（取第一个图片）
     parsed_data1 = parse_log(log1)
     if len(parsed_data1['picture_info']) == 0:
@@ -274,42 +390,15 @@ def compare_annotations(log1, log2, selected_group):
             st.write("没有匹配的标注结果。")
 
 # ----------------------------
-# 调试模式：打印所有匹配组的调试信息（全局组号、tag、Annotator、框坐标）
-# ----------------------------
-def compare_annotations_debug(log1, log2):
-    matched_pairs_list = compute_matched_pairs(log1, log2)
-    debug_data = []
-    for pair in matched_pairs_list:
-        group = pair["global_group"]
-        tag = pair["tag"]
-        box1 = pair["box1"]
-        box2 = pair["box2"]
-        debug_data.append({
-            "Group": group,
-            "Tag": tag,
-            "Annotator": "Annotator1",
-            "Box": f"{box1}"
-        })
-        debug_data.append({
-            "Group": group,
-            "Tag": tag,
-            "Annotator": "Annotator2",
-            "Box": f"{box2}"
-        })
-    st.write("### 调试信息：匹配组的所有框")
-    if debug_data:
-        df_debug = pd.DataFrame(debug_data)
-        st.dataframe(df_debug)
-    else:
-        st.write("没有匹配到共同的标注信息。")
-
-# ----------------------------
 # 主界面逻辑
 # ----------------------------
-def main():
+def compare_anno_results():
     st.set_page_config(layout="wide")
     st.title("标注结果对比")
     st.write("请选择要对比的标注结果：")
+    
+    # 调试模式控制开关
+    debug_mode = st.checkbox("开启调试模式", value=False)
     
     uploaded_file1 = st.file_uploader("上传第一个标注员的标注结果文件", type="txt")
     uploaded_file2 = st.file_uploader("上传第二个标注员的标注结果文件", type="txt")
@@ -330,22 +419,16 @@ def main():
         all_log_ids.sort(key=lambda x: int(x))
         log_id = st.selectbox("选择要对比的标注结果", all_log_ids)
         
-        mode = st.radio("选择模式", options=["正常模式", "调试模式"])
         log1_obj = next(log for log in rst1 if log["id"] == log_id)
-        log2_obj = next(log for log in rst2 if log["id"] == log_id)
+        log2_obj = next(log for log in rst2 if log["id"] == log_id)       
         
-        if mode == "正常模式":
-            # 先计算所有匹配对，获得可选的组号
-            matched_pairs_list = compute_matched_pairs(log1_obj, log2_obj)
-            available_groups = sorted(set(pair["global_group"] for pair in matched_pairs_list))
-            # 构建下拉选项：显示“全部”以及实际存在的组号
-            group_options = ["全部"] + [str(g) for g in available_groups]
-            selected_group = st.selectbox("选择匹配框组", options=group_options)
-            compare_annotations(log1_obj, log2_obj, selected_group)
-        else:
-            compare_annotations_debug(log1_obj, log2_obj)
+        # 先计算所有匹配对，获得可选的组号，并传入 debug_mode
+        matched_pairs_list = compute_matched_pairs(log1_obj, log2_obj, debug=debug_mode)
+        available_groups = sorted(set(pair["global_group"] for pair in matched_pairs_list))
+        # 构建下拉选项：显示“全部”以及实际存在的组号
+        group_options = ["全部"] + [str(g) for g in available_groups]
+        selected_group = st.selectbox("选择匹配框组", options=group_options)
+        compare_annotations(log1_obj, log2_obj, selected_group, matched_pairs_list)
+
     else:
         st.write("请上传两个标注员的标注结果文件（txt格式）。")
-
-if __name__ == "__main__":
-    main()
