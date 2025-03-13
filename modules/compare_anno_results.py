@@ -354,8 +354,8 @@ def compare_annotations(log1, log2, selected_group, matched_pairs_list):
         # 在框的中心处添加标签（标注 tag 以及全局组号）
         center1 = (box1[0] + box1[2] / 2, box1[1] + box1[3] / 2)
         center2 = (box2[0] + box2[2] / 2, box2[1] + box2[3] / 2)
-        ax.text(center1[0], center1[1], f'{tag} G{group}', color='blue', fontsize=12, backgroundcolor='white')
-        ax.text(center2[0], center2[1], f'{tag} G{group}', color='red', fontsize=12, backgroundcolor='white')
+        # ax.text(center1[0], center1[1], f'{tag} G{group}', color='blue', fontsize=12, backgroundcolor='white')
+        # ax.text(center2[0], center2[1], f'{tag} G{group}', color='red', fontsize=12, backgroundcolor='white')
         
         # 对比两标注员的维度值（以维度名称为键构造字典）
         dims1 = {dim["name"]: dim["dimensionValues"] for dim in ann1.get("dimensionValues", []) if dim.get("name")}
@@ -388,6 +388,15 @@ def compare_annotations(log1, log2, selected_group, matched_pairs_list):
             st.markdown(df.to_html(escape=False, index=False), unsafe_allow_html=True)
         else:
             st.write("没有匹配的标注结果。")
+
+    col3, col4 = st.columns([1, 1])
+    fig2, ax2 = plt.subplots(figsize=(10, 10))
+    ax2.imshow(img)
+    ax2.set_title("原始图片")
+    with col3:             
+        st.pyplot(fig2)
+    with col4:
+        pass
 
 # ----------------------------
 # 主界面逻辑
