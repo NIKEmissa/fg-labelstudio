@@ -33,13 +33,15 @@ def get_dimension_str(annotation):
         name = dim.get("name")
         values = dim.get("dimensionValues", [])
         if values:
-            dims_str.append(f"{name}: {', '.join(values)}")
+            # 过滤掉 None 并转换为字符串
+            clean_values = [str(v) for v in values if v is not None]
+            dims_str.append(f"{name}: {', '.join(clean_values)}")
         else:
             dims_str.append(f"{name}: None")
     return "; ".join(dims_str)
 
 # ----------------------------
-# 工具函数
+# 计算两个框的 IoU
 # ----------------------------
 def compute_iou(box1, box2):
     # box 格式：(x, y, width, height)
@@ -57,6 +59,9 @@ def compute_iou(box1, box2):
         return 0
     return inter_area / union_area
 
+# ----------------------------
+# 解析日志数据
+# ----------------------------
 def parse_log(log_data):
     log = log_data
     log_info = {
@@ -114,7 +119,7 @@ def parse_log(log_data):
     }
 
 # ----------------------------
-# 修改后的 match_boxes：支持传入带框 ID 的四元组
+# 匹配框（支持传入带框 ID 的四元组）
 # ----------------------------
 def match_boxes(boxes1, boxes2, threshold=0.3, debug=False):
     n1 = len(boxes1)
@@ -140,7 +145,7 @@ def match_boxes(boxes1, boxes2, threshold=0.3, debug=False):
     return matched_pairs
 
 # ----------------------------
-# 修改后的 compute_matched_pairs：为每个框赋予 ID，并返回所有框 ID（用于多选过滤）
+# 为每个框赋予 ID，并返回所有框的匹配信息
 # ----------------------------
 def compute_matched_pairs(log1, log2, debug=False):
     import re
@@ -247,9 +252,8 @@ def compute_matched_pairs(log1, log2, debug=False):
         "all_boxes": all_boxes
     }
 
-
 # ----------------------------
-# 修改后的 compare_annotations 函数：增加 selected_pair 参数
+# 对比标注结果并绘制可视化（已修改颜色）
 # ----------------------------
 def compare_annotations(log1, log2, selected_group, selected_box_ids, 
                         matched_pairs_list, all_boxes, group_filter_type, 
@@ -261,8 +265,10 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
         return
     img_url = parsed_data1['picture_info'][0]['url']
     try:
-        response = requests.get(img_url)
-        img = Image.open(BytesIO(response.content))
+        # 使用 st.spinner 提示图片正在刷新，防止显示旧图
+        with st.spinner("还在刷新中..."):
+            response = requests.get(img_url)
+            img = Image.open(BytesIO(response.content))
     except Exception as e:
         st.error(f"图片下载失败: {e}")
         return
@@ -274,7 +280,7 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
     table_data = []
     
     if group_filter_type == "all":
-        # 绘制所有匹配对和未匹配框（同之前）
+        # 绘制所有匹配对和未匹配框
         for pair in matched_pairs_list:
             box1 = pair["box1"]
             box2 = pair["box2"]
@@ -284,22 +290,26 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
             ann1 = pair["ann1"]
             ann2 = pair["ann2"]
             
+            # 修改颜色：Annotator1 使用粉色，Annotator2 使用蓝色
             rect1 = patches.Rectangle((box1[0], box1[1]), box1[2], box1[3],
-                                      linewidth=2, edgecolor='blue', facecolor='none')
+                                      linewidth=2, edgecolor='pink', facecolor='none')
             rect2 = patches.Rectangle((box2[0], box2[1]), box2[2], box2[3],
-                                      linewidth=2, edgecolor='red', facecolor='none')
+                                      linewidth=2, edgecolor='blue', facecolor='none')
             ax.add_patch(rect1)
             ax.add_patch(rect2)
             if show_box_names:
-                ax.text(box1[0], box1[1], pair["box_id1"], color='blue', fontsize=10, backgroundcolor='none')
-                ax.text(box2[0], box2[1], pair["box_id2"], color='red', fontsize=10, backgroundcolor='none')
+                ax.text(box1[0], box1[1], pair["box_id1"], color='pink', fontsize=10, backgroundcolor='none')
+                ax.text(box2[0], box2[1], pair["box_id2"], color='blue', fontsize=10, backgroundcolor='none')
             
-            dims1 = {dim["name"]: dim["dimensionValues"] for dim in ann1.get("dimensionValues", []) if dim.get("name")}
-            dims2 = {dim["name"]: dim["dimensionValues"] for dim in ann2.get("dimensionValues", []) if dim.get("name")}
+            # 构造 dims1 与 dims2 字典，过滤 None 值并转换为字符串
+            dims1 = {dim["name"]: [str(v) for v in dim.get("dimensionValues", []) if v is not None] 
+                     for dim in ann1.get("dimensionValues", []) if dim.get("name")}
+            dims2 = {dim["name"]: [str(v) for v in dim.get("dimensionValues", []) if v is not None] 
+                     for dim in ann2.get("dimensionValues", []) if dim.get("name")}
             common_dims = set(dims1.keys()).intersection(set(dims2.keys()))
             for dim in common_dims:
-                val1 = ", ".join(dims1[dim]) if isinstance(dims1[dim], list) else str(dims1[dim])
-                val2 = ", ".join(dims2[dim]) if isinstance(dims2[dim], list) else str(dims2[dim])
+                val1 = ", ".join(dims1[dim])
+                val2 = ", ".join(dims2[dim])
                 if val1 != val2:
                     val1_disp = f"<span style='color:red'>{val1}</span>"
                     val2_disp = f"<span style='color:red'>{val2}</span>"
@@ -317,11 +327,12 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
         
         for box_info in unmatched_boxes:
             box = box_info["Box"]
+            color = 'pink' if box_info["Annotator"] == "Annotator1" else 'blue'
             rect = patches.Rectangle((box[0], box[1]), box[2], box[3],
-                                     linewidth=2, edgecolor='black', facecolor='none', linestyle='--')
+                                     linewidth=2, edgecolor=color, facecolor='none', linestyle='--')
             ax.add_patch(rect)
             if show_box_names:
-                ax.text(box[0], box[1], box_info["Box ID"], color='black', fontsize=10, backgroundcolor='none')
+                ax.text(box[0], box[1], box_info["Box ID"], color=color, fontsize=10, backgroundcolor='none')
             table_data.append({
                 "Group": "-",
                 "Tag": box_info["Tag"],
@@ -345,7 +356,6 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
                 except Exception as e:
                     st.error("选择的匹配组无效")
                     return
-            # 只有在按框ID过滤时，才基于 selected_box_ids 进行过滤；若未选，则前面已处理为空
             if selected_box_ids:
                 filtered_pairs = [
                     pair for pair in filtered_pairs 
@@ -367,21 +377,23 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
             ann2 = pair["ann2"]
             
             rect1 = patches.Rectangle((box1[0], box1[1]), box1[2], box1[3],
-                                      linewidth=2, edgecolor='blue', facecolor='none')
+                                      linewidth=2, edgecolor='pink', facecolor='none')
             rect2 = patches.Rectangle((box2[0], box2[1]), box2[2], box2[3],
-                                      linewidth=2, edgecolor='red', facecolor='none')
+                                      linewidth=2, edgecolor='blue', facecolor='none')
             ax.add_patch(rect1)
             ax.add_patch(rect2)
             if show_box_names:
-                ax.text(box1[0], box1[1], pair["box_id1"], color='blue', fontsize=10, backgroundcolor='none')
-                ax.text(box2[0], box2[1], pair["box_id2"], color='red', fontsize=10, backgroundcolor='none')
+                ax.text(box1[0], box1[1], pair["box_id1"], color='pink', fontsize=10, backgroundcolor='none')
+                ax.text(box2[0], box2[1], pair["box_id2"], color='blue', fontsize=10, backgroundcolor='none')
             
-            dims1 = {dim["name"]: dim["dimensionValues"] for dim in ann1.get("dimensionValues", []) if dim.get("name")}
-            dims2 = {dim["name"]: dim["dimensionValues"] for dim in ann2.get("dimensionValues", []) if dim.get("name")}
+            dims1 = {dim["name"]: [str(v) for v in dim.get("dimensionValues", []) if v is not None] 
+                     for dim in ann1.get("dimensionValues", []) if dim.get("name")}
+            dims2 = {dim["name"]: [str(v) for v in dim.get("dimensionValues", []) if v is not None] 
+                     for dim in ann2.get("dimensionValues", []) if dim.get("name")}
             common_dims = set(dims1.keys()).intersection(set(dims2.keys()))
             for dim in common_dims:
-                val1 = ", ".join(dims1[dim]) if isinstance(dims1[dim], list) else str(dims1[dim])
-                val2 = ", ".join(dims2[dim]) if isinstance(dims2[dim], list) else str(dims2[dim])
+                val1 = ", ".join(dims1[dim])
+                val2 = ", ".join(dims2[dim])
                 if val1 != val2:
                     val1_disp = f"<span style='color:red'>{val1}</span>"
                     val2_disp = f"<span style='color:red'>{val2}</span>"
@@ -397,16 +409,17 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
                     "IoU": f"{iou:.2f}"
                 })
         
-        # 绘制未形成匹配对的单个框（同理，只有在选框的情况下显示）
+        # 绘制未形成匹配对的单个框
         for box_id in individual_box_ids:
             box_info = all_boxes.get(box_id)
             if box_info:
                 box = box_info["Box"]
+                color = "pink" if box_info["Annotator"] == "Annotator1" else "blue"
                 rect = patches.Rectangle((box[0], box[1]), box[2], box[3],
-                                         linewidth=2, edgecolor='black', facecolor='none', linestyle='--')
+                                         linewidth=2, edgecolor=color, facecolor='none', linestyle='--')
                 ax.add_patch(rect)
                 if show_box_names:
-                    ax.text(box[0], box[1], box_id, color='black', fontsize=10, backgroundcolor='none')
+                    ax.text(box[0], box[1], box_id, color=color, fontsize=10, backgroundcolor='none')
                 table_data.append({
                     "Group": "-",
                     "Tag": box_info["Tag"],
@@ -423,11 +436,12 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
             unmatched_filtered = unmatched_boxes
         for box_info in unmatched_filtered:
             box = box_info["Box"]
+            color = "pink" if box_info["Annotator"] == "Annotator1" else "blue"
             rect = patches.Rectangle((box[0], box[1]), box[2], box[3],
-                                     linewidth=2, edgecolor='black', facecolor='none', linestyle='--')
+                                     linewidth=2, edgecolor=color, facecolor='none', linestyle='--')
             ax.add_patch(rect)
             if show_box_names:
-                ax.text(box[0], box[1], box_info["Box ID"], color='black', fontsize=10, backgroundcolor='none')
+                ax.text(box[0], box[1], box_info["Box ID"], color=color, fontsize=10, backgroundcolor='none')
             table_data.append({
                 "Group": "-",
                 "Tag": box_info["Tag"],
@@ -453,7 +467,9 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
     ax2.set_title("原始图片")
     st.pyplot(fig2)
 
-# 在 compare_anno_results 函数中，添加显示框名的交互（放在“请选择过滤方式”上方）
+# ----------------------------
+# 主函数：上传文件、参数设置并调用对比函数
+# ----------------------------
 def compare_anno_results():
     st.title("标注结果对比")
     
@@ -485,25 +501,46 @@ def compare_anno_results():
         except Exception as e:
             st.error(f"文件解析失败: {e}")
             return
-        
-        # 筛选 log_id（逻辑保持不变）
-        all_log_ids = [log["id"] for log in rst1]
-        if filter_option == "仅有两个标注员标注的结果":
-            log_ids2 = {log["id"] for log in rst2}
-            all_log_ids = [log_id for log_id in all_log_ids if log_id in log_ids2]
-        all_log_ids.sort(key=lambda x: int(x))
-        log_id = st.selectbox("选择要对比的标注结果", all_log_ids)
-        
-        log1_obj = next(log for log in rst1 if log["id"] == log_id)
-        log2_obj = next(log for log in rst2 if log["id"] == log_id)
-        
+
+        # 使用图片 URL 来匹配两个标注结果
+        matching_pairs = []
+        for log1 in rst1:
+            if "pictureList" not in log1 or not log1["pictureList"]:
+                continue
+            url1 = log1["pictureList"][0].get("url", "")
+            for log2 in rst2:
+                if "pictureList" not in log2 or not log2["pictureList"]:
+                    continue
+                url2 = log2["pictureList"][0].get("url", "")
+                if url1 == url2:
+                    # 从 URL 中提取图片文件名
+                    image_filename = url1.split("/")[-1] if url1 else "unknown"
+                    selection_key = f"{log1['id']}_{log2['id']}_{image_filename}"
+                    matching_pairs.append((selection_key, log1, log2))
+
+        if not matching_pairs:
+            st.error("没有匹配到相同图片的标注结果")
+            return
+
+        # 对选择项按 key 排序，并展示下拉选择框
+        matching_pairs.sort(key=lambda x: x[0])
+        selected_key = st.selectbox("选择要对比的标注结果", [mp[0] for mp in matching_pairs])
+        selected_pair = next((mp for mp in matching_pairs if mp[0] == selected_key), None)
+        if selected_pair:
+            log1_obj = selected_pair[1]
+            log2_obj = selected_pair[2]
+        else:
+            st.error("选择的标注结果无效")
+            return
+
         result = compute_matched_pairs(log1_obj, log2_obj, debug=debug_mode)
         matched_pairs_list = result["matched_pairs"]
         all_box_ids = result["all_box_ids"]
         all_boxes = result["all_boxes"]
         # 合并未匹配框
         unmatched_boxes = result["unmatched_boxes1"] + result["unmatched_boxes2"]
-        
+
+        # 根据用户选择的过滤方式构造参数（保持原逻辑，其余部分无需修改）
         if filter_method == "按框ID过滤":
             group_filter_type = "matched"  # 使用匹配对显示
             selected_box_ids = st.multiselect("选择框ID（格式: AnnotatorX_Y，多选）", options=all_box_ids)
@@ -525,11 +562,12 @@ def compare_anno_results():
                 group_filter_type = "all"
                 selected_group = "全部"
                 selected_box_ids = []
-        
+
         # 调用对比函数，同时传入 is_box_id_filter
-        compare_annotations(log1_obj, log2_obj, selected_group, selected_box_ids, 
-                            matched_pairs_list, all_boxes, group_filter_type, 
-                            unmatched_boxes, show_box_names, is_box_id_filter)
-        
+        compare_annotations(
+            log1_obj, log2_obj, selected_group, selected_box_ids,
+            matched_pairs_list, all_boxes, group_filter_type,
+            unmatched_boxes, show_box_names, is_box_id_filter
+        )
     else:
         st.write("请上传两个标注员的标注结果文件（txt格式）。")
