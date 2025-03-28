@@ -162,3 +162,83 @@ def image_viewer():
 
     if filter_value:
         display_images_with_pagination(df, filter_column, filter_value, images_per_page)
+
+
+import streamlit as st
+import pandas as pd
+import math
+
+# 缓存数据加载，加快后续访问
+@st.cache_data
+def load_data(file_path):
+    try:
+        df = pd.read_feather(file_path)
+        return df
+    except Exception as e:
+        st.error(f"读取 Feather 文件时发生错误: {e}")
+        return None
+
+def image_viewer_style():
+    st.title("图片浏览")
+    
+    # 载入数据文件（假设文件中包含图片 URL，字段名为 'url'）
+    file_path = "/data1/datasets/liujunfa/style/style_data.feather"
+    df = load_data(file_path)
+    if df is None:
+        st.stop()
+    
+    if 'url' not in df.columns:
+        st.error("数据中不存在 'url' 列，请检查数据格式。")
+        st.stop()
+    
+    total_images = len(df)
+    
+    st.sidebar.header("设置")
+    # 用户在侧边栏选择每页显示的图片数量
+    per_page = st.sidebar.number_input("每页显示图片数量", min_value=1, max_value=total_images, value=9, step=1)
+    
+    total_pages = math.ceil(total_images / per_page)
+    
+    # 使用 session_state 保存当前页码，便于跨组件更新
+    if "page" not in st.session_state:
+        st.session_state["page"] = 1
+    
+    # 页码选择滑动条（和 session_state 绑定）
+    page = st.slider("选择页码", 1, total_pages, value=st.session_state["page"], key="page_slider")
+    st.session_state["page"] = page  # 更新当前页码
+    
+    # 上一页与下一页按钮布局
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("上一页"):
+            if st.session_state["page"] > 1:
+                st.session_state["page"] -= 1
+                # 如果存在 experimental_rerun 则调用，否则不调用
+                if hasattr(st, "experimental_rerun"):
+                    st.experimental_rerun()
+    with col3:
+        if st.button("下一页"):
+            if st.session_state["page"] < total_pages:
+                st.session_state["page"] += 1
+                if hasattr(st, "experimental_rerun"):
+                    st.experimental_rerun()
+    
+    # 根据当前页码截取数据
+    current_page = st.session_state["page"]
+    start_idx = (current_page - 1) * per_page
+    end_idx = start_idx + per_page
+    current_df = df.iloc[start_idx:end_idx]
+    
+    # 计算网格每行的列数：采用 math.ceil(sqrt(每页图片数量))
+    num_cols = math.ceil(math.sqrt(per_page))
+    image_list = current_df['url'].tolist()
+    
+    st.write(f"当前显示第 {current_page} 页，共 {total_pages} 页，总图片数：{total_images}")
+    
+    # 按照网格排列展示图片及其 URL
+    for i in range(0, len(image_list), num_cols):
+        cols = st.columns(num_cols)
+        for j, url in enumerate(image_list[i:i+num_cols]):
+            with cols[j]:
+                st.image(url, use_container_width=True)
+                st.caption(url)
