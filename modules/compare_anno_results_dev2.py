@@ -8,7 +8,6 @@ from io import BytesIO
 import pandas as pd
 import numpy as np
 from scipy.optimize import linear_sum_assignment
-
 import matplotlib
 import matplotlib.font_manager as fm
 
@@ -24,7 +23,7 @@ matplotlib.rcParams['font.sans-serif'] = [font_name]
 matplotlib.rcParams['axes.unicode_minus'] = False
 
 # ----------------------------
-# 辅助函数：将二级标签信息转换为字符串
+# 辅助函数：将二级标签（标签项）的选项值转换为字符串（实际上比较的是三级标签，即选项值）
 # ----------------------------
 def get_dimension_str(annotation):
     dims = annotation.get("dimensionValues", [])
@@ -33,7 +32,6 @@ def get_dimension_str(annotation):
         name = dim.get("name")
         values = dim.get("dimensionValues", [])
         if values:
-            # 过滤掉 None 并转换为字符串
             clean_values = [str(v) for v in values if v is not None]
             dims_str.append(f"{name}: {', '.join(clean_values)}")
         else:
@@ -108,6 +106,7 @@ def parse_log(log_data):
                     }
                     if "dimensionValueList" in dimension:
                         for value in dimension["dimensionValueList"]:
+                            # 将选项值保存到 dimensionValues 中（即三级标签）
                             dimension_info["dimensionValues"].append(value.get("name"))
                     label_info["dimensionValues"].append(dimension_info)
             labels_info.append(label_info)
@@ -145,9 +144,9 @@ def match_boxes(boxes1, boxes2, threshold=0.3, debug=False):
     return matched_pairs
 
 # ----------------------------
-# 为每个框赋予 ID，并返回所有框的匹配信息
+# 为每个框赋予 ID，并返回所有框的匹配信息，同时收集主标签不匹配的混淆对
 # ----------------------------
-def compute_matched_pairs(log1, log2, debug=False):
+def compute_matched_pairs(log1, log2, threshold=0.3, debug=False):
     import re
     def clean_tag(tag):
         return re.sub(r'\d+$', '', tag) if tag else "UNKNOWN"
@@ -196,9 +195,10 @@ def compute_matched_pairs(log1, log2, debug=False):
         st.dataframe(pd.DataFrame(debug_boxes2))
     
     # 匹配阶段
-    matched_pairs_raw = match_boxes(boxes1, boxes2, debug=debug)
+    matched_pairs_raw = match_boxes(boxes1, boxes2, threshold=threshold, debug=debug)
     
     matched_pairs_list = []
+    confused_primary_pairs = []
     global_group = 0
     used_boxes1 = set()
     used_boxes2 = set()
@@ -222,8 +222,15 @@ def compute_matched_pairs(log1, log2, debug=False):
             used_boxes1.add(box_id1)
             used_boxes2.add(box_id2)
         else:
+            confused_primary_pairs.append({
+                "box_id1": box_id1,
+                "tag1": tag1,
+                "box_id2": box_id2,
+                "tag2": tag2,
+                "iou": iou
+            })
             if debug:
-                st.write(f"### Debug: 丢弃匹配对 - Annotator1 tag: {tag1} 与 Annotator2 tag: {tag2} 不一致")
+                st.write(f"### Debug: 主标签不匹配：{tag1} vs {tag2} (Box {box_id1} vs {box_id2})")
                 
     unmatched_boxes1 = [
         {
@@ -246,11 +253,177 @@ def compute_matched_pairs(log1, log2, debug=False):
     
     return {
         "matched_pairs": matched_pairs_list,
+        "confused_primary_pairs": confused_primary_pairs,
         "unmatched_boxes1": unmatched_boxes1,
         "unmatched_boxes2": unmatched_boxes2,
         "all_box_ids": list(all_boxes.keys()),
         "all_boxes": all_boxes
     }
+
+# ----------------------------
+# 统计分析函数：计算整体对比指标（单图级）
+# ----------------------------
+def compute_statistics(log1, log2, result):
+    stats = {}
+    # 总框数统计
+    total_boxes_annotator1 = sum(1 for box in result["all_boxes"].values() if box["Annotator"]=="Annotator1")
+    total_boxes_annotator2 = sum(1 for box in result["all_boxes"].values() if box["Annotator"]=="Annotator2")
+    stats["total_boxes_annotator1"] = total_boxes_annotator1
+    stats["total_boxes_annotator2"] = total_boxes_annotator2
+
+    # 平均 IoU（仅基于匹配对）
+    matched_pairs = result["matched_pairs"]
+    if matched_pairs:
+         avg_iou = sum(pair["iou"] for pair in matched_pairs) / len(matched_pairs)
+    else:
+         avg_iou = 0
+    stats["average_iou"] = avg_iou
+
+    # 一级标签匹配率：匹配的框（每对两个框）占总框数比例
+    matched_boxes_count = len(matched_pairs) * 2
+    total_boxes = total_boxes_annotator1 + total_boxes_annotator2
+    primary_matching_rate = matched_boxes_count / total_boxes if total_boxes > 0 else 0
+    stats["primary_matching_rate"] = primary_matching_rate
+
+    # 一级标签混淆统计：基于 IoU 大于阈值但主标签不一致的匹配对
+    confused_primary = result.get("confused_primary_pairs", [])
+    confusion_dict = {}
+    for pair in confused_primary:
+         key = (pair["tag1"], pair["tag2"])
+         confusion_dict[key] = confusion_dict.get(key, 0) + 1
+    sorted_primary_confusion = sorted(confusion_dict.items(), key=lambda x: x[1], reverse=True)
+    stats["primary_confusion"] = sorted_primary_confusion
+
+    # 三级标签（即各选项值）的匹配分析
+    def get_dims_dict(ann):
+         dims = {}
+         for dim in ann.get("dimensionValues", []):
+             name = dim.get("name")
+             if name:
+                 # 直接取保存的选项值列表（即三级标签），用逗号连接
+                 values = [str(v) for v in dim.get("dimensionValues", []) if v is not None]
+                 dims[name] = ", ".join(values)
+         return dims
+
+    tertiary_match_count = 0
+    tertiary_total_count = 0
+    tertiary_confusion = {}  # key: (维度名称, annotator1选项, annotator2选项)
+    option_stats = {}  # 记录各选项详细匹配情况
+    for pair in matched_pairs:
+         dims1 = get_dims_dict(pair["ann1"])
+         dims2 = get_dims_dict(pair["ann2"])
+         common_dims = set(dims1.keys()).intersection(set(dims2.keys()))
+         for dim in common_dims:
+              val1 = dims1[dim]
+              val2 = dims2[dim]
+              tertiary_total_count += 1
+              option_stats.setdefault(dim, {"match": 0, "total": 0})
+              option_stats[dim]["total"] += 1
+              if val1 == val2:
+                  tertiary_match_count += 1
+                  option_stats[dim]["match"] += 1
+              else:
+                  key = (dim, val1, val2)
+                  tertiary_confusion[key] = tertiary_confusion.get(key, 0) + 1
+    tertiary_matching_rate = tertiary_match_count / tertiary_total_count if tertiary_total_count > 0 else 0
+    stats["tertiary_matching_rate"] = tertiary_matching_rate
+    stats["tertiary_confusion"] = sorted(tertiary_confusion.items(), key=lambda x: x[1], reverse=True)
+    stats["option_stats"] = option_stats
+
+    return stats
+
+# ----------------------------
+# 整体对比分析函数：统计两个文件中所有匹配 log 的总体指标
+# ----------------------------
+def overall_comparison_analysis(rst1, rst2, debug_mode=False):
+    # 聚合变量
+    agg_total_boxes_annotator1 = 0
+    agg_total_boxes_annotator2 = 0
+    agg_sum_iou = 0
+    agg_count_iou = 0
+    agg_primary_matched_boxes = 0
+    agg_total_boxes = 0
+    agg_tertiary_match_count = 0
+    agg_tertiary_total = 0
+    overall_primary_confusion = {}
+    overall_tertiary_confusion = {}
+    overall_option_stats = {}
+    total_pairs_count = 0
+
+    # 辅助函数：提取选项值字典
+    def get_dims_dict(ann):
+         dims = {}
+         for dim in ann.get("dimensionValues", []):
+             name = dim.get("name")
+             if name:
+                 values = [str(v) for v in dim.get("dimensionValues", []) if v is not None]
+                 dims[name] = ", ".join(values)
+         return dims
+
+    # 构造匹配对列表：遍历两个文件，依据图片 URL 进行匹配
+    matching_pairs_overall = []
+    for log1 in rst1:
+         if "pictureList" not in log1 or not log1["pictureList"]:
+              continue
+         url1 = log1["pictureList"][0].get("url", "")
+         for log2 in rst2:
+             if "pictureList" not in log2 or not log2["pictureList"]:
+                 continue
+             url2 = log2["pictureList"][0].get("url", "")
+             if url1 == url2:
+                 matching_pairs_overall.append((log1, log2))
+    # 遍历所有匹配对
+    for log1, log2 in matching_pairs_overall:
+         total_pairs_count += 1
+         result = compute_matched_pairs(log1, log2, debug=debug_mode)
+         # 统计各标注员框数
+         boxes1 = sum(1 for box in result["all_boxes"].values() if box["Annotator"]=="Annotator1")
+         boxes2 = sum(1 for box in result["all_boxes"].values() if box["Annotator"]=="Annotator2")
+         agg_total_boxes_annotator1 += boxes1
+         agg_total_boxes_annotator2 += boxes2
+         agg_total_boxes += (boxes1 + boxes2)
+         # 匹配对统计
+         matched_pairs = result["matched_pairs"]
+         for pair in matched_pairs:
+             agg_sum_iou += pair["iou"]
+             agg_count_iou += 1
+         agg_primary_matched_boxes += len(matched_pairs) * 2
+         # 主标签混淆
+         for cp in result.get("confused_primary_pairs", []):
+             key = (cp["tag1"], cp["tag2"])
+             overall_primary_confusion[key] = overall_primary_confusion.get(key, 0) + 1
+         # 三级标签（选项值）匹配统计
+         for pair in matched_pairs:
+             dims1 = get_dims_dict(pair["ann1"])
+             dims2 = get_dims_dict(pair["ann2"])
+             common_dims = set(dims1.keys()).intersection(set(dims2.keys()))
+             for dim in common_dims:
+                 agg_tertiary_total += 1
+                 overall_option_stats.setdefault(dim, {"match": 0, "total": 0})
+                 overall_option_stats[dim]["total"] += 1
+                 if dims1[dim] == dims2[dim]:
+                     agg_tertiary_match_count += 1
+                     overall_option_stats[dim]["match"] += 1
+                 else:
+                     key = (dim, dims1[dim], dims2[dim])
+                     overall_tertiary_confusion[key] = overall_tertiary_confusion.get(key, 0) + 1
+
+    overall_avg_iou = agg_sum_iou / agg_count_iou if agg_count_iou > 0 else 0
+    overall_primary_matching_rate = agg_primary_matched_boxes / agg_total_boxes if agg_total_boxes > 0 else 0
+    overall_tertiary_matching_rate = agg_tertiary_match_count / agg_tertiary_total if agg_tertiary_total > 0 else 0
+
+    aggregated_stats = {
+         "total_pairs": total_pairs_count,
+         "total_boxes_annotator1": agg_total_boxes_annotator1,
+         "total_boxes_annotator2": agg_total_boxes_annotator2,
+         "average_iou": overall_avg_iou,
+         "primary_matching_rate": overall_primary_matching_rate,
+         "tertiary_matching_rate": overall_tertiary_matching_rate,
+         "primary_confusion": sorted(overall_primary_confusion.items(), key=lambda x: x[1], reverse=True),
+         "tertiary_confusion": sorted(overall_tertiary_confusion.items(), key=lambda x: x[1], reverse=True),
+         "option_stats": overall_option_stats
+    }
+    return aggregated_stats
 
 # ----------------------------
 # 对比标注结果并绘制可视化（已修改颜色）
@@ -265,7 +438,6 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
         return
     img_url = parsed_data1['picture_info'][0]['url']
     try:
-        # 使用 st.spinner 提示图片正在刷新，防止显示旧图
         with st.spinner("还在刷新中..."):
             response = requests.get(img_url)
             img = Image.open(BytesIO(response.content))
@@ -301,7 +473,6 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
                 ax.text(box1[0], box1[1], pair["box_id1"], color='pink', fontsize=10, backgroundcolor='none')
                 ax.text(box2[0], box2[1], pair["box_id2"], color='blue', fontsize=10, backgroundcolor='none')
             
-            # 构造 dims1 与 dims2 字典，过滤 None 值并转换为字符串
             dims1 = {dim["name"]: [str(v) for v in dim.get("dimensionValues", []) if v is not None] 
                      for dim in ann1.get("dimensionValues", []) if dim.get("name")}
             dims2 = {dim["name"]: [str(v) for v in dim.get("dimensionValues", []) if v is not None] 
@@ -343,7 +514,6 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
             })
     
     elif group_filter_type == "matched":
-        # 当处于“按框ID过滤”模式且未选任何框时，不展示任何框
         if is_box_id_filter and not selected_box_ids:
             filtered_pairs = []
             individual_box_ids = set()
@@ -366,7 +536,6 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
                 individual_box_ids.discard(pair["box_id1"])
                 individual_box_ids.discard(pair["box_id2"])
         
-        # 绘制匹配对
         for pair in filtered_pairs:
             box1 = pair["box1"]
             box2 = pair["box2"]
@@ -409,7 +578,6 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
                     "IoU": f"{iou:.2f}"
                 })
         
-        # 绘制未形成匹配对的单个框
         for box_id in individual_box_ids:
             box_info = all_boxes.get(box_id)
             if box_info:
@@ -468,7 +636,7 @@ def compare_annotations(log1, log2, selected_group, selected_box_ids,
     st.pyplot(fig2)
 
 # ----------------------------
-# 主函数：上传文件、参数设置并调用对比函数
+# 主函数：上传文件、参数设置、统计分析并调用对比函数
 # ----------------------------
 def compare_anno_results():
     st.title("标注结果对比")
@@ -502,7 +670,7 @@ def compare_anno_results():
             st.error(f"文件解析失败: {e}")
             return
 
-        # 使用图片 URL 来匹配两个标注结果
+        # 使用图片 URL 来匹配两个标注结果（单图对比）
         matching_pairs = []
         for log1 in rst1:
             if "pictureList" not in log1 or not log1["pictureList"]:
@@ -513,7 +681,6 @@ def compare_anno_results():
                     continue
                 url2 = log2["pictureList"][0].get("url", "")
                 if url1 == url2:
-                    # 从 URL 中提取图片文件名
                     image_filename = url1.split("/")[-1] if url1 else "unknown"
                     selection_key = f"{log1['id']}_{log2['id']}_{image_filename}"
                     matching_pairs.append((selection_key, log1, log2))
@@ -522,7 +689,6 @@ def compare_anno_results():
             st.error("没有匹配到相同图片的标注结果")
             return
 
-        # 对选择项按 key 排序，并展示下拉选择框
         matching_pairs.sort(key=lambda x: x[0])
         selected_key = st.selectbox("选择要对比的标注结果", [mp[0] for mp in matching_pairs])
         selected_pair = next((mp for mp in matching_pairs if mp[0] == selected_key), None)
@@ -540,6 +706,43 @@ def compare_anno_results():
         # 合并未匹配框
         unmatched_boxes = result["unmatched_boxes1"] + result["unmatched_boxes2"]
 
+        # 单图统计分析
+        stats = compute_statistics(log1_obj, log2_obj, result)
+        with st.expander("单图统计分析", expanded=False):
+            st.subheader("总体统计")
+            st.write(f"**标注员1 总框数：** {stats['total_boxes_annotator1']}")
+            st.write(f"**标注员2 总框数：** {stats['total_boxes_annotator2']}")
+            st.write(f"**匹配框平均 IoU：** {stats['average_iou']:.2f}")
+            st.write(f"**一级标签匹配率：** {stats['primary_matching_rate']*100:.1f}%")
+            st.write(f"**三级标签匹配率：** {stats['tertiary_matching_rate']*100:.1f}%")
+            
+            st.subheader("一级标签混淆情况")
+            if stats["primary_confusion"]:
+                df_primary = pd.DataFrame([{"Annotator1标签": k[0], "Annotator2标签": k[1], "次数": v} 
+                                            for k, v in stats["primary_confusion"]])
+                st.dataframe(df_primary)
+            else:
+                st.write("无一级标签混淆情况。")
+            
+            st.subheader("三级标签混淆情况")
+            if stats["tertiary_confusion"]:
+                df_tertiary = pd.DataFrame([{"维度": k[0], "Annotator1选项": k[1], "Annotator2选项": k[2], "次数": v} 
+                                             for k, v in stats["tertiary_confusion"]])
+                st.dataframe(df_tertiary)
+            else:
+                st.write("无三级标签混淆情况。")
+            
+            st.subheader("各选项详细匹配情况")
+            if stats["option_stats"]:
+                df_option = pd.DataFrame([{"维度": dim, 
+                                           "匹配数": v["match"], 
+                                           "总比较数": v["total"],
+                                           "匹配率": f"{(v['match']/v['total'])*100:.1f}%"}
+                                       for dim, v in stats["option_stats"].items()])
+                st.dataframe(df_option)
+            else:
+                st.write("无三级标签数据。")
+        
         # 根据用户选择的过滤方式构造参数（保持原逻辑，其余部分无需修改）
         if filter_method == "按框ID过滤":
             group_filter_type = "matched"  # 使用匹配对显示
@@ -563,11 +766,54 @@ def compare_anno_results():
                 selected_group = "全部"
                 selected_box_ids = []
 
-        # 调用对比函数，同时传入 is_box_id_filter
         compare_annotations(
             log1_obj, log2_obj, selected_group, selected_box_ids,
             matched_pairs_list, all_boxes, group_filter_type,
             unmatched_boxes, show_box_names, is_box_id_filter
         )
+        
+        # ----------------------------
+        # 整体对比分析（针对两个文件所有 log 的汇总统计）
+        # ----------------------------
+        with st.expander("所有 log 的整体对比分析", expanded=False):
+            st.subheader("整体统计分析")
+            overall_stats = overall_comparison_analysis(rst1, rst2, debug_mode)
+            st.write(f"**匹配对总数：** {overall_stats['total_pairs']}")
+            st.write(f"**标注员1 总框数：** {overall_stats['total_boxes_annotator1']}")
+            st.write(f"**标注员2 总框数：** {overall_stats['total_boxes_annotator2']}")
+            st.write(f"**匹配框平均 IoU：** {overall_stats['average_iou']:.2f}")
+            st.write(f"**一级标签匹配率：** {overall_stats['primary_matching_rate']*100:.1f}%")
+            st.write(f"**三级标签匹配率：** {overall_stats['tertiary_matching_rate']*100:.1f}%")
+            
+            st.subheader("一级标签混淆情况")
+            if overall_stats["primary_confusion"]:
+                df_primary_all = pd.DataFrame([{"Annotator1标签": k[0], "Annotator2标签": k[1], "次数": v} 
+                                            for k, v in overall_stats["primary_confusion"]])
+                st.dataframe(df_primary_all)
+            else:
+                st.write("无一级标签混淆情况。")
+            
+            st.subheader("三级标签混淆情况")
+            if overall_stats["tertiary_confusion"]:
+                df_tertiary_all = pd.DataFrame([{"维度": k[0], "Annotator1选项": k[1], "Annotator2选项": k[2], "次数": v} 
+                                             for k, v in overall_stats["tertiary_confusion"]])
+                st.dataframe(df_tertiary_all)
+            else:
+                st.write("无三级标签混淆情况。")
+            
+            st.subheader("各选项详细匹配情况")
+            if overall_stats["option_stats"]:
+                df_option_all = pd.DataFrame([{"维度": dim, 
+                                               "匹配数": v["match"], 
+                                               "总比较数": v["total"],
+                                               "匹配率": f"{(v['match']/v['total'])*100:.1f}%"}
+                                           for dim, v in overall_stats["option_stats"].items()])
+                st.dataframe(df_option_all)
+            else:
+                st.write("无三级标签数据。")
     else:
         st.write("请上传两个标注员的标注结果文件（txt格式）。")
+
+# 调用主函数
+if __name__ == "__main__":
+    compare_anno_results()
