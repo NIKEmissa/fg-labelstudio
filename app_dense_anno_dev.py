@@ -1,7 +1,8 @@
 import streamlit as st
 from modules.authentication import user_login
 from modules.dense_parse_csv import dense_parse_csv
-from modules.streamlit_image_viewer import image_viewer
+# from modules.streamlit_image_viewer import image_viewer
+from modules.streamlit_image_viewer_dev import image_viewer
 # from modules.compare_anno_results_dev import compare_anno_results
 from modules.compare_anno_results_dev2 import compare_anno_results
 from modules.data_sampler import run_data_sampler  # 新增导入

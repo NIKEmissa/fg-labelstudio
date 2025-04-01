@@ -93,7 +93,7 @@ def upload_file_to_oss(oss_config, selected_files, username):
         bucket = oss2.Bucket(auth, oss_config['endpoint'], oss_config['bucket_name'])
 
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        oss_dir = f"images/{username}/{timestamp}/"
+        oss_dir = f"ai_images/xd2/Downloads/images/dense_annotation_expert_select/{username}/{timestamp}/"
 
         uploaded_data = []
         successful_count = 0
