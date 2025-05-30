@@ -141,7 +141,9 @@ def download_images_from_csv(csv_file, url_column, dest_dir,
     # 步骤4：多进程下载 + 验证有效性
     print("步骤4：开始多进程下载并验证任务...")
     results = []
-    success_count = failure_count = 0
+    success_count = 0
+    download_fail_count = 0
+    validate_fail_count = 0
     check_during = (check_mode == 'during')
 
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
@@ -166,7 +168,7 @@ def download_images_from_csv(csv_file, url_column, dest_dir,
                             pass
                         res["status"] = "failure"
                         res["message"] += "；验证失败，已删除无效文件"
-                        failure_count += 1
+                        validate_fail_count += 1
                         if verbose:
                             print(res["message"])
                 elif res["status"] == "skipped":
@@ -176,12 +178,16 @@ def download_images_from_csv(csv_file, url_column, dest_dir,
                         print(res["message"])
                 else:
                     # download 或其他失败
-                    failure_count += 1
+                    download_fail_count += 1
                     if verbose:
                         print(res["message"])
 
                 results.append(res)
-                pbar.set_postfix({"成功": success_count, "失败": failure_count})
+                pbar.set_postfix({
+                    "成功": success_count,
+                    "下载失败": download_fail_count,
+                    "解析失败": validate_fail_count
+                })
                 pbar.update(1)
 
     print("步骤5：所有任务完成。")
