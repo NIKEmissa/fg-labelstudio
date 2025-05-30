@@ -5,6 +5,7 @@ import argparse
 from concurrent.futures import ProcessPoolExecutor, as_completed, ThreadPoolExecutor
 from urllib.parse import urlparse
 from tqdm import tqdm
+from PIL import Image  # 新增用于验证图片
 
 # 可选解密依赖
 import zjimagetool
@@ -64,17 +65,16 @@ def download_image(url, dest_dir, filename=None, check_during=False, decrypt=Fal
                 decrypted = zjimagetool.decrypt(raw_data)
                 with open(dest_path, 'wb') as f:
                     f.write(decrypted)
-            except Exception as e:
+            except Exception:
                 # 解密失败时回退至直接写入原始数据
                 with open(dest_path, 'wb') as f:
                     f.write(response.content)
-                return {"url": url, "dest": dest_path, "status": "success",
-                        "message": f"解密失败，已保存原始数据：{url} -> {dest_path}"}
         else:
             # 普通模式：分块写入
             with open(dest_path, 'wb') as f:
                 for chunk in response.iter_content(1024):
                     f.write(chunk)
+
         return {"url": url, "dest": dest_path, "status": "success",
                 "message": f"已下载：{url} -> {dest_path}"}
     except Exception as e:
@@ -82,12 +82,23 @@ def download_image(url, dest_dir, filename=None, check_during=False, decrypt=Fal
                 "message": f"下载 {url} 时出错: {e}"}
 
 
+def is_image_valid(path):
+    """
+    使用 PIL 验证图片文件有效性。
+    """
+    try:
+        with Image.open(path) as img:
+            img.verify()
+        return True
+    except Exception:
+        return False
+
+
 def download_images_from_csv(csv_file, url_column, dest_dir,
                              max_workers, verbose=False,
                              check_mode='pre', decrypt=False):
     """
-    从 CSV 文件读取 URL 并并行下载。
-    参数 decrypt 控制是否开启解密下载模式。
+    从 CSV 文件读取 URL 并并行下载，下载完成后即时验证图片有效性。
     """
     # 步骤1：检查并创建目标目录
     print("步骤1：检查并创建目标目录...")
@@ -111,9 +122,10 @@ def download_images_from_csv(csv_file, url_column, dest_dir,
     if check_mode == 'pre':
         print("步骤3：使用多线程并行检查已存在数据，过滤已完成下载的文件...")
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            check_results = list(tqdm(executor.map(lambda u: check_task(u, dest_dir),
-                                                 urls),
-                                        total=len(urls), desc="检查存在状态", unit="文件"))
+            check_results = list(tqdm(
+                executor.map(lambda u: check_task(u, dest_dir), urls),
+                total=len(urls), desc="检查存在状态", unit="文件"
+            ))
         tasks = []
         for url, skip, message in check_results:
             if skip:
@@ -126,46 +138,71 @@ def download_images_from_csv(csv_file, url_column, dest_dir,
         print("步骤3：跳过预检查，在下载过程中检查文件是否存在...")
         tasks = urls
 
-    # 步骤4：多进程下载
-    print("步骤4：开始多进程下载任务...")
+    # 步骤4：多进程下载 + 验证有效性
+    print("步骤4：开始多进程下载并验证任务...")
     results = []
     success_count = failure_count = 0
     check_during = (check_mode == 'during')
+
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
-        futures = {executor.submit(download_image, url, dest_dir, None, check_during, decrypt): url
-                   for url in tasks}
-        with tqdm(total=len(futures), desc="下载进度", unit="任务") as pbar:
+        futures = {
+            executor.submit(download_image, url, dest_dir, None, check_during, decrypt): url
+            for url in tasks
+        }
+        with tqdm(total=len(futures), desc="下载 & 验证", unit="任务") as pbar:
             for future in as_completed(futures):
-                result = future.result()
-                if result["status"] == "success":
+                res = future.result()
+                # 仅对“success”状态进行图片有效性验证
+                if res["status"] == "success" and res["dest"]:
+                    if is_image_valid(res["dest"]):
+                        success_count += 1
+                        if verbose:
+                            print(f"验证通过：{res['dest']}")
+                    else:
+                        # 验证失败，删除文件
+                        try:
+                            os.remove(res["dest"])
+                        except:
+                            pass
+                        res["status"] = "failure"
+                        res["message"] += "；验证失败，已删除无效文件"
+                        failure_count += 1
+                        if verbose:
+                            print(res["message"])
+                elif res["status"] == "skipped":
+                    # 跳过的当作成功
                     success_count += 1
                     if verbose:
-                        print(result["message"])
-                elif result["status"] == "skipped":
-                    if verbose:
-                        print(result["message"])
+                        print(res["message"])
                 else:
+                    # download 或其他失败
                     failure_count += 1
-                    print(result["message"])
+                    if verbose:
+                        print(res["message"])
+
+                results.append(res)
                 pbar.set_postfix({"成功": success_count, "失败": failure_count})
                 pbar.update(1)
-                results.append(result)
-    print("步骤5：下载任务全部结束。")
+
+    print("步骤5：所有任务完成。")
+    print(f"结果：{success_count} 成功, {failure_count} 失败, 总计 {len(tasks)}")
     return results
 
 
 def main():
-    parser = argparse.ArgumentParser(description="根据 CSV 文件指定列的 URL 下载图片（支持解密模式）")
+    parser = argparse.ArgumentParser(
+        description="根据 CSV 文件指定列的 URL 下载并验证图片（支持解密模式）"
+    )
     parser.add_argument('--csv_file', type=str, required=True, help="CSV 文件路径")
     parser.add_argument('--url_column', type=str, required=True, help="CSV 文件中包含 URL 的列名称")
     parser.add_argument('--dest_dir', type=str, default='downloaded_images',
-                        help="图片保存的目标目录，默认为 downloaded_images")
+                        help="图片保存的目标目录")
     parser.add_argument('--max_workers', type=int, default=os.cpu_count(),
-                        help="并发数量，默认值为 CPU 核心数")
+                        help="并发线程/进程数，默认 CPU 核心数")
     parser.add_argument('--verbose', action='store_true', help="开启详细模式")
-    parser.add_argument('--check_mode', type=str, choices=['pre', 'during'], default='pre',
-                        help="检查文件存在的时机：'pre'或'during'")
-    parser.add_argument('--decrypt', action='store_true', help="启用解密下载模式（需要设置解密令牌）")
+    parser.add_argument('--check_mode', choices=['pre', 'during'], default='pre',
+                        help="检查模式：'pre' 或 'during'")
+    parser.add_argument('--decrypt', action='store_true', help="启用解密下载模式")
     parser.add_argument('--decrypt-token', type=str, default=None,
                         help="指定解密令牌，默认使用脚本内置令牌")
     args = parser.parse_args()
@@ -184,6 +221,7 @@ def main():
         args.check_mode,
         args.decrypt
     )
+
 
 if __name__ == '__main__':
     main()
